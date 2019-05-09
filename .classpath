@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/fillo-1.18.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/commons-io-2.6/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/extentreports-3.1.5.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/jsoup-1.11.3.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/log4j-1.2.17-javadoc.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/apache-logging-log4j.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/mongo-java-driver-3.9.1.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/sqlite-jdbc-3.25.2.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/freemarker-2.3.23.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

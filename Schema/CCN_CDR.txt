@@ -1,0 +1,805 @@
+-- ASN.1 Formal Description
+
+CDRCCN DEFINITIONS IMPLICIT TAGS ::= 
+
+BEGIN
+
+CallDetailOutputRecord ::= CHOICE {
+	sCFPDPRecord                 [0]  SCFPDPRecord,
+	sCFSMSPSMORecord             [1]  SCFSMSMORecord,
+	sCFSMSCSMORecord             [2]  SCFSMSMORecord,
+	diameterCreditControlRecord  [3]  DiameterCreditControlRecord,
+	fBCRatingRecord              [4]  FBCRatingRecord,
+	rTCCreditControlRecord       [5]  RTCCreditControlRecord,
+	sCFSMSMTRecord               [6]  SCFSMSMTRecord -- Licensed
+}
+
+SCFPDPRecord ::= SEQUENCE {
+	chargingID                   [0]	ChargingID,
+	ggsnAddressUsed              [1]	GSNAddress,
+	accessPointName              [2]	AccessPointName OPTIONAL,
+	recordSequenceNumber         [3]	RecordSequenceNumber,
+	nodeID                       [4]	NodeID,
+	localSequenceNumber          [5]	LocalSequenceNumber,
+	lastPartialOutput            [6]	BOOLEAN,
+	trafficCase                  [7]	TrafficCase OPTIONAL,
+	subscriberNumber             [8]	AddressString OPTIONAL,
+	serviceClass                 [9]	ServiceClass OPTIONAL,
+	accountValueBefore           [10]	MoneyAmount OPTIONAL,
+	accountValueAfter            [11]	MoneyAmount OPTIONAL,
+	finalCharge                  [12]	MoneyAmount OPTIONAL,
+	chargedDuration              [13]	ChargedDuration OPTIONAL,
+	cdrType                      [14]	CDRType,
+	teleServiceCode              [15]	TeleServiceCode OPTIONAL,
+	startOfChargingOfContext     [16]	TimeStamp OPTIONAL,
+	familyAndFriendsIndicator    [17]	FamilyAndFriendsIndicator
+	                                                  OPTIONAL,
+	numberOfSDPInterrogations    [18]	NumberOfSDPInterrogations,
+	dataVolume                   [19]	DataVolume OPTIONAL,
+	currencyType                 [20]	CurrencyType OPTIONAL,
+	callingPartyNumber           [21]	AddressString OPTIONAL,
+	originatingLocationInfo      [22]	AddressString OPTIONAL,
+	accountNumber                [23]	AddressString OPTIONAL,
+	terminatingLocationInfo      [24]	AddressString OPTIONAL,
+	calledPartyNumber            [25]	AddressString OPTIONAL,
+	accumulatorValue1            [26]	AccumulatorValue OPTIONAL,
+	accumulatorValue2            [27]	AccumulatorValue OPTIONAL,
+	accumulatorValue3            [28]	AccumulatorValue OPTIONAL,
+	accumulatorValue4            [29]	AccumulatorValue OPTIONAL,
+	accumulatorValue5            [30]	AccumulatorValue OPTIONAL,
+	accumulatorDeltaValue        [31]	AccumulatorValue OPTIONAL,
+	accumulatorID                [32]	AccumulatorID OPTIONAL,
+	dAFirstID                    [33]	DedicatedAccountID OPTIONAL,
+	dAFirstValueBefore           [34]	MoneyAmount OPTIONAL,
+	dAFirstValueAfter            [35]	MoneyAmount OPTIONAL,
+	triggerTime                  [36]	TimeStamp OPTIONAL,
+	dAFirstAccDuration           [37]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	accountGroupID               [38]	AccountGroupID OPTIONAL,
+	serviceOfferings             [39]	ServiceOfferings OPTIONAL,
+	selectedCommunityIndicator   [40]	SelectedCommunityIndicator
+	                                                   OPTIONAL,
+	communityID1Charged          [41]	CommunityID OPTIONAL,
+	communityID2Charged          [42]	CommunityID OPTIONAL,
+	communityID3Charged          [43]	CommunityID OPTIONAL,
+	communityID1NonCharged       [44]	CommunityID OPTIONAL,
+	communityID2NonCharged       [45]	CommunityID OPTIONAL,
+	communityID3NonCharged       [46]	CommunityID OPTIONAL,
+	communityDataNonChargedNotAvailable [47] BOOLEAN OPTIONAL,
+	-- Licensed
+	accumulatorValue6            [48]	AccumulatorValue OPTIONAL,
+	accumulatorValue7            [49]	AccumulatorValue OPTIONAL,
+	accumulatorValue8            [50]	AccumulatorValue OPTIONAL,
+	accumulatorValue9            [51]	AccumulatorValue OPTIONAL,
+	accumulatorValue10           [52]	AccumulatorValue OPTIONAL,
+	-- end Licensed
+	dAFirstCampaignIdentifier    [53] CampaignIdentifier OPTIONAL,
+	dASecondID                   [54]	DedicatedAccountID OPTIONAL,
+	dASecondValueBefore          [55]	MoneyAmount OPTIONAL,
+	dASecondValueAfter           [56]	MoneyAmount OPTIONAL,
+	dASecondCampaignIdentifier   [57] CampaignIdentifier OPTIONAL,
+	dASecondAccDuration          [58]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAThirdID                    [59]	DedicatedAccountID OPTIONAL,
+	dAThirdValueBefore           [60]	MoneyAmount OPTIONAL,
+	dAThirdValueAfter            [61]	MoneyAmount OPTIONAL,
+	dAThirdCampaignIdentifier    [62] CampaignIdentifier OPTIONAL,
+	dAThirdAccDuration           [63]	DedicatedAccountAccDuration
+	                                                    	OPTIONAL,
+	dAFourthID                   [64]	DedicatedAccountID OPTIONAL,
+	dAFourthValueBefore          [65]	MoneyAmount OPTIONAL,
+	dAFourthValueAfter           [66]	MoneyAmount OPTIONAL,
+	dAFourthCampaignIdentifier   [67] CampaignIdentifier OPTIONAL,
+	dAFourthAccDuration          [68]	DedicatedAccountAccDuration
+	                                                    		OPTIONAL,
+	dAFifthID                    [69]	DedicatedAccountID OPTIONAL,
+	dAFifthValueBefore           [70]	MoneyAmount OPTIONAL,
+	dAFifthValueAfter            [71]	MoneyAmount OPTIONAL,
+	dAFifthCampaignIdentifier    [72] CampaignIdentifier OPTIONAL,
+	dAFifthAccDuration           [73]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	-- Licensed
+	accumulatorValue11           [74] AccumulatorValue OPTIONAL,
+	accumulatorValue12           [75] AccumulatorValue OPTIONAL,
+	accumulatorValue13           [76] AccumulatorValue OPTIONAL,
+	accumulatorValue14           [77] AccumulatorValue OPTIONAL,
+	accumulatorValue15           [78] AccumulatorValue OPTIONAL,
+	-- end Licensed
+	-- ID:03565
+	cellID                       [79] CellID OPTIONAL,
+	locationAreaID               [80] LocationAreaID OPTIONAL,
+	-- end ID:03565
+	...
+}
+
+SCFSMSMORecord ::= SEQUENCE {
+	servedIMSI                   [0]	IMSI,
+	servedMSISDN                 [1]	AddressString,
+	serviceCenter                [2]	AddressString,
+	nodeID                       [3]	NodeID,
+	localSequenceNumber          [4]	LocalSequenceNumber,
+	trafficCase                  [5]	TrafficCase OPTIONAL,
+	serviceClass                 [6]	ServiceClass OPTIONAL,
+	accountValueBefore           [7]	MoneyAmount OPTIONAL,
+	accountValueAfter            [8]	MoneyAmount OPTIONAL,
+	finalCharge                  [9]	MoneyAmount OPTIONAL,
+	cdrType                      [10]	CDRType,
+	teleServiceCode              [11]	TeleServiceCode OPTIONAL,
+	startOfChargingOfEvent       [12]	TimeStamp OPTIONAL,
+	familyAndFriendsIndicator    [13]	FamilyAndFriendsIndicator
+	                                                  OPTIONAL,
+	numberOfSDPInterrogations    [14]	NumberOfSDPInterrogations,
+	currencyType                 [15]	CurrencyType OPTIONAL,
+	originatingLocationInfo      [16]	AddressString OPTIONAL,
+	accountNumber                [17]	AddressString OPTIONAL,
+	destinationNumber            [18]	AddressString,
+	accumulatorValue1            [19]	AccumulatorValue OPTIONAL,
+	accumulatorValue2            [20]	AccumulatorValue OPTIONAL,
+	accumulatorValue3            [21]	AccumulatorValue OPTIONAL,
+	accumulatorValue4            [22]	AccumulatorValue OPTIONAL,
+	accumulatorValue5            [23]	AccumulatorValue OPTIONAL,
+	accumulatorDeltaValue        [24]	AccumulatorValue OPTIONAL,
+	accumulatorID                [25]	AccumulatorID OPTIONAL,
+	dAFirstID                    [26]	DedicatedAccountID OPTIONAL,
+	dAFirstValueBefore           [27]	MoneyAmount OPTIONAL,
+	dAFirstValueAfter            [28]	MoneyAmount OPTIONAL,
+	eventTimeStamp               [29]	TimeStamp,
+	dAFirstAccDuration           [30]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	networkID                    [31]	NetworkID OPTIONAL,
+	smsReferenceNumber           [32]	CallReferenceNumber OPTIONAL,
+	mscAddress                   [33]	AddressString OPTIONAL,
+	sgsn-Number                  [34]	AddressString OPTIONAL,
+	accountGroupID               [35]	AccountGroupID OPTIONAL,
+	serviceOfferings             [36]	ServiceOfferings OPTIONAL,
+	selectedCommunityIndicator   [37]	SelectedCommunityIndicator
+	                                                   OPTIONAL,
+	communityID1Charged          [38]	CommunityID OPTIONAL,
+	communityID2Charged          [39]	CommunityID OPTIONAL,
+	communityID3Charged          [40]	CommunityID OPTIONAL,
+	communityID1NonCharged       [41]	CommunityID	OPTIONAL,
+	communityID2NonCharged       [42]	CommunityID	OPTIONAL,
+	communityID3NonCharged       [43]	CommunityID	OPTIONAL,
+	communityDataNonChargedNotAvailable [44]	BOOLEAN OPTIONAL,
+	calledPartyNumber            [45]	AddressString OPTIONAL,
+	-- Licensed
+	accumulatorValue6            [46]	AccumulatorValue OPTIONAL,
+	accumulatorValue7            [47]	AccumulatorValue OPTIONAL,
+	accumulatorValue8            [48]	AccumulatorValue OPTIONAL,
+	accumulatorValue9            [49]	AccumulatorValue OPTIONAL,
+	accumulatorValue10           [50]	AccumulatorValue OPTIONAL,
+	-- end Licensed
+	dAFirstCampaignIdentifier    [51] CampaignIdentifier OPTIONAL,
+	dASecondID                   [52]	DedicatedAccountID OPTIONAL,
+	dASecondValueBefore          [53]	MoneyAmount OPTIONAL,
+	dASecondValueAfter           [54]	MoneyAmount OPTIONAL,
+	dASecondCampaignIdentifier   [55] CampaignIdentifier OPTIONAL,
+	dASecondAccDuration          [56]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAThirdID                    [57]	DedicatedAccountID OPTIONAL,
+	dAThirdValueBefore           [58]	MoneyAmount OPTIONAL,
+	dAThirdValueAfter            [59]	MoneyAmount OPTIONAL,
+	dAThirdCampaignIdentifier    [60] CampaignIdentifier OPTIONAL,
+	dAThirdAccDuration           [61]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAFourthID                   [62]	DedicatedAccountID OPTIONAL,
+	dAFourthValueBefore          [63]	MoneyAmount OPTIONAL,
+	dAFourthValueAfter           [64]	MoneyAmount OPTIONAL,
+	dAFourthCampaignIdentifier   [65] CampaignIdentifier OPTIONAL,
+	dAFourthAccDuration          [66]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAFifthID                    [67]	DedicatedAccountID OPTIONAL,
+	dAFifthValueBefore           [68]	MoneyAmount OPTIONAL,
+	dAFifthValueAfter            [69]	MoneyAmount OPTIONAL,
+	dAFifthCampaignIdentifier    [70] CampaignIdentifier OPTIONAL,
+	dAFifthAccDuration           [71]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	-- Licensed
+	accumulatorValue11           [72] AccumulatorValue OPTIONAL,
+	accumulatorValue12           [73] AccumulatorValue OPTIONAL,
+	accumulatorValue13           [74] AccumulatorValue OPTIONAL,
+	accumulatorValue14           [75] AccumulatorValue OPTIONAL,
+	accumulatorValue15           [76] AccumulatorValue OPTIONAL,
+	-- end Licensed
+	-- ID:03565
+	cellID                       [77] CellID OPTIONAL,
+	locationAreaID               [78] LocationAreaID OPTIONAL,
+	-- end ID:03565
+	...
+}
+
+DiameterCreditControlRecord ::= SEQUENCE {
+	cdrType                      [0]	CDRType,
+	nodeID                       [1]	NodeID,
+	recordSequenceNumber         [2]	RecordSequenceNumber,
+	lastPartialOutput            [3]	BOOLEAN,
+	trafficCase                  [4]	TrafficCase OPTIONAL,
+	teleServiceCode              [5]	TeleServiceCode OPTIONAL,
+	subscriberID                 [6]	AddressString OPTIONAL,
+	callingPartyNumber           [7]	AddressString OPTIONAL, 
+	calledPartyNumber            [8]	AddressString OPTIONAL,
+	triggerTime                  [9]	TimeStamp OPTIONAL,
+	chargedDuration              [10] ChargedDuration OPTIONAL,
+	dataVolume                   [11]	DataVolume OPTIONAL,
+	numberOfEvents               [12]	NumberOfEvents OPTIONAL,
+	finalCharge                  [13]	MoneyAmount OPTIONAL,
+	accountValueBefore           [14]	MoneyAmount OPTIONAL,
+	accountValueAfter            [15]	MoneyAmount OPTIONAL,
+	sessionID                    [16]	SessionID,
+	userName                     [17]	UserName OPTIONAL,
+	numberOfSDPInterrogations    [18]	NumberOfSDPInterrogations,
+	originRealm                  [19]	OriginRealm OPTIONAL,
+	originHost                   [20]	OriginHost OPTIONAL,
+	serviceClass                 [21]	ServiceClass OPTIONAL,
+	accountNumber                [22]	AddressString OPTIONAL,
+	localSequenceNumber          [23]	LocalSequenceNumber,
+	familyAndFriendsIndicator    [24]	FamilyAndFriendsIndicator
+	                                                  OPTIONAL,
+	currencyType                 [25]	CurrencyType OPTIONAL,
+	accumulatorValue1            [26]	AccumulatorValue OPTIONAL,
+	accumulatorValue2            [27]	AccumulatorValue OPTIONAL,
+	accumulatorValue3            [28]	AccumulatorValue OPTIONAL,
+	accumulatorValue4            [29]	AccumulatorValue OPTIONAL,
+	accumulatorValue5            [30]	AccumulatorValue OPTIONAL,
+	accumulatorDeltaValue        [31]	AccumulatorValue OPTIONAL,
+	accumulatorID                [32]	AccumulatorID OPTIONAL,
+	dAFirstID                    [33]	DedicatedAccountID OPTIONAL,
+	dAFirstValueBefore           [34]	MoneyAmount OPTIONAL,
+	dAFirstValueAfter            [35]	MoneyAmount OPTIONAL,
+	serviceProviderID            [36]	ServiceProviderID OPTIONAL,
+	extInt1                      [37]	ExtInt OPTIONAL,
+	extInt2                      [38]	ExtInt OPTIONAL,
+	extInt3                      [39]	ExtInt OPTIONAL,
+	extInt4                      [40]	ExtInt OPTIONAL,
+	extText                      [41]	ExtText OPTIONAL,
+	gprsQoS                      [42]	GPRSQoS OPTIONAL,
+	redirectingPartyNumber       [43]	AddressString OPTIONAL,
+	originatingLocationInfo      [44]	AddressString OPTIONAL,
+	terminatingLocationInfo      [45]	AddressString OPTIONAL,
+	networkID                    [46]	NetworkID OPTIONAL,
+	subscriptionType             [47]	SubscriptionType OPTIONAL,
+	smsDeliveryStatus            [48]	SmsDeliveryStatus OPTIONAL,
+	calledPartyNumber2           [49]	AddressString OPTIONAL,
+	calledPartyNumber3           [50]	AddressString OPTIONAL,
+	radiusSessionID              [51]	RadiusSessionID OPTIONAL,
+	multiSessionID               [52]	MultiSessionID OPTIONAL,
+	originalSubscriptionIDData   [53]	SubscriptionIDData OPTIONAL,
+	originalSubscriptionIDType   [54]	SubscriptionIDType OPTIONAL,
+	accountingCorrelationID      [55]	AccountingCorrelationID
+	                                                 OPTIONAL,
+	abnormalTerminationReason    [56]	AbnormalTerminationReason
+	                                                  OPTIONAL,
+	dAFirstAccDuration           [57]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	accountGroupID               [58]	AccountGroupID OPTIONAL,
+	serviceOfferings             [59]	ServiceOfferings OPTIONAL,
+	selectedCommunityIndicator   [60]	SelectedCommunityIndicator 
+                                                     OPTIONAL,
+	communityID1Charged          [61]	CommunityID OPTIONAL,
+	communityID2Charged          [62]	CommunityID OPTIONAL,
+	communityID3Charged          [63]	CommunityID OPTIONAL,
+	communityID1NonCharged       [64]	CommunityID OPTIONAL,
+	communityID2NonCharged       [65]	CommunityID OPTIONAL,
+	communityID3NonCharged       [66]	CommunityID OPTIONAL,
+	communityDataNonChargedNotAvailable [67] BOOLEAN OPTIONAL,
+	-- Licensed
+	accumulatorValue6            [68]	AccumulatorValue OPTIONAL,
+	accumulatorValue7            [69]	AccumulatorValue OPTIONAL,
+	accumulatorValue8            [70]	AccumulatorValue OPTIONAL,
+	accumulatorValue9            [71]	AccumulatorValue OPTIONAL,
+	accumulatorValue10           [72]	AccumulatorValue OPTIONAL,
+	-- end Licensed
+	dAFirstCampaignIdentifier    [73]  CampaignIdentifier OPTIONAL,
+	dASecondID                   [74]	DedicatedAccountID OPTIONAL,
+	dASecondValueBefore          [75]	MoneyAmount OPTIONAL,
+	dASecondValueAfter           [76]	MoneyAmount OPTIONAL,
+	dASecondCampaignIdentifier   [77] CampaignIdentifier OPTIONAL,
+	dASecondAccDuration          [78]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAThirdID                    [79]	DedicatedAccountID OPTIONAL,
+	dAThirdValueBefore           [80]	MoneyAmount OPTIONAL,
+	dAThirdValueAfter            [81]	MoneyAmount OPTIONAL,
+	dAThirdCampaignIdentifier    [82] CampaignIdentifier OPTIONAL,
+	dAThirdAccDuration           [83]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAFourthID                   [84]	DedicatedAccountID OPTIONAL,
+	dAFourthValueBefore          [85]	MoneyAmount OPTIONAL,
+	dAFourthValueAfter           [86]	MoneyAmount OPTIONAL,
+	dAFourthCampaignIdentifier   [87] CampaignIdentifier OPTIONAL,
+	dAFourthAccDuration          [88]	DedicatedAccountAccDuration
+	                                                   OPTIONAL,
+	dAFifthID                    [89]	DedicatedAccountID OPTIONAL,
+	dAFifthValueBefore           [90]	MoneyAmount OPTIONAL,
+	dAFifthValueAfter            [91]	MoneyAmount OPTIONAL,
+	dAFifthCampaignIdentifier    [92] CampaignIdentifier OPTIONAL,
+	dAFifthAccDuration           [93]	DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	-- ID:03511, ID:03008, ID:02419
+	usedAmountLastInterval       [94] MoneyAmount OPTIONAL,
+	deductedAmountLastInterval   [95] MoneyAmount OPTIONAL,
+	-- end ID:03511, ID:03008, ID:02419
+	-- Licensed
+	accumulatorValue11           [96] AccumulatorValue OPTIONAL,
+	accumulatorValue12           [97] AccumulatorValue OPTIONAL,
+	accumulatorValue13           [98] AccumulatorValue OPTIONAL,
+	accumulatorValue14           [99] AccumulatorValue OPTIONAL,
+	accumulatorValue15           [100] AccumulatorValue OPTIONAL,
+	-- end Licensed
+...
+}
+
+FBCRatingRecord ::= SEQUENCE {
+	serviceClassInfo             [0]	SEQUENCE OF ServiceClassInfo,
+	ggsnAddressUsed              [1]	GSNAddress,
+	chargingID                   [2]	SEQUENCE OF ChargingID,
+	timeStamp                    [3]	TimeStamp,
+	volumeULAccumulatedTotal     [4]	DataVolume,
+	volumeDLAccumulatedTotal     [5]	DataVolume,
+	subscriberGroup              [6]	SubscriberGroup,
+	nodeID                       [7]	NodeID,
+	localSequenceNumber          [8]	LocalSequenceNumber,
+	servedIMSI                   [9]	IMSI OPTIONAL,
+	servedMSISDN                 [10] AddressString OPTIONAL,
+	userName                     [11] UserName OPTIONAL,
+	recoveryData                 [12] RecoveryRecord OPTIONAL,
+	serviceClassExtendedInfo     [13] SEQUENCE OF 
+                                   ServiceClassExtendedInfo
+                                   OPTIONAL,
+	ratingRequested              [14] BOOLEAN OPTIONAL,
+	ratingSuccessful             [15] BOOLEAN OPTIONAL,
+	startOfUsageInfo             [16] SEQUENCE OF StartOfUsageInfo 
+                                   OPTIONAL,
+	...
+}
+
+RTCCreditControlRecord ::= SEQUENCE {
+	cdrType                      [0]	CDRType,
+	nodeID                       [1]	NodeID,
+	recordSequenceNumber         [2]	RecordSequenceNumber,
+	lastPartialOutput            [3]	BOOLEAN,
+	trafficCase                  [4]	TrafficCase OPTIONAL,
+	teleServiceCode              [5]	TeleServiceCode OPTIONAL,
+	subscriberID                 [6]	AddressString OPTIONAL,
+	callingPartyNumber           [7]	AddressString OPTIONAL, 
+	calledPartyNumber            [8]	AddressString OPTIONAL,
+	triggerTime                  [9]	TimeStamp OPTIONAL,
+	chargedDuration              [10] ChargedDuration OPTIONAL,
+	servedIMSI                   [11] IMSI OPTIONAL,
+	numberOfEvents               [12] NumberOfEvents OPTIONAL,
+	finalCharge                  [13] MoneyAmount OPTIONAL,
+	accountValueBefore           [14] MoneyAmount OPTIONAL,
+	accountValueAfter            [15] MoneyAmount OPTIONAL,
+	accountingCorrelationID      [16] AccountingCorrelationID,
+	numberOfSDPInterrogations    [17] NumberOfSDPInterrogations,
+	serviceClass                 [18] ServiceClass OPTIONAL,
+	accountNumber                [19] AddressString OPTIONAL,
+	localSequenceNumber          [20] LocalSequenceNumber,
+	familyAndFriendsIndicator    [21] FamilyAndFriendsIndicator
+                                     OPTIONAL,
+	currencyType                 [22] CurrencyType OPTIONAL,
+	accumulatorValue1            [23] AccumulatorValue OPTIONAL,
+	accumulatorValue2            [24] AccumulatorValue OPTIONAL,
+	accumulatorValue3            [25] AccumulatorValue OPTIONAL,
+	accumulatorValue4            [26] AccumulatorValue OPTIONAL,
+	accumulatorValue5            [27] AccumulatorValue OPTIONAL,
+	accumulatorDeltaValue        [28] AccumulatorValue OPTIONAL,
+	accumulatorID                [29] AccumulatorID OPTIONAL,
+	dAFirstID                    [30] DedicatedAccountID OPTIONAL,
+	dAFirstValueBefore           [31] MoneyAmount OPTIONAL,
+	dAFirstValueAfter            [32] MoneyAmount OPTIONAL,
+	redirectingPartyNumber       [33] AddressString OPTIONAL,
+	originatingLocationInfo      [34] AddressString OPTIONAL,
+	terminatingLocationInfo      [35] AddressString OPTIONAL,
+	networkID                    [36] NetworkID OPTIONAL,
+	subscriptionType             [37] SubscriptionType OPTIONAL,
+	calledPartyNumber2           [38] AddressString OPTIONAL,
+	calledPartyNumber3           [39] AddressString OPTIONAL,
+	dAFirstAccDuration           [40] DedicatedAccountAccDuration
+	                                  OPTIONAL,
+	accountGroupID               [41] AccountGroupID OPTIONAL,
+	serviceOfferings             [42] ServiceOfferings OPTIONAL, 
+	selectedCommunityIndicator   [43] SelectedCommunityIndicator
+	                                  OPTIONAL,
+	communityID1Charged          [44] CommunityID OPTIONAL,
+	communityID2Charged          [45] CommunityID OPTIONAL,
+	communityID3Charged          [46] CommunityID OPTIONAL,
+	communityID1NonCharged       [47] CommunityID OPTIONAL,
+	communityID2NonCharged       [48] CommunityID OPTIONAL,
+	communityID3NonCharged       [49] CommunityID OPTIONAL,
+	communityDataNonChargedNotAvailable [50] BOOLEAN OPTIONAL,
+	serviceCenter                [51] AddressString OPTIONAL,
+	startOfCharging              [52] TimeStamp OPTIONAL,
+	callSetUpResultCode          [53] CallSetUpResultCode OPTIONAL,
+	usedUnchargedDuration        [54] UsedUnchargedDuration OPTIONAL,
+	usedUnchargedEvent           [55] UsedUnchargedEvent OPTIONAL,
+	dAFirstCampaignIdentifier    [56] CampaignIdentifier OPTIONAL,
+	dASecondID                   [57] DedicatedAccountID OPTIONAL,
+	dASecondValueBefore          [58] MoneyAmount OPTIONAL,
+	dASecondValueAfter           [59] MoneyAmount OPTIONAL,
+	dASecondCampaignIdentifier   [60] CampaignIdentifier OPTIONAL,
+	dASecondAccDuration          [61] DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAThirdID                    [62] DedicatedAccountID OPTIONAL,
+	dAThirdValueBefore           [63] MoneyAmount OPTIONAL,
+	dAThirdValueAfter            [64] MoneyAmount OPTIONAL,
+	dAThirdCampaignIdentifier    [65] CampaignIdentifier OPTIONAL,
+	dAThirdAccDuration           [66] DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAFourthID                   [67] DedicatedAccountID OPTIONAL,
+	dAFourthValueBefore          [68] MoneyAmount OPTIONAL,
+	dAFourthValueAfter           [69] MoneyAmount OPTIONAL,
+	dAFourthCampaignIdentifier   [70] CampaignIdentifier OPTIONAL,
+	dAFourthAccDuration          [71] DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	dAFifthID                    [72] DedicatedAccountID OPTIONAL,
+	dAFifthValueBefore           [73] MoneyAmount OPTIONAL,
+	dAFifthValueAfter            [74] MoneyAmount OPTIONAL,
+	dAFifthCampaignIdentifier    [75] CampaignIdentifier OPTIONAL,
+	dAFifthAccDuration           [76] DedicatedAccountAccDuration
+	                                                    OPTIONAL,
+	...
+}
+
+	--Licensed
+SCFSMSMTRecord ::= SEQUENCE {
+	servedIMSI                   [0] IMSI,
+	servedMSISDN                 [1] AddressString,
+	serviceCenter                [2] AddressString,
+	nodeID                       [3] NodeID,
+	localSequenceNumber          [4] LocalSequenceNumber,
+	trafficCase                  [5] TrafficCase OPTIONAL,
+	serviceClass                 [6] ServiceClass OPTIONAL,
+	accountValueBefore           [7] MoneyAmount OPTIONAL,
+	accountValueAfter            [8] MoneyAmount OPTIONAL,
+	finalCharge                  [9] MoneyAmount OPTIONAL,
+	cdrType                     [10] CDRType,
+	teleServiceCode             [11] TeleServiceCode OPTIONAL,
+	startOfChargingOfEvent      [12] TimeStamp OPTIONAL,
+	familyAndFriendsIndicator   [13] FamilyAndFriendsIndicator
+                                                 OPTIONAL,
+	numberOfSDPInterrogations   [14] NumberOfSDPInterrogations,
+	currencyType                [15] CurrencyType OPTIONAL,
+	accountNumber               [16] AddressString OPTIONAL,
+	accumulatorValue1           [17] AccumulatorValue OPTIONAL,
+	accumulatorValue2           [18] AccumulatorValue OPTIONAL,
+	accumulatorValue3           [19] AccumulatorValue OPTIONAL,
+	accumulatorValue4           [20] AccumulatorValue OPTIONAL,
+	accumulatorValue5           [21] AccumulatorValue OPTIONAL,
+	accumulatorDeltaValue       [22] AccumulatorValue OPTIONAL,
+	accumulatorID               [23] AccumulatorID OPTIONAL,
+	dAFirstID                   [24] DedicatedAccountID OPTIONAL,
+	dAFirstValueBefore          [25] MoneyAmount OPTIONAL,
+	dAFirstValueAfter           [26] MoneyAmount OPTIONAL,
+	eventTimeStamp              [27] TimeStamp,
+	dAFirstAccDuration          [28] DedicatedAccountAccDuration
+                                                   OPTIONAL,
+	networkID                   [29] NetworkID OPTIONAL,
+	smsReferenceNumber          [30] CallReferenceNumber OPTIONAL,
+	mscAddress                  [31] AddressString OPTIONAL,
+	sgsn-Number                 [32] AddressString OPTIONAL,
+	accountGroupID              [33] AccountGroupID OPTIONAL,
+	serviceOfferings            [34] ServiceOfferings OPTIONAL,
+	selectedCommunityIndicator  [35] SelectedCommunityIndicator
+                                                  OPTIONAL,
+	communityID1Charged         [36] CommunityID OPTIONAL,
+	communityID2Charged         [37] CommunityID OPTIONAL,
+	communityID3Charged         [38] CommunityID OPTIONAL,
+	communityID1NonCharged      [39] CommunityID OPTIONAL,
+	communityID2NonCharged      [40] CommunityID OPTIONAL,
+	communityID3NonCharged      [41] CommunityID OPTIONAL,
+	communityDataNonChargedNotAvailable [42] BOOLEAN OPTIONAL,
+	accumulatorValue6           [43] AccumulatorValue OPTIONAL,
+	accumulatorValue7           [44] AccumulatorValue OPTIONAL,
+	accumulatorValue8           [45] AccumulatorValue OPTIONAL,
+	accumulatorValue9           [46] AccumulatorValue OPTIONAL,
+	accumulatorValue10          [47] AccumulatorValue OPTIONAL,
+	dAFirstCampaignIdentifier   [48] CampaignIdentifier OPTIONAL,
+	dASecondID                  [49] DedicatedAccountID OPTIONAL,
+	dASecondValueBefore         [50] MoneyAmount OPTIONAL,
+	dASecondValueAfter          [51] MoneyAmount OPTIONAL,
+	dASecondCampaignIdentifier  [52] CampaignIdentifier OPTIONAL,
+	dASecondAccDuration         [53] DedicatedAccountAccDuration 
+                                                    OPTIONAL,
+	dAThirdID                   [54] DedicatedAccountID OPTIONAL,
+	dAThirdValueBefore          [55] MoneyAmount OPTIONAL,
+	dAThirdValueAfter           [56] MoneyAmount OPTIONAL,
+	dAThirdCampaignIdentifier   [57] CampaignIdentifier OPTIONAL,
+	dAThirdAccDuration          [58] DedicatedAccountAccDuration 
+                                                    OPTIONAL,
+	dAFourthID                  [59] DedicatedAccountID OPTIONAL,
+	dAFourthValueBefore         [60] MoneyAmount OPTIONAL,
+	dAFourthValueAfter          [61] MoneyAmount OPTIONAL,
+	dAFourthCampaignIdentifier  [62] CampaignIdentifier OPTIONAL,
+	dAFourthAccDuration         [63] DedicatedAccountAccDuration 
+                                                    OPTIONAL,
+	dAFifthID                   [64] DedicatedAccountID OPTIONAL,
+	dAFifthValueBefore          [65] MoneyAmount OPTIONAL,
+	dAFifthValueAfter           [66] MoneyAmount OPTIONAL,
+	dAFifthCampaignIdentifier   [67] CampaignIdentifier OPTIONAL,
+	dAFifthAccDuration          [68] DedicatedAccountAccDuration 
+                                                    OPTIONAL,
+	accumulatorValue11          [69] AccumulatorValue OPTIONAL,
+	accumulatorValue12          [70] AccumulatorValue OPTIONAL,
+	accumulatorValue13          [71] AccumulatorValue OPTIONAL,
+	accumulatorValue14          [72] AccumulatorValue OPTIONAL,
+	accumulatorValue15          [73] AccumulatorValue OPTIONAL,
+	cellID                      [74] CellID OPTIONAL,
+	locationAreaID              [75] LocationAreaID OPTIONAL,
+	terminatingLocationInfo     [76] AddressString OPTIONAL,
+	callingPartyNumber          [77] AddressString OPTIONAL,
+	callingPartyNumberFromIdp   [78] AddressString OPTIONAL,
+	...	
+}
+-- end Licensed
+
+AbnormalTerminationReason ::= ENUMERATED {
+	serviceElementTermination    (0),
+	connectionToUserBroken       (1)
+}
+
+AccessPointName ::= OCTET STRING (SIZE(1..100))
+
+AccumulatorID ::= ENUMERATED {
+	noAccumulator       (0),
+	accumulator1        (1),
+	accumulator2        (2),
+	accumulator3        (3),
+	accumulator4        (4),
+	accumulator5        (5),
+	--Licensed
+	accumulator6        (6),
+	accumulator7        (7),
+	accumulator8        (8),
+	accumulator9        (9),
+	accumulator10       (10),
+	accumulator11       (11),
+	accumulator12       (12),
+	accumulator13       (13),
+	accumulator14       (14),
+	accumulator15       (15)
+	-- end Licensed
+}
+
+AccumulatorValue ::= INTEGER (-2147483648..2147483647)
+
+AccountGroupID ::= INTEGER (0..2147483647)
+-- 0                undefined
+-- 1 - 2147483647   accountGroupID
+
+AccountingCorrelationID ::= OCTET STRING (SIZE (1..255))
+
+AddressString ::= OCTET STRING (SIZE (1..20))
+
+CallReferenceNumber ::= OCTET STRING (SIZE (1..8))
+
+CallSetUpResultCode ::= ENUMERATED {
+ successful-ReleasedByService                    (0),
+ successful-DisconnectByCallingParty             (1),
+ successful-DisconnectByCalledParty              (2),
+ successful-OngoingTollFree                      (3),
+ non-Successful-CalledPartyRouteSelectFailure    (4),
+ non-Successful-CalledPartyBusy                  (5),
+ non-Successful-CalledPartyNotReacheble          (6),
+ non-Successful-CalledPartyNoAnswer              (7),
+ non-Successful-CallingPartyAbandon              (8),
+ non-Successful-OtherReason                      (14),
+ callForwardingHasBeenInvoked-ChargingCancelled  (15)
+}
+
+CampaignIdentifier ::= INTEGER (1..99999999)
+
+CDRType ::= ENUMERATED {
+	serviceClassRequested                            (0),
+	firstInterrogationUnsuccessful                   (1),
+	invokeIntermediateInterrogationFinalReportUnsucc (2),
+	internalError                                    (3),
+	subscriberTemporaryBlocked                       (4),
+	partialDeduction                                 (5)
+}
+
+CellID ::= OCTET STRING (SIZE(7))
+
+ChargedDuration ::= OCTET STRING (SIZE(1..4))
+
+ChargingID ::= OCTET STRING (SIZE(1..4))
+
+CommunityID ::= INTEGER (1..9999999)
+
+CurrencyType ::= ENUMERATED {
+	localCurrency  (0),
+	eURO           (1)
+}
+
+DataVolume ::= OCTET STRING (SIZE(1..4))
+
+DedicatedAccountAccDuration ::= INTEGER (0..2147483647)
+
+DedicatedAccountID ::= ENUMERATED {
+	dedicatedAccount1  (1),
+	dedicatedAccount2  (2),
+	dedicatedAccount3  (3),
+	dedicatedAccount4  (4),
+	dedicatedAccount5  (5),
+	dedicatedAccount6  (6),
+	dedicatedAccount7  (7),
+	dedicatedAccount8  (8),
+	dedicatedAccount9  (9),
+	dedicatedAccount10 (10)
+}
+
+ExtInt ::= INTEGER (0..65535)
+
+ExtText ::= OCTET STRING (SIZE (1..29))
+
+FamilyAndFriendsIndicator ::= INTEGER (1..65535)
+
+GPRSQoS ::= INTEGER (0..32767)
+
+GSNAddress ::= IPAddress
+
+IMSI ::= TBCD-String (SIZE (3..8))
+
+IPAddress ::= CHOICE {
+	iPBinaryAddress           [0] IPBinaryAddress,
+	iPTextRepresentedAddress  [1] IPTextRepresentedAddress
+}
+
+IPBinaryAddress ::= CHOICE {
+	iPBinV4Address      [0] OCTET STRING (SIZE(4)),
+	iPBinV6Address      [1] OCTET STRING (SIZE(16))
+}
+
+IPTextRepresentedAddress ::= CHOICE {
+	iPTextV4Address     [0] OCTET STRING (SIZE(7..15)),
+	iPTextV6Address     [1] OCTET STRING (SIZE(15..45))
+}
+
+LocationAreaID ::= OCTET STRING (SIZE(5))
+
+LocalSequenceNumber ::= OCTET STRING (SIZE(1..4))
+
+MoneyAmount ::= OCTET STRING (SIZE (1..15))
+
+MultiSessionID ::= OCTET STRING (SIZE (1..255))
+
+NetworkID ::= INTEGER (0..65534)
+
+NodeID ::= OCTET STRING (SIZE (1..20))
+
+NumberOfEvents	::= INTEGER (0..65535)
+
+NumberOfSDPInterrogations ::= INTEGER (1..65535)
+
+OriginHost ::= OCTET STRING (SIZE (1..255))
+
+OriginRealm ::= OCTET STRING (SIZE (1..255))
+
+RadiusSessionID ::= OCTET STRING (SIZE (1..127))
+
+RecordSequenceNumber ::= OCTET STRING (SIZE(1..4))
+
+RecoveryRecord ::= SEQUENCE {
+	ccnTimeStamp                 [0] TimeStamp,
+	accumulatorModificationDate  [1] TimeStamp,
+	recoveryState                [2] RecoveryState,
+	globalDeltaVolumeUL          [3] DataVolume OPTIONAL,
+	globalDeltaVolumeDL          [4] DataVolume OPTIONAL,
+	serviceClassDeltaValueList   [5] SEQUENCE OF 
+                                  RecoveryServiceClassInfo
+                                  OPTIONAL,
+	...
+}
+
+RecoveryServiceClassInfo ::= SEQUENCE {
+	serviceClass                 [0] ServiceClass,
+	deltaTime                    [1] DataVolume OPTIONAL,
+	deltaVolumeUL                [2] DataVolume OPTIONAL,
+	deltaVolumeDL                [3] DataVolume OPTIONAL,
+	...
+}
+
+RecoveryState ::= ENUMERATED {
+	normal                       (1),
+	provisioningRecovery         (2),
+	cdrRecovery                  (3)
+}
+
+SelectedCommunityIndicator ::= INTEGER (0..9999999)
+
+ServiceClass ::= INTEGER (0..65535)
+
+ServiceClassExtendedInfo ::= SEQUENCE {
+	serviceClass                 [0] ServiceClass,
+	timeAccumulated              [1] DataVolume,
+	...
+}
+
+ServiceOfferings ::= INTEGER (0..2147483647)
+-- 0                undefined
+-- 1 - 2147483647   serviceOfferings
+
+ServiceProviderID ::= INTEGER (0..65535)
+
+ServiceClassInfo ::= SEQUENCE {
+	serviceClass        [0] ServiceClass,
+	volumeULAccumulated [1] DataVolume,
+	volumeDLAccumulated [2] DataVolume
+}
+
+SessionID ::= OCTET STRING (SIZE (1..255))
+
+SmsDeliveryStatus ::= ENUMERATED {
+	delivered        (1),
+	expired          (2)
+}
+
+StartOfUsageInfo ::= SEQUENCE {
+	serviceClass        [0] ServiceClass,
+	startOfUsage        [1] TimeStamp
+}
+
+SubscriberGroup ::= OCTET STRING (SIZE(1..4))
+
+SubscriptionIDData ::= OCTET STRING (SIZE (1..255))
+
+SubscriptionIDType ::= ENUMERATED {
+	endUserMSISDN    (0),
+	endUserIMSI      (1),
+	endUserSIPURI    (2),
+	endUserNAI       (3),
+	endUserPrivate   (4)
+}
+
+SubscriptionType ::= INTEGER (0..127)
+
+TBCD-String ::= OCTET STRING
+
+TeleServiceCode ::= ENUMERATED {
+	voice             (0),
+	fax               (1),
+	data              (2),
+	unknown           (3),
+	sMS               (4),
+	gPRS              (5),
+	content           (6),
+	videoTelephony    (7),
+	videoConference   (8),
+	extensionTSC1     (65526),
+	extensionTSC2     (65527),
+	extensionTSC3     (65528),
+	extensionTSC4     (65529),
+	extensionTSC5     (65530),
+	extensionTSC6     (65531),
+	extensionTSC7     (65532),
+	extensionTSC8     (65533),
+	extensionTSC9     (65534),
+	extensionTSC10    (65535)
+}
+
+TimeStamp ::= OCTET STRING (SIZE(9))
+
+TrafficCase ::= ENUMERATED {
+	originatingInsideHPLMN        (0),
+	forwardedInsideHPLMN          (1),
+	terminatingInsideHPLMN        (2),
+	originatingOutsideHPLMNCAPv1  (3),
+	forwardedOutsideHPLMNCAPv1    (4),
+	terminatingOutsideHPLMN       (5),
+	roamingCallBackOutsideHPLMN   (6),
+	originatingOutsideHPLMNCAPv2  (7),
+	forwardedOutsideHPLMNCAPv2    (8),
+	terminatingOutsideHPLMNCAPv2  (9),
+	originatingOutsideHPLMNCAPv3  (10),
+	forwardedOutsideHPLMNCAPv3    (11),
+	terminatingOutsideHPLMNCAPv3  (12),
+	originatingServiceCharging    (20),
+	terminatingServiceCharging    (21)
+}
+
+UsedUnchargedDuration ::= OCTET STRING (SIZE(1..4))
+
+UsedUnchargedEvent ::= OCTET STRING (SIZE(1..4))
+
+UserName ::= OCTET STRING (SIZE (1..255))
+
+END

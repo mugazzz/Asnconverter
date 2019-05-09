@@ -1,0 +1,38 @@
+30-12-2018 19:56:37 INFO [asnconverter]: Starting execution at +:30-Dec-2018 19:56:35
+30-12-2018 19:56:49 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:49 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:49 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-0055-20181226082229-1 $$$$$$$$$$$$$$$$$$$$$$$$$
+30-12-2018 19:56:49 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:49 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:49 INFO [asnconverter]: subscriptionIDValue = 971520000006
+30-12-2018 19:56:54 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+30-12-2018 19:56:54 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:54 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:54 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-0057-20181226083149-1 $$$$$$$$$$$$$$$$$$$$$$$$$
+30-12-2018 19:56:54 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:54 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:54 INFO [asnconverter]: subscriptionIDValue = 971520000245
+30-12-2018 19:56:54 INFO [asnconverter]: inidividualPriceFactor = 105
+30-12-2018 19:56:58 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+30-12-2018 19:56:58 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:58 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:58 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File AIR_USSD-Recharge.AIR $$$$$$$$$$$$$$$$$$$$$$$$$
+30-12-2018 19:56:58 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:58 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:56:59 INFO [asnconverter]: transactionAmount = 100.000000
+30-12-2018 19:56:59 INFO [asnconverter]: accountNumber = 971520000189
+30-12-2018 19:56:59 INFO [asnconverter]: accountBalance = 0.000000
+30-12-2018 19:56:59 INFO [asnconverter]: accountBalance = 558.010000
+30-12-2018 19:56:59 INFO [asnconverter]: accountBalance = 210.000000
+30-12-2018 19:57:03 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+30-12-2018 19:57:03 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:57:03 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:57:03 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDP-Voucher-Recharge.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+30-12-2018 19:57:03 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:57:03 INFO [asnconverter]: ****************************************************************************************
+30-12-2018 19:57:03 INFO [asnconverter]: accountNumber = 971520000127
+30-12-2018 19:57:03 INFO [asnconverter]: accountValueBefore = 0.000000
+30-12-2018 19:57:03 INFO [asnconverter]: accountValueAfter = 0.000000
+30-12-2018 19:57:03 INFO [asnconverter]: adjustmentAmount = 100.000000
+30-12-2018 19:57:03 INFO [asnconverter]: action = create
+30-12-2018 19:57:07 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

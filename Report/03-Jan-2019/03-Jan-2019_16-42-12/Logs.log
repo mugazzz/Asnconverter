@@ -1,0 +1,31 @@
+03-01-2019 16:42:14 INFO [asnconverter]: Starting execution at +:03-Jan-2019 16:42:12
+03-01-2019 16:42:26 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:26 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:26 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-0057-20181226083149-2 $$$$$$$$$$$$$$$$$$$$$$$$$
+03-01-2019 16:42:26 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:26 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:26 INFO [asnconverter]: subscriptionIDValue = 971520000035
+03-01-2019 16:42:26 INFO [asnconverter]: OfferID = 4501
+03-01-2019 16:42:26 INFO [asnconverter]: inidividualPriceFactor = 105
+03-01-2019 16:42:26 INFO [asnconverter]: timeUnit = 60
+03-01-2019 16:42:26 INFO [asnconverter]: amount = 993116825
+03-01-2019 16:42:31 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+03-01-2019 16:42:31 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:31 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:31 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File AIR_USSD-Recharge.AIR $$$$$$$$$$$$$$$$$$$$$$$$$
+03-01-2019 16:42:31 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:31 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:31 INFO [asnconverter]: accountNumber = 971520000189
+03-01-2019 16:42:31 INFO [asnconverter]: transactionAmount = 100.000000
+03-01-2019 16:42:35 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+03-01-2019 16:42:35 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:35 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:35 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDP-Voucher-Recharge.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+03-01-2019 16:42:35 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:35 INFO [asnconverter]: ****************************************************************************************
+03-01-2019 16:42:35 INFO [asnconverter]: accountNumber = 971520000127
+03-01-2019 16:42:35 INFO [asnconverter]: accountValueBefore = 0.000000
+03-01-2019 16:42:35 INFO [asnconverter]: accountValueAfter = 100.000000
+03-01-2019 16:42:35 INFO [asnconverter]: adjustmentAmount = 100.000000
+03-01-2019 16:42:35 INFO [asnconverter]: action = create
+03-01-2019 16:42:39 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

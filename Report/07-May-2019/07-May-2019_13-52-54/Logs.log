@@ -1,0 +1,39 @@
+07-05-2019 13:52:54 INFO [asnconverter]: Starting execution at +:07-May-2019 13:52:54
+07-05-2019 13:52:55 INFO [asnconverter]: ****************************************************************************************
+07-05-2019 13:52:55 INFO [asnconverter]: ****************************************************************************************
+07-05-2019 13:52:55 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-3031-20190502162630-1 $$$$$$$$$$$$$$$$$$$$$$$$$
+07-05-2019 13:52:55 INFO [asnconverter]: ****************************************************************************************
+07-05-2019 13:52:55 INFO [asnconverter]: ****************************************************************************************
+07-05-2019 13:52:55 INFO [asnconverter]: resultCode = 2001
+07-05-2019 13:52:55 INFO [asnconverter]: subscriptionIDValue = 971520001695
+07-05-2019 13:52:55 INFO [asnconverter]: serviceSpecificUnit = 1
+07-05-2019 13:52:55 INFO [asnconverter]: eventTime = 32303139303530323230323633302B30343030
+07-05-2019 13:52:55 INFO [asnconverter]: serviceScenario = mobileOriginating
+07-05-2019 13:52:55 INFO [asnconverter]: roamingPosition = insideHPLMN
+07-05-2019 13:52:55 INFO [asnconverter]: serviceClassID = 1001
+07-05-2019 13:52:55 INFO [asnconverter]: accumulators = 68 1 39452673 39452672 61 0 1 1
+07-05-2019 13:52:55 INFO [asnconverter]: accumulatorID = 68
+07-05-2019 13:52:55 INFO [asnconverter]: accumulatorChange = 1
+07-05-2019 13:52:55 INFO [asnconverter]: accumulatorAfter = 39452673
+07-05-2019 13:52:55 INFO [asnconverter]: accumulatorBeforeSession = 39452672
+07-05-2019 13:52:55 INFO [asnconverter]: dedicatedAccounts = 1 21670000 6 784 21481000 6 784 189000 6 784 FALSE money
+07-05-2019 13:52:55 INFO [asnconverter]: DedicatedAccount = 1 21670000 6 784 21481000 6 784 189000 6 784 FALSE money
+07-05-2019 13:52:55 INFO [asnconverter]: dedicatedAccountID = 1
+07-05-2019 13:52:55 INFO [asnconverter]: dedicatedAccountValueBefore = 21670000 6 784
+07-05-2019 13:52:55 INFO [asnconverter]: amount = 0
+07-05-2019 13:52:55 INFO [asnconverter]: decimals = 6
+07-05-2019 13:52:55 INFO [asnconverter]: currency = 784
+07-05-2019 13:52:55 INFO [asnconverter]: dedicatedAccountValueAfter = 21481000 6 784
+07-05-2019 13:52:55 INFO [asnconverter]: amount = 0
+07-05-2019 13:52:55 INFO [asnconverter]: decimals = 6
+07-05-2019 13:52:55 INFO [asnconverter]: currency = 784
+07-05-2019 13:52:55 INFO [asnconverter]: dedicatedAccountChange = 189000 6 784
+07-05-2019 13:52:55 INFO [asnconverter]: amount = 0
+07-05-2019 13:52:55 INFO [asnconverter]: decimals = 6
+07-05-2019 13:52:55 INFO [asnconverter]: currency = 784
+07-05-2019 13:52:55 INFO [asnconverter]: chargingContextSpecific = 16778225 971550930017 16778455 89302 16778217 971550930512 16778249 42403 16778250 2333 16778251 03E9 16778219 91795102007141
+07-05-2019 13:52:55 INFO [asnconverter]: ContextParameter = 16778225 971550930017
+07-05-2019 13:52:55 INFO [asnconverter]: parameterID = 16778225
+07-05-2019 13:52:55 INFO [asnconverter]: parameterValue = 971550930017
+07-05-2019 13:52:55 INFO [asnconverter]: string = 971550930017
+07-05-2019 13:52:56 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

@@ -1,0 +1,32 @@
+06-05-2019 12:08:40 INFO [asnconverter]: Starting execution at +:06-May-2019 12:08:40
+06-05-2019 12:08:41 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 12:08:41 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 12:08:41 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-0057-20181226083149-2 $$$$$$$$$$$$$$$$$$$$$$$$$
+06-05-2019 12:08:41 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 12:08:41 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 12:08:41 INFO [asnconverter]: resultCode = 2001
+06-05-2019 12:08:41 INFO [asnconverter]: subscriptionIDValue = 971520000035
+06-05-2019 12:08:41 INFO [asnconverter]: eventTime = 32303138313231323137343332352B30343030
+06-05-2019 12:08:41 INFO [asnconverter]: serviceScenario = mobileOriginating
+06-05-2019 12:08:41 INFO [asnconverter]: roamingPosition = insideHPLMN
+06-05-2019 12:08:41 INFO [asnconverter]: serviceClassID = 1002
+06-05-2019 12:08:41 INFO [asnconverter]: accumulators = 68 60 33816748 33816688
+06-05-2019 12:08:41 INFO [asnconverter]: accumulatorID = 68
+06-05-2019 12:08:41 INFO [asnconverter]: accumulatorChange = 60
+06-05-2019 12:08:41 INFO [asnconverter]: accumulatorAfter = 33816748
+06-05-2019 12:08:41 INFO [asnconverter]: accumulatorBeforeSession = 33816688
+06-05-2019 12:08:41 INFO [asnconverter]: dedicatedAccounts = 1 993116825 6 784 985850825 6 784 7266000 6 784 FALSE money
+06-05-2019 12:08:41 INFO [asnconverter]: DedicatedAccount = 1 993116825 6 784 985850825 6 784 7266000 6 784 FALSE money
+06-05-2019 12:08:42 INFO [asnconverter]: dedicatedAccountID = 1
+06-05-2019 12:08:42 INFO [asnconverter]: dedicatedAccountValueBefore = 993116825 6 784
+06-05-2019 12:08:42 INFO [asnconverter]: amount = 0
+06-05-2019 12:08:42 INFO [asnconverter]: decimals = 6
+06-05-2019 12:08:42 INFO [asnconverter]: currency = 784
+06-05-2019 12:08:42 INFO [asnconverter]: dedicatedAccountValueAfter = 985850825 6 784
+06-05-2019 12:08:42 INFO [asnconverter]: amount = 0
+06-05-2019 12:08:42 INFO [asnconverter]: decimals = 6
+06-05-2019 12:08:42 INFO [asnconverter]: currency = 784
+06-05-2019 12:08:42 INFO [asnconverter]: dedicatedAccountChange = 7266000 6 784
+06-05-2019 12:08:42 INFO [asnconverter]: amount = 0
+06-05-2019 12:08:42 INFO [asnconverter]: decimals = 6
+06-05-2019 12:08:42 INFO [asnconverter]: currency = 784

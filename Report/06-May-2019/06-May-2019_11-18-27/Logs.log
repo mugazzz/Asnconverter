@@ -1,0 +1,26 @@
+06-05-2019 11:18:28 INFO [asnconverter]: Starting execution at +:06-May-2019 11:18:27
+06-05-2019 11:18:28 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 11:18:28 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 11:18:28 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-0057-20181226083149-2 $$$$$$$$$$$$$$$$$$$$$$$$$
+06-05-2019 11:18:28 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 11:18:28 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 11:18:29 INFO [asnconverter]: resultCode = 2001
+06-05-2019 11:18:29 INFO [asnconverter]: subscriptionIDValue = 971520000035
+06-05-2019 11:18:29 INFO [asnconverter]: eventTime = 32303138313231323137343332352B30343030
+06-05-2019 11:18:29 INFO [asnconverter]: serviceScenario = mobileOriginating
+06-05-2019 11:18:29 INFO [asnconverter]: roamingPosition = insideHPLMN
+06-05-2019 11:18:29 INFO [asnconverter]: serviceClassID = 1002
+06-05-2019 11:18:29 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+06-05-2019 11:18:29 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 11:18:29 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 11:18:29 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-3031-20190502162630-1 $$$$$$$$$$$$$$$$$$$$$$$$$
+06-05-2019 11:18:29 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 11:18:29 INFO [asnconverter]: ****************************************************************************************
+06-05-2019 11:18:30 INFO [asnconverter]: resultCode = 2001
+06-05-2019 11:18:30 INFO [asnconverter]: subscriptionIDValue = 971520001695
+06-05-2019 11:18:30 INFO [asnconverter]: serviceSpecificUnit = 1
+06-05-2019 11:18:30 INFO [asnconverter]: eventTime = 32303139303530323230323633302B30343030
+06-05-2019 11:18:30 INFO [asnconverter]: serviceScenario = mobileOriginating
+06-05-2019 11:18:30 INFO [asnconverter]: roamingPosition = insideHPLMN
+06-05-2019 11:18:30 INFO [asnconverter]: serviceClassID = 1001
+06-05-2019 11:18:30 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
