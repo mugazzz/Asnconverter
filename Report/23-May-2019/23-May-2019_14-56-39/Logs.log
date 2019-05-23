@@ -1,0 +1,23 @@
+23-05-2019 14:56:39 INFO [asnconverter]: Starting execution at +:23-May-2019 14:56:39
+23-05-2019 14:56:40 INFO [asnconverter]: ****************************************************************************************
+23-05-2019 14:56:40 INFO [asnconverter]: ****************************************************************************************
+23-05-2019 14:56:40 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meytvvmocc01-190523-1447-01951.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+23-05-2019 14:56:40 INFO [asnconverter]: ****************************************************************************************
+23-05-2019 14:56:40 INFO [asnconverter]: ****************************************************************************************
+23-05-2019 14:56:40 INFO [asnconverter]: resultCode = 2001
+23-05-2019 14:56:40 INFO [asnconverter]: triggerTime = 915032418424304000
+23-05-2019 14:56:40 INFO [asnconverter]: nodeName = meytvvmocc01
+23-05-2019 14:56:40 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+23-05-2019 14:56:40 INFO [asnconverter]: serviceSessionID = -:1001:1
+23-05-2019 14:56:41 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+23-05-2019 14:56:41 INFO [asnconverter]: ****************************************************************************************
+23-05-2019 14:56:41 INFO [asnconverter]: ****************************************************************************************
+23-05-2019 14:56:41 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meytvvmocc01-190523-1449-01952.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+23-05-2019 14:56:41 INFO [asnconverter]: ****************************************************************************************
+23-05-2019 14:56:41 INFO [asnconverter]: ****************************************************************************************
+23-05-2019 14:56:41 INFO [asnconverter]: resultCode = 2001
+23-05-2019 14:56:41 INFO [asnconverter]: triggerTime = 915032410550304000
+23-05-2019 14:56:41 INFO [asnconverter]: nodeName = meytvvmocc01
+23-05-2019 14:56:41 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+23-05-2019 14:56:41 INFO [asnconverter]: serviceSessionID = -:1002:1
+23-05-2019 14:56:41 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

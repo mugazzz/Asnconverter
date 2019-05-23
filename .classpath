@@ -11,5 +11,7 @@
 	<classpathentry kind="lib" path="D:/Auto/JARS/mongo-java-driver-3.9.1.jar"/>
 	<classpathentry kind="lib" path="D:/Auto/JARS/sqlite-jdbc-3.25.2.jar"/>
 	<classpathentry kind="lib" path="D:/Auto/JARS/freemarker-2.3.23.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/postgresql-9.2-1002.jdbc4.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/jsch-0.1.55.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,0 +1,60 @@
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520001714 *20190523* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520001714 *20190523* |tac |head -1 >  /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520001714 *20190523* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520001714 *20190523* |tac |head -1 >  /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520001714 *20190523* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520001714 *20190523* |tac |head -1 >  /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
