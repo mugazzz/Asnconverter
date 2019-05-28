@@ -1,0 +1,49 @@
+26-05-2019 16:48:25 INFO [asnconverter]: Starting execution at +:26-May-2019 16:48:25
+26-05-2019 16:48:26 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:26 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:26 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meydvvmocc02-190526-1636-02183.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+26-05-2019 16:48:26 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:26 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:26 INFO [asnconverter]: subscriptionIDValue = 971520006002
+26-05-2019 16:48:26 INFO [asnconverter]: triggerTime = 915062610384304000
+26-05-2019 16:48:26 INFO [asnconverter]: nodeName = meytvvmocc01
+26-05-2019 16:48:26 INFO [asnconverter]: serviceContextID = du-service
+26-05-2019 16:48:26 INFO [asnconverter]: chargingContextID = Ericsson_OCS_V1_0.0.0.10.32251@3gpp.org
+26-05-2019 16:48:26 INFO [asnconverter]: serviceSessionID = 3:-:1
+26-05-2019 16:48:27 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+26-05-2019 16:48:27 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:27 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:27 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meydvvmocc02-190526-1641-02184.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+26-05-2019 16:48:27 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:27 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:27 INFO [asnconverter]: subscriptionIDValue = 971520002235
+26-05-2019 16:48:27 INFO [asnconverter]: triggerTime = 915062611482304000
+26-05-2019 16:48:27 INFO [asnconverter]: nodeName = meydvvmocc02
+26-05-2019 16:48:27 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+26-05-2019 16:48:27 INFO [asnconverter]: chargingContextID = SCAP_V.2.0@ericsson.com
+26-05-2019 16:48:27 INFO [asnconverter]: serviceSessionID = -:1001:1
+26-05-2019 16:48:27 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+26-05-2019 16:48:27 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:27 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:27 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meytvvmocc01-190526-1611-02212.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+26-05-2019 16:48:27 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:27 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:28 INFO [asnconverter]: subscriptionIDValue = 971550000470
+26-05-2019 16:48:28 INFO [asnconverter]: triggerTime = 915062612100304000
+26-05-2019 16:48:28 INFO [asnconverter]: nodeName = meytvvmocc01
+26-05-2019 16:48:28 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+26-05-2019 16:48:28 INFO [asnconverter]: chargingContextID = SCAP_V.2.0@ericsson.com
+26-05-2019 16:48:28 INFO [asnconverter]: serviceSessionID = -:1002:1
+26-05-2019 16:48:28 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+26-05-2019 16:48:28 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:28 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:28 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meytvvmocc01-190526-1636-02213.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+26-05-2019 16:48:28 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:28 INFO [asnconverter]: ****************************************************************************************
+26-05-2019 16:48:28 INFO [asnconverter]: subscriptionIDValue = 971520006056
+26-05-2019 16:48:28 INFO [asnconverter]: triggerTime = 915062617390304000
+26-05-2019 16:48:28 INFO [asnconverter]: nodeName = meytvvmocc01
+26-05-2019 16:48:28 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+26-05-2019 16:48:28 INFO [asnconverter]: chargingContextID = SCAP_V.2.0@ericsson.com
+26-05-2019 16:48:28 INFO [asnconverter]: serviceSessionID = -:1004:1
+26-05-2019 16:48:28 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

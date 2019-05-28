@@ -9,7 +9,9 @@ import java.io.BufferedReader;
 	import java.sql.ResultSet;
 	import java.sql.SQLException;
 	import java.sql.Statement;
-	import java.util.Properties;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Properties;
 	import java.util.logging.Level;
 	import java.util.logging.Logger;
 
@@ -19,11 +21,11 @@ public class Main {
 		
 		public static void main(String[] args) {
 			try {
-				String Filepath ="D:\\DU Automation\\du_unix-master\\EDR\\EDRfile.csv";
+				String Filepath ="D:\\DU Automation\\ASNConverter\\CDR\\CIS\\EDRfile.csv";
 				String MSISDN ="971520001714";
-				String ClearData="Delete  from edr_cis_data;";
+				String ClearData="Delete  from edr_cis_1;";
 				//tableCreation(sql);
-				String loadCSV= "COPY edr_cis_data  (Transaction_Time  ,Client_Transaction_Id  ,Transaction_Id  ,IP_Address  ," + 
+				String loadCSV= "COPY  edr_cis_1  (Transaction_Time  ,Client_Transaction_Id  ,Transaction_Id  ,IP_Address  ," + 
 						"Event_Type  ,A_Party_Msisdn  ,B_Party_Msisdn  ,input  ,Result_Code  ,Result_Description  ," + 
 						"Service_Class  ,Requested_Product_ID  ,Product_Name  ,Product_Type  ,Product_Cost  ,Applied_product_cost  ," + 
 						"Product_Validity  ,Access_Channel  ,Access_Code  ,Charge_Indicator  ,Vat_Fee  ,Language_Id  ," + 
@@ -41,11 +43,12 @@ public class Main {
 				//FileOperation();
 				ExecuteQuery(ClearData);
 				ExecuteQuery(loadCSV);
-				
-				String Validation_Query ="CREATE VIEW CIS_EDR_Validation AS Select Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID,\r\n" + 
-						"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM edr_cis_data where A_Party_Msisdn='" +MSISDN +"' ;";
+				String num=Random_Number_With_Required_Digits(5);
+				String Validation_Query ="CREATE VIEW CIS_EDR_Validation"+num+" AS Select Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID,Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM edr_cis_1 where A_Party_Msisdn='"+MSISDN+"'";
 				
 				ResultSet rs = ValidationQuery(Validation_Query);
+				
+				
 				/*
 				 * CSVLoader loader = new CSVLoader(connection); loader.setSeparator(';');
 				 * loader.loadCSV("C:\\employee.csv", "TABLE_NAME", true);
@@ -167,6 +170,21 @@ public class Main {
 	   
 	    return rs;
 	}
+		public static String Random_Number_With_Required_Digits(int digits_Req) {
+
+			String Rndm_Number;
+			String Master_14_Digit_Number;
+			Master_14_Digit_Number="";
+			Rndm_Number="";
+
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+			LocalDateTime now = LocalDateTime.now();
+			Master_14_Digit_Number = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
+			//System.out.println( (Master_14_Digit_Number.substring(Master_14_Digit_Number.length()-digits_Req+1, Master_14_Digit_Number.length())));		
+			Rndm_Number =  (Master_14_Digit_Number.substring(Master_14_Digit_Number.length()-digits_Req, Master_14_Digit_Number.length()));
+			//System.out.println("Final Rndm_Number:-  "  + Rndm_Number);
+			return Rndm_Number;
+		}
 }
 
 

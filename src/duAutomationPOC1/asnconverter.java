@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.zip.GZIPInputStream;
 
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.io.FileUtils;
@@ -56,14 +58,32 @@ public class asnconverter {
 	private static Session session;
 	private static ChannelShell channel;
 	private static ChannelSftp channel_sftp;
+	private static String gzfile;
+	private static String berfile;
+	private static String gzfilepath = "D:\\DU Automation\\ASNConverter\\CDR\\OCCzip\\";
+	private static String finalpath = "D:\\DU Automation\\ASNConverter\\CDR\\OCC-data\\";
 	private static String SDP_Unix_username = "";
 	private static String SDP_Unix_password = "";
 	private static String SDP_unix_hostname = "";
+	private static String CIS_Unix_username = "";
+	private static String CIS_Unix_password = "";
+	private static String CIS_unix_hostname = "";
+	private static String OCC_Unix_username = "";
+	private static String OCC_Unix_password = "";
+	private static String OCC_unix_hostname = "";
+	private static String OCC_Unix_username1 = "";
+	private static String OCC_Unix_password1 = "";
+	private static String OCC_unix_hostname1 = "";
+	private static String AIR_Unix_username = "";
+	private static String AIR_Unix_password = "";
+	private static String AIR_unix_hostname = "";
 	public static String global_Final_CDR_path = "";
 	public static String Environment = "";
 	public static String curr_log_file_path = System.getProperty("user.dir") + "\\Report.txt";
-	public static String MSISDN ="971520001714"; 
-	public static String sdp="SDP";
+	public static String MSISDN = "971520001714";
+	public static String Input = "ALL";
+	public static String Test_Scenario = "OPT-in";
+	public static String cdrfiles = System.getProperty("user.dir") + "\\CDR";
 	///////////////////////////////////////////////
 
 	public static void main(String args[]) {
@@ -76,29 +96,82 @@ public class asnconverter {
 			// if(currdate < unixtstamp)
 			{
 				
-				// ==To delete existing files in OCC-data folder===========
-				File index = new File("D:\\DU Automation\\ASNConverter\\CDR\\SDP");
-				String[] entries = index.list();
-				for (String s : entries)
-				{
-					File currentFile = new File(index.getPath(), s);
-					currentFile.delete();
-					System.out.println("Existing file deleted");
-				}
-			////////////////////////////////////////////////////////////////////////
-				
-				if(sdp.contains("SDP") || sdp.contains("ALL")) {
 
-					// ---------------------------------------------------------------------------------------
-					// ************** SDP Unix Interactions
+			////////////////////////////////////////////////////////////////////////
+				//System.out.println(cdrfiles);
+				file_deletion(cdrfiles);
+				Curr_user_directory_path = System.getProperty("user.dir");
+				File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
+				String date = Present_date();
+				// ---------------------------------------------------------------------------------------
+				// ************** CIS Unix Interactions
+				if (Input.contains("CIS") || Input.contains("ALL")) {
+					System.out.println("Waiting for CIS System to Connect");
+					Thread.sleep(20000);
+					
+					//Curr_user_directory_path = System.getProperty("user.dir");
+					CIS_unix_hostname = "10.95.214.72";
+					CIS_Unix_username = "VenuReddyGaddam";
+					CIS_Unix_password = "VenuReddyGaddam";
+					// String date= Present_date();
+					List<String> CIS_commands = new ArrayList<String>();
+					CIS_commands.add("cd /data/fdp/logs/defaultCircle");
+					CIS_commands.add("sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/"+CIS_Unix_username+"/EDRfile.csv");
+					executeCommands(CIS_commands, CIS_unix_hostname, CIS_Unix_username, CIS_Unix_password);
+					close();
+
+					try {
+
+						JSch jsch = new JSch();
+						Session session = jsch.getSession(CIS_Unix_username, CIS_unix_hostname, 22);
+						session.setPassword(CIS_Unix_password);
+						session.setConfig("StrictHostKeyChecking", "no");
+						session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+						session.connect();
+						channel_sftp = null;
+						channel_sftp = (ChannelSftp) session.openChannel("sftp");
+						channel_sftp.connect();
+						channel_sftp.cd("/home/VenuReddyGaddam/");
+						System.out.println(channel_sftp.pwd());
+
+					//	File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
+						//System.out.println(localFile);
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.csv");
+						for (ChannelSftp.LsEntry entry : list) {
+							if (entry.getFilename().contains("EDRfile.csv")) {
+								System.out.println(entry.getFilename());
+								channel_sftp.get("EDRfile.csv", localFile + "\\" + "CIS" + "\\" + entry.getFilename());
+								Thread.sleep(5000);
+								//System.out.println(localFile + "\\" + "CISraw" + "\\" + entry.getFilename());
+								System.out.println("EDR file transfered to "+ localFile + "\\" + "CIS" + "\\" );
+							}
+						}
+
+						channel_sftp.disconnect();
+						session.disconnect();
+
+					} catch (Exception e) {
+						e.printStackTrace();
+
+					}
+				}
+				
+				// ---------------------------------------------------------------------------------------
+				// ************** SDP Unix Interactions
+				if (Input.contains("SDP") || Input.contains("ALL")) {
+					System.out.println("waiting for SDP connectivty ");
+					Thread.sleep(180000);
+
+				
 					Curr_user_directory_path = System.getProperty("user.dir");
 					SDP_unix_hostname = "10.95.214.6";
 					SDP_Unix_username = "tasuser";
 					SDP_Unix_password = "Ericssondu@123";
-					String date= Present_date();
+					//String date = Present_date();
 					List<String> SDP_commands = new ArrayList<String>();
 					SDP_commands.add("cd /var/opt/fds/CDR/archive/");
-					SDP_commands.add("grep -l "+MSISDN+" *"+date+"* |tac |head -1 > /home/tasuser/sdpfile.txt");
+					SDP_commands.add("grep -l " + MSISDN + " *" + date + "* |tac |head -1 > /home/tasuser/sdpfile.txt");
 					executeCommands(SDP_commands, SDP_unix_hostname, SDP_Unix_username, SDP_Unix_password);
 					close();
 
@@ -115,32 +188,32 @@ public class asnconverter {
 						channel_sftp.connect();
 						channel_sftp.cd("/home/tasuser");
 
-						File localFile = new File(Curr_user_directory_path + "\\");
+					//	File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
 						for (ChannelSftp.LsEntry entry : list) {
 							if (entry.getFilename().contains("sdpfile.txt")) {
-								channel_sftp.get(entry.getFilename(), localFile + "\\" + entry.getFilename());
+								channel_sftp.get(entry.getFilename(), localFile + "\\" + "sdpfile.txt");
 								Thread.sleep(5000);
 							}
 						}
 						// Code to get CDR file latest name
-						String cdrfile = filename(Curr_user_directory_path + "\\sdpfile.txt");
+						String cdrfile = filename(localFile + "\\" + "sdpfile.txt");
 						System.out.println(cdrfile);
-						
-						//Code to get file to local system
+
+						// Code to get file to local system
 						channel_sftp.cd("/var/opt/fds/CDR/archive/");
-						//channel_sftp.pwd();
-						File localFile1 = new File(Curr_user_directory_path + "\\");
+						// channel_sftp.pwd();
+					//	File localFile1 = new File(Curr_user_directory_path + "\\" + "CDR");
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.ASN");
 						Thread.sleep(5000);
-						
+
 						for (ChannelSftp.LsEntry entry1 : list1) {
-								if (entry1.getFilename().contains(cdrfile)) {
-								channel_sftp.get(cdrfile, localFile1 + "\\" + "CDR" + "\\"+ "SDP"+ "\\");
+							if (entry1.getFilename().contains(cdrfile)) {
+								channel_sftp.get(cdrfile, localFile + "\\" + "SDP" + "\\");
 								Thread.sleep(10000);
-								System.out.println("SDP file transfered to "+localFile1 + "\\" + "CDR" + "\\"+ "SDP"+ "\\");
+								System.out.println("SDP file transfered to " + localFile + "\\" + "SDP" + "\\");
 							} else {
 							}
 						}
@@ -152,13 +225,220 @@ public class asnconverter {
 						e.printStackTrace();
 
 					}
-					
-					System.out.println("Waiting to connect to other system");
-					Thread.sleep(5000);
 
-				}else {
-					System.out.println("Choose the right system name");
 				}
+				
+				// ---------------------------------------------------------------------------------------
+				// ************** OCC Unix Interactions port 22
+				if ((Input.contains("OCC") || Input.contains("ALL")) && (Test_Scenario.equalsIgnoreCase("Opt-in") || Test_Scenario.equalsIgnoreCase("Recharge")) ) {
+					System.out.println("Waiting for OCC system to connect");
+					Thread.sleep(30000);
+
+					
+					//Curr_user_directory_path = System.getProperty("user.dir");
+					OCC_unix_hostname = "10.95.214.22";
+					OCC_Unix_username = "tasuser";
+					OCC_Unix_password = "Ericssondu@123";
+					//String date = Present_date();
+					List<String> OCC_commands = new ArrayList<String>();
+					OCC_commands.add("cd /home/tasuser");
+					OCC_commands.add(
+							"zgrep -l " + MSISDN + " *" + date + "* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt");
+					executeCommands(OCC_commands, OCC_unix_hostname, OCC_Unix_username, OCC_Unix_password);
+					close();
+
+					try {
+
+						JSch jsch = new JSch();
+						Session session = jsch.getSession(OCC_Unix_username, OCC_unix_hostname, 22);
+						session.setPassword(OCC_Unix_password);
+						session.setConfig("StrictHostKeyChecking", "no");
+						session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+						session.connect();
+						channel_sftp = null;
+						channel_sftp = (ChannelSftp) session.openChannel("sftp");
+						channel_sftp.connect();
+						channel_sftp.cd("/home/tasuser/Auto");
+
+					//	File localFile = new File(Curr_user_directory_path + "\\");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
+						for (ChannelSftp.LsEntry entry : list) {
+							if (entry.getFilename().contentEquals("occfile_22.txt")) {
+								channel_sftp.get(entry.getFilename(), localFile + "\\" + "occfile_22.txt");
+								Thread.sleep(5000);
+							}
+						}
+						// Code to get OCC file latest name
+						String occfile = filename(localFile + "\\" + "occfile_22.txt");
+						System.out.println(occfile);
+
+						// Code to get file to local system
+						channel_sftp.cd("/home/tasuser");
+						// channel_sftp.pwd();
+						//File localFile1 = new File(Curr_user_directory_path + "\\" + "CDR");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.gz");
+						Thread.sleep(5000);
+
+						for (ChannelSftp.LsEntry entry2 : list1) {
+							if (entry2.getFilename().contains(occfile)) {
+								channel_sftp.get(occfile, localFile + "\\" + "OCCzip" + "\\");
+								Thread.sleep(10000);
+								System.out.println("SDP file transfered to " + localFile + "\\" + "OCCzip" + "\\");
+							} else {
+							}
+						}
+
+						channel_sftp.disconnect();
+						session.disconnect();
+
+					} catch (Exception e) {
+						e.printStackTrace();
+
+					}
+
+					// ---------------------------------------------------------------------------------------
+					// ************** OCC Unix Interactions port 21
+					//Curr_user_directory_path = System.getProperty("user.dir");
+					OCC_unix_hostname1 = "10.95.214.21";
+					OCC_Unix_username1 = "tasuser";
+					OCC_Unix_password1 = "Ericssondu@123";
+					// String date= Present_date();
+					List<String> OCC1_commands = new ArrayList<String>();
+					OCC1_commands.add("cd /home/tasuser");
+					OCC1_commands.add(
+							"zgrep -l " + MSISDN + " *" + date + "* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt");
+					executeCommands(OCC1_commands, OCC_unix_hostname1, OCC_Unix_username1, OCC_Unix_password1);
+					close();
+
+					try {
+
+						JSch jsch = new JSch();
+						Session session = jsch.getSession(OCC_Unix_username1, OCC_unix_hostname1, 22);
+						session.setPassword(OCC_Unix_password1);
+						session.setConfig("StrictHostKeyChecking", "no");
+						session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+						session.connect();
+						channel_sftp = null;
+						channel_sftp = (ChannelSftp) session.openChannel("sftp");
+						channel_sftp.connect();
+						channel_sftp.cd("/home/tasuser/Auto");
+
+					//	File localFile = new File(Curr_user_directory_path + "\\");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
+						for (ChannelSftp.LsEntry entry : list) {
+							if (entry.getFilename().contains("occfile_21.txt")) {
+								channel_sftp.get(entry.getFilename(), localFile + "\\" + "occfile_21.txt");
+								Thread.sleep(5000);
+							}
+						}
+						// Code to get OCC file latest name
+						String occfile1 = filename(localFile + "\\" + "occfile_21.txt");
+						System.out.println(occfile1);
+
+						// Code to get file to local system
+						channel_sftp.cd("/home/tasuser");
+						// channel_sftp.pwd();
+						//File localFile1 = new File(Curr_user_directory_path + "\\" + "CDR");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.gz");
+						Thread.sleep(5000);
+
+						for (ChannelSftp.LsEntry entry2 : list1) {
+							if (entry2.getFilename().contentEquals(occfile1)) {
+								channel_sftp.get(occfile1, localFile + "\\" + "OCCzip" + "\\");
+								Thread.sleep(5000);
+								System.out.println("SDP file transfered to " + localFile + "\\" + "OCCzip" + "\\");
+							} else {
+							}
+						}
+
+						channel_sftp.disconnect();
+						session.disconnect();
+
+					} catch (Exception e) {
+						e.printStackTrace();
+
+					}
+					// Extract OCC.gz file to parsing ber file
+					file_extraction(gzfilepath,finalpath);
+					
+					
+				}
+				// ************** AIR Unix Interactions
+				//Curr_user_directory_path = System.getProperty("user.dir");
+				if (Input.contains("AIR")) {
+					System.out.println("Waiting for Air system to connect");		
+					Thread.sleep(60000);
+					
+					AIR_unix_hostname = "10.95.214.166";
+					AIR_Unix_username = "tasuser";
+					AIR_Unix_password = "Ericssondu@123";
+					//String date = Present_date();
+					List<String> AIR_commands = new ArrayList<String>();
+					AIR_commands.add("cd /var/opt/air/datarecords/backup_CDR/");
+					AIR_commands.add("grep -l " + MSISDN + " *" + date + "* |tac |head -1 > /home/tasuser/Auto/Airfile.txt");
+					executeCommands(AIR_commands, AIR_unix_hostname, AIR_Unix_username, AIR_Unix_password);
+					close();
+
+					try {
+
+						JSch jsch = new JSch();
+						Session session = jsch.getSession(AIR_Unix_username, AIR_unix_hostname, 22);
+						session.setPassword(AIR_Unix_password);
+						session.setConfig("StrictHostKeyChecking", "no");
+						session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+						session.connect();
+						channel_sftp = null;
+						channel_sftp = (ChannelSftp) session.openChannel("sftp");
+						channel_sftp.connect();
+						channel_sftp.cd("/home/tasuser/Auto");
+
+					//	File localFile = new File(Curr_user_directory_path + "\\");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
+						
+						for (ChannelSftp.LsEntry entry : list) {
+							if (entry.getFilename().contains("Airfile.txt")) {
+								channel_sftp.get(entry.getFilename(), localFile + "\\" + "Airfile.txt");
+								Thread.sleep(5000);
+							}
+						}
+						// Code to get AIR file latest name
+						String Airfile = filename(localFile + "\\" + "Airfile.txt");
+						System.out.println(Airfile);
+
+						// Code to get file to local system
+						channel_sftp.cd("/var/opt/air/datarecords/backup_CDR/");
+						// channel_sftp.pwd();
+						//File localFile1 = new File(Curr_user_directory_path + "\\" + "CDR");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.AIR");
+						Thread.sleep(5000);
+
+						for (ChannelSftp.LsEntry entry1 : list1) {
+							
+							if (entry1.getFilename().contains(Airfile)) {
+								channel_sftp.get(Airfile, localFile + "\\" + "AIR" + "\\");
+								
+								Thread.sleep(10000);
+								System.out.println("SDP file transfered to " + localFile + "\\" + "AIR" + "\\");
+							} 
+							
+						}
+
+						channel_sftp.disconnect();
+						session.disconnect();
+
+					} catch (Exception e) {
+						e.printStackTrace();
+
+					}
+				}
+				
+
 				/////////////////////////////////////////////////////////////////////////////
 
 				createtimestampfold();
@@ -206,7 +486,10 @@ public class asnconverter {
 
 							} else if (filetype.equalsIgnoreCase("OCC-data")) {
 								schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
-							} else {
+							} else if (filetype.equalsIgnoreCase("CCN_voice")) {
+								schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
+							}
+							else {
 								schemaname = "ccn55a.asn1 -pdu DetailOutputRecord";
 							}
 							String commands = "asn2xml CDR/" + filetype + "/" + filename + " -schema Schema/"
@@ -301,7 +584,7 @@ public class asnconverter {
 	}
 
 	public static String parsexml(String param1, File file)
-			throws ParserConfigurationException, SAXException, IOException {
+			throws ParserConfigurationException, SAXException, IOException, IndexOutOfBoundsException {
 		String[] parmsplt = param1.split("\\[");
 		String param = parmsplt[0];
 		int inde = 0;
@@ -640,12 +923,117 @@ public class asnconverter {
 		String datetoday;
 		
 
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy/MM/dd");
 		LocalDateTime now = LocalDateTime.now();
 		datetoday = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
 		
 		return datetoday;
 	}	
+	
+	public static void file_extraction(String gzfilepath, String finalpath) {
+		File folder = new File(gzfilepath);
+		File[] listOfFiles = folder.listFiles();
+
+		for (int i = 0; i < listOfFiles.length; i++) {
+
+			if (listOfFiles[i].isFile()) {
+				System.out.println("File " + listOfFiles[i].getName());
+
+				gzfile = gzfilepath + listOfFiles[i].getName();
+				File f = new File(gzfile);
+
+				System.out.println("Zip file of OCC is " + gzfile);
+
+				String bername = listOfFiles[i].getName();
+				String bername1 = (bername.substring(0, bername.length() - 3));
+				berfile = finalpath + bername1;
+
+				System.out.println("Extracted ber file is " + berfile);
+
+				FileTransfer gZip = new FileTransfer();
+				gZip.gunzipIt(gzfile, berfile);
+				//f.delete();
+			} else if (listOfFiles[i].isDirectory()) {
+				System.out.println("Directory " + listOfFiles[i].getName());
+
+			}
+
+		}
+
+	}
+
+	
+	public void gunzipIt(String INPUT_GZIP_FILE1, String OUTPUT_FILE2) {
+
+		byte[] buffer = new byte[1024];
+		try {
+			GZIPInputStream gzis = new GZIPInputStream(new FileInputStream(INPUT_GZIP_FILE1));
+
+//			// ==To delete existing files in OCCzip folder===========
+//			File index = new File("D:\\DU Automation\\ASNConverter\\CDR\\OCCzip");
+//			String[] entries = index.list();
+//			for (String s : entries) {
+//				File currentFile = new File(index.getPath(), s);
+//				currentFile.delete();
+//				System.out.println("Existing file deleted");
+//			}
+//			// =====================================
+
+			FileOutputStream out = new FileOutputStream(OUTPUT_FILE2);
+			int len;
+			while ((len = gzis.read(buffer)) > 0) {
+				out.write(buffer, 0, len);
+			}
+			gzis.close();
+			out.close();
+			System.out.println("Extraction of OCC zip file completed");
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	public static void file_deletion(String gzfilepath) {
+		File folder = new File(gzfilepath);
+		File[] listOfFiles = folder.listFiles();
+
+		for (int i = 0; i < listOfFiles.length; i++) {
+
+			if (listOfFiles[i].isFile()) {
+				//System.out.println("File " + listOfFiles[i].getName());
+				
+
+		 
+			} else if (listOfFiles[i].isDirectory()) {
+				//System.out.println("Directory " + listOfFiles[i].getName());
+				String pathofDir= listOfFiles[i].getPath();
+				//System.out.println(pathofDir);
+				 File folderin =new File(pathofDir);
+				 File[] list = folderin.listFiles();
+				 for (int j = 0; j < list.length; j++) {
+
+						if (list[j].isFile()) {
+							//System.out.println("File " + list[j].getName());
+							
+						
+								File currentFile = new File(list[j].getPath());
+								currentFile.delete();
+								//System.out.println("Existing file deleted");
+							
+
+					 
+						} else if (listOfFiles[j].isDirectory()) {
+							//System.out.println("Directory " + listOfFiles[j].getName());
+
+			}else {
+				//System.out.println("No Files or Folder's Found");
+				
+			}
+
+				 }
+			}
+		}
+	}
 
 	// End
 

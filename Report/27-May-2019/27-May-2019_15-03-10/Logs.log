@@ -1,0 +1,21 @@
+27-05-2019 15:07:45 INFO [asnconverter]: Starting execution at +:27-May-2019 15:03:10
+27-05-2019 15:07:45 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:07:45 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:07:45 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDPOUTPUTCDR_4001_meytvvmsdp01_SUB_6143_20190527-140510.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 15:07:45 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:07:45 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:07:46 INFO [asnconverter]: accountNumber = 971520006002
+27-05-2019 15:07:46 INFO [asnconverter]: action = create
+27-05-2019 15:07:46 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+27-05-2019 15:07:46 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:07:46 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:07:46 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meytvvmocc01-190527-1204-02263.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 15:07:46 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:07:46 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:07:47 INFO [asnconverter]: subscriptionIDValue = 971520001714
+27-05-2019 15:07:47 INFO [asnconverter]: triggerTime = 915072215000304000
+27-05-2019 15:07:47 INFO [asnconverter]: nodeName = meytvvmocc01
+27-05-2019 15:07:47 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+27-05-2019 15:07:47 INFO [asnconverter]: chargingContextID = SCAP_V.2.0@ericsson.com
+27-05-2019 15:07:47 INFO [asnconverter]: serviceSessionID = -:1002:1
+27-05-2019 15:07:47 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

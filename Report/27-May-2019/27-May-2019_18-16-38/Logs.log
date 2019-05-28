@@ -1,0 +1,30 @@
+27-05-2019 18:16:38 INFO [asnconverter]: Starting execution at +:27-May-2019 18:16:38
+27-05-2019 18:16:39 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 18:16:39 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 18:16:39 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDPOUTPUTCDR_4001_meytvvmsdp01_SUB_6270_20190527-175630.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 18:16:39 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 18:16:39 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 18:16:39 INFO [asnconverter]: accountNumber = 971520001159
+27-05-2019 18:16:39 INFO [asnconverter]: adjustmentRecordType = refillCDR
+27-05-2019 18:16:39 INFO [asnconverter]: sdpID = meytvvmsdp01
+27-05-2019 18:16:39 INFO [asnconverter]: cdrID = 148353153998981785
+27-05-2019 18:16:39 INFO [asnconverter]: accountNumber = 971520001159
+27-05-2019 18:16:39 INFO [asnconverter]: subscriberNumber = 971520001159
+27-05-2019 18:16:39 INFO [asnconverter]: adjustmentTimeStamp = 20190527175630+0400
+27-05-2019 18:16:39 INFO [asnconverter]: serviceClassId = 1004
+27-05-2019 18:16:39 INFO [asnconverter]: currencyType = 0
+27-05-2019 18:16:39 INFO [asnconverter]: originNodeType = VOMS
+27-05-2019 18:16:39 INFO [asnconverter]: originNodeId = VOMS
+27-05-2019 18:16:39 INFO [asnconverter]: origTransactionID = 313701
+27-05-2019 18:16:39 INFO [asnconverter]: origTransactionTimeStamp = 20190527175510+0400
+27-05-2019 18:16:39 INFO [asnconverter]: originOperatorId = CIS
+27-05-2019 18:16:39 INFO [asnconverter]: accountFlagsBefore = 10000000
+27-05-2019 18:16:39 INFO [asnconverter]: accountFlagsAfter = 10000000
+27-05-2019 18:16:39 INFO [asnconverter]: activationDate = 20190410
+27-05-2019 18:16:39 INFO [asnconverter]: offerID = 1001
+27-05-2019 18:16:39 INFO [asnconverter]: action = set
+27-05-2019 18:16:39 INFO [asnconverter]: offerType = timer
+27-05-2019 18:16:39 INFO [asnconverter]: offerDisabledAfter = FALSE
+27-05-2019 18:16:39 INFO [asnconverter]: pamServiceID = 1
+27-05-2019 18:16:39 INFO [asnconverter]: pamClassID = 1
+27-05-2019 18:16:39 INFO [asnconverter]: scheduleID = 1

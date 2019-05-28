@@ -1,0 +1,44 @@
+27-05-2019 15:50:07 INFO [asnconverter]: Starting execution at +:27-May-2019 15:47:53
+27-05-2019 15:50:08 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:08 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:08 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDPOUTPUTCDR_4001_meytvvmsdp01_SUB_6143_20190527-140510.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 15:50:08 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:08 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:08 INFO [asnconverter]: accountNumber = 971520006002
+27-05-2019 15:50:08 INFO [asnconverter]: action = create
+27-05-2019 15:50:08 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+27-05-2019 15:50:08 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:08 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:08 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDPOUTPUTCDR_4001_meytvvmsdp01_SUB_6183_20190527-152157.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 15:50:08 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:08 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:09 INFO [asnconverter]: accountNumber = 971520001714
+27-05-2019 15:50:09 INFO [asnconverter]: accountValueBefore = 499.810000
+27-05-2019 15:50:09 INFO [asnconverter]: accountValueAfter = 499.810000
+27-05-2019 15:50:09 INFO [asnconverter]: adjustmentAmount = 50.000000
+27-05-2019 15:50:09 INFO [asnconverter]: action = set
+27-05-2019 15:50:09 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+27-05-2019 15:50:09 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:09 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:09 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meytvvmocc01-190527-1204-02263.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 15:50:09 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:09 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:09 INFO [asnconverter]: subscriptionIDValue = 971520001714
+27-05-2019 15:50:09 INFO [asnconverter]: triggerTime = 915072215000304000
+27-05-2019 15:50:09 INFO [asnconverter]: nodeName = meytvvmocc01
+27-05-2019 15:50:09 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+27-05-2019 15:50:09 INFO [asnconverter]: chargingContextID = SCAP_V.2.0@ericsson.com
+27-05-2019 15:50:09 INFO [asnconverter]: serviceSessionID = -:1002:1
+27-05-2019 15:50:09 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+27-05-2019 15:50:09 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:09 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:09 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meytvvmocc01-190527-1522-02304.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 15:50:09 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:09 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 15:50:10 INFO [asnconverter]: subscriptionIDValue = 971520001714
+27-05-2019 15:50:10 INFO [asnconverter]: triggerTime = 915072512264304000
+27-05-2019 15:50:10 INFO [asnconverter]: nodeName = meytvvmocc01
+27-05-2019 15:50:10 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+27-05-2019 15:50:10 INFO [asnconverter]: chargingContextID = SCAP_V.2.0@ericsson.com
+27-05-2019 15:50:10 INFO [asnconverter]: serviceSessionID = -:1001:1
+27-05-2019 15:50:10 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

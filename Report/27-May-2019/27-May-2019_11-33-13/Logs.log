@@ -1,0 +1,33 @@
+27-05-2019 11:35:33 INFO [asnconverter]: Starting execution at +:27-May-2019 11:33:13
+27-05-2019 11:35:33 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:33 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:33 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDPOUTPUTCDR_4001_meytvvmsdp01_SUB_6050_20190527-101525.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 11:35:33 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:33 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:33 INFO [asnconverter]: accountNumber = 971520001714
+27-05-2019 11:35:33 INFO [asnconverter]: action = create
+27-05-2019 11:35:34 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+27-05-2019 11:35:34 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:34 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:34 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meydvvmocc02-190527-1131-02231.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 11:35:34 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:34 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:34 INFO [asnconverter]: subscriptionIDValue = 971520001717
+27-05-2019 11:35:34 INFO [asnconverter]: triggerTime = 915072116283304000
+27-05-2019 11:35:34 INFO [asnconverter]: nodeName = meytvvmocc01
+27-05-2019 11:35:34 INFO [asnconverter]: serviceContextID = du-service
+27-05-2019 11:35:34 INFO [asnconverter]: chargingContextID = Ericsson_OCS_V1_0.0.0.10.32251@3gpp.org
+27-05-2019 11:35:34 INFO [asnconverter]: serviceSessionID = 3:-:1
+27-05-2019 11:35:34 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+27-05-2019 11:35:34 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:34 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:34 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meytvvmocc01-190527-1015-02242.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+27-05-2019 11:35:34 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:34 INFO [asnconverter]: ****************************************************************************************
+27-05-2019 11:35:34 INFO [asnconverter]: subscriptionIDValue = 971520001714
+27-05-2019 11:35:34 INFO [asnconverter]: triggerTime = 915072016161304000
+27-05-2019 11:35:34 INFO [asnconverter]: nodeName = meytvvmocc01
+27-05-2019 11:35:34 INFO [asnconverter]: serviceContextID = SCAP_V.2.0@ericsson.com
+27-05-2019 11:35:34 INFO [asnconverter]: chargingContextID = SCAP_V.2.0@ericsson.com
+27-05-2019 11:35:34 INFO [asnconverter]: serviceSessionID = -:1001:1
+27-05-2019 11:35:34 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
