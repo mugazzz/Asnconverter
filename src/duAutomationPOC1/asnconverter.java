@@ -80,12 +80,14 @@ public class asnconverter {
 	public static String global_Final_CDR_path = "";
 	public static String Environment = "";
 	public static String curr_log_file_path = System.getProperty("user.dir") + "\\Report.txt";
-	public static String MSISDN = "971520001714";
+	public static String MSISDN = "971520002069";
 	public static String Input = "ALL";
 	public static String Test_Scenario = "OPT-in";
 	public static String cdrfiles = System.getProperty("user.dir") + "\\CDR";
+	public static String date="" ;
 	///////////////////////////////////////////////
 
+	@SuppressWarnings("deprecation")
 	public static void main(String args[]) {
 		try {
 			Calendar cal1 = Calendar.getInstance();
@@ -102,7 +104,7 @@ public class asnconverter {
 				file_deletion(cdrfiles);
 				Curr_user_directory_path = System.getProperty("user.dir");
 				File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
-				String date = Present_date();
+				date = Present_date();
 				// ---------------------------------------------------------------------------------------
 				// ************** CIS Unix Interactions
 				if (Input.contains("CIS") || Input.contains("ALL")) {
@@ -131,7 +133,7 @@ public class asnconverter {
 						channel_sftp = null;
 						channel_sftp = (ChannelSftp) session.openChannel("sftp");
 						channel_sftp.connect();
-						channel_sftp.cd("/home/VenuReddyGaddam/");
+						channel_sftp.cd("/home/"+CIS_Unix_username+"/");
 						System.out.println(channel_sftp.pwd());
 
 					//	File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
@@ -161,7 +163,7 @@ public class asnconverter {
 				// ************** SDP Unix Interactions
 				if (Input.contains("SDP") || Input.contains("ALL")) {
 					System.out.println("waiting for SDP connectivty ");
-					Thread.sleep(180000);
+					Thread.sleep(150000);
 
 				
 					Curr_user_directory_path = System.getProperty("user.dir");
@@ -171,7 +173,7 @@ public class asnconverter {
 					//String date = Present_date();
 					List<String> SDP_commands = new ArrayList<String>();
 					SDP_commands.add("cd /var/opt/fds/CDR/archive/");
-					SDP_commands.add("grep -l " + MSISDN + " *" + date + "* |tac |head -1 > /home/tasuser/sdpfile.txt");
+					SDP_commands.add("grep -l "+MSISDN+" *20"+date+"* |tac |head -1 > /home/tasuser/sdpfile.txt");
 					executeCommands(SDP_commands, SDP_unix_hostname, SDP_Unix_username, SDP_Unix_password);
 					close();
 
@@ -243,7 +245,7 @@ public class asnconverter {
 					List<String> OCC_commands = new ArrayList<String>();
 					OCC_commands.add("cd /home/tasuser");
 					OCC_commands.add(
-							"zgrep -l " + MSISDN + " *" + date + "* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt");
+							"zgrep -l "+MSISDN+" *"+date+"* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt");
 					executeCommands(OCC_commands, OCC_unix_hostname, OCC_Unix_username, OCC_Unix_password);
 					close();
 
@@ -308,7 +310,7 @@ public class asnconverter {
 					List<String> OCC1_commands = new ArrayList<String>();
 					OCC1_commands.add("cd /home/tasuser");
 					OCC1_commands.add(
-							"zgrep -l " + MSISDN + " *" + date + "* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt");
+							"zgrep -l "+MSISDN+" *"+date+"* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt");
 					executeCommands(OCC1_commands, OCC_unix_hostname1, OCC_Unix_username1, OCC_Unix_password1);
 					close();
 
@@ -554,8 +556,9 @@ public class asnconverter {
 												String[] parmi = rs.getFieldNames().get(Iterator).toString()
 														.split("Parameter");
 												String findx = parmi[1];
-												if (param1.equals("subscriptionIDValue[0]")
-														|| param1.equals("accountNumber")) {
+												if (param1.equals("subscriptionIDValue[0]")|| param1.equals("accountNumber"))
+													
+												{
 													filenameq = retval;
 												}
 												tbl = tbl + "<tr><td>" + param1 + "</td><td>" + retval + "</td></tr>";
@@ -567,9 +570,15 @@ public class asnconverter {
 								}
 
 							}
-							ExtentTest test = extent.createTest(filenameq + "_Output");
+							if(!filetype.contentEquals("CIS")) {
+							ExtentTest test = extent.createTest(filetype+"_"+MSISDN + "_Output");
 							test.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank' href = '" + filetype + "/"
 									+ filename + "/output.xml'>Click to View the CDR</a></b><br>" + tbl + "</table>");
+							}
+							else {
+							ExtentTest test1 = extent.createTest("CISFILE_"+MSISDN+"_Output");
+							test1.pass("<a href='file:///D:/DU Automation/ASNConverter/CDR/CIS/EDRfile.csv'>Response</a>");
+							}
 							extent.flush();
 							endTestCase(refid);
 						}
@@ -581,6 +590,7 @@ public class asnconverter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.exit(0);
 	}
 
 	public static String parsexml(String param1, File file)
@@ -831,10 +841,11 @@ public class asnconverter {
 	}
 
 	// ***** Function to close the Channel and Session
-	public static void close() {
+	public static void close() throws InterruptedException {
 		
 		channel.disconnect();
 		session.disconnect();
+		Thread.sleep(2000);
 		System.out.println("Disconnected channel and session");
 		write_in_exiting_file_without_loosing_old_data("Disconnected channel and session", curr_log_file_path);
 	}
@@ -902,7 +913,8 @@ public class asnconverter {
 		System.out.println("Final Rndm_Number:-  " + Rndm_Number);
 		return Rndm_Number;
 	}
-
+	
+	//Function to read a file for cdr name
 	public static String filename(String filepath) throws IOException {
 		InputStream is = new FileInputStream(filepath);
 		BufferedReader buf = new BufferedReader(new InputStreamReader(is));
@@ -918,18 +930,20 @@ public class asnconverter {
 		return fileAsString;
 
 	}
+	//Function to create a date format in linux command
 	public static String Present_date() {
 
 		String datetoday;
 		
-
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy/MM/dd");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMdd-HH:mm");
 		LocalDateTime now = LocalDateTime.now();
 		datetoday = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
-		
-		return datetoday;
+		String finaldate=datetoday.substring(0, datetoday.length()-1);	
+	
+		return finaldate;
 	}	
 	
+	//Function to extract files 
 	public static void file_extraction(String gzfilepath, String finalpath) {
 		File folder = new File(gzfilepath);
 		File[] listOfFiles = folder.listFiles();
@@ -937,22 +951,22 @@ public class asnconverter {
 		for (int i = 0; i < listOfFiles.length; i++) {
 
 			if (listOfFiles[i].isFile()) {
-				System.out.println("File " + listOfFiles[i].getName());
+				//System.out.println("File " + listOfFiles[i].getName());
 
 				gzfile = gzfilepath + listOfFiles[i].getName();
-				File f = new File(gzfile);
+				
 
-				System.out.println("Zip file of OCC is " + gzfile);
+				//System.out.println("Zip file of OCC is " + gzfile);
 
 				String bername = listOfFiles[i].getName();
 				String bername1 = (bername.substring(0, bername.length() - 3));
 				berfile = finalpath + bername1;
 
-				System.out.println("Extracted ber file is " + berfile);
+				//System.out.println("Extracted ber file is " + berfile);
 
 				FileTransfer gZip = new FileTransfer();
 				gZip.gunzipIt(gzfile, berfile);
-				//f.delete();
+				
 			} else if (listOfFiles[i].isDirectory()) {
 				System.out.println("Directory " + listOfFiles[i].getName());
 
@@ -962,22 +976,12 @@ public class asnconverter {
 
 	}
 
-	
+	//Function to Unzip files
 	public void gunzipIt(String INPUT_GZIP_FILE1, String OUTPUT_FILE2) {
 
 		byte[] buffer = new byte[1024];
 		try {
 			GZIPInputStream gzis = new GZIPInputStream(new FileInputStream(INPUT_GZIP_FILE1));
-
-//			// ==To delete existing files in OCCzip folder===========
-//			File index = new File("D:\\DU Automation\\ASNConverter\\CDR\\OCCzip");
-//			String[] entries = index.list();
-//			for (String s : entries) {
-//				File currentFile = new File(index.getPath(), s);
-//				currentFile.delete();
-//				System.out.println("Existing file deleted");
-//			}
-//			// =====================================
 
 			FileOutputStream out = new FileOutputStream(OUTPUT_FILE2);
 			int len;
@@ -993,6 +997,7 @@ public class asnconverter {
 		}
 	}
 	
+	//Function to delete files
 	public static void file_deletion(String gzfilepath) {
 		File folder = new File(gzfilepath);
 		File[] listOfFiles = folder.listFiles();

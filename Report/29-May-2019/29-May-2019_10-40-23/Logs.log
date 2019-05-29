@@ -1,0 +1,116 @@
+29-05-2019 10:44:36 INFO [asnconverter]: Starting execution at +:29-May-2019 10:40:23
+29-05-2019 10:44:37 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:37 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:37 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDPOUTPUTCDR_4001_meytvvmsdp01_SUB_6555_20190528-163619.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+29-05-2019 10:44:37 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:37 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:37 INFO [asnconverter]: accountNumber = 971520002069
+29-05-2019 10:44:37 INFO [asnconverter]: adjustmentRecordType = refillCDR
+29-05-2019 10:44:37 INFO [asnconverter]: sdpID = meytvvmsdp01
+29-05-2019 10:44:37 INFO [asnconverter]: cdrID = 148353153998988082
+29-05-2019 10:44:37 INFO [asnconverter]: accountNumber = 971520002069
+29-05-2019 10:44:37 INFO [asnconverter]: subscriberNumber = 971520002069
+29-05-2019 10:44:37 INFO [asnconverter]: adjustmentTimeStamp = 20190528163619+0400
+29-05-2019 10:44:37 INFO [asnconverter]: serviceClassId = 1001
+29-05-2019 10:44:37 INFO [asnconverter]: currencyType = 0
+29-05-2019 10:44:37 INFO [asnconverter]: originNodeType = CIS
+29-05-2019 10:44:37 INFO [asnconverter]: originNodeId = CIS
+29-05-2019 10:44:37 INFO [asnconverter]: origTransactionID = 2530567024657
+29-05-2019 10:44:37 INFO [asnconverter]: origTransactionTimeStamp = 20190528163702+0400
+29-05-2019 10:44:37 INFO [asnconverter]: originOperatorId = CIS
+29-05-2019 10:44:37 INFO [asnconverter]: accountFlagsBefore = 10000000
+29-05-2019 10:44:37 INFO [asnconverter]: accountFlagsAfter = 10000000
+29-05-2019 10:44:37 INFO [asnconverter]: activationDate = 20190517
+29-05-2019 10:44:37 INFO [asnconverter]: offerID = 1001
+29-05-2019 10:44:37 INFO [asnconverter]: action = set
+29-05-2019 10:44:37 INFO [asnconverter]: offerType = timer
+29-05-2019 10:44:37 INFO [asnconverter]: offerDisabledAfter = FALSE
+29-05-2019 10:44:37 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+29-05-2019 10:44:37 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:37 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:37 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meydvvmocc02-190528-1634-02448.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+29-05-2019 10:44:37 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:37 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:38 INFO [asnconverter]: subscriptionIDValue = 971520006119
+29-05-2019 10:44:38 INFO [asnconverter]: triggerTime = 915082612365304000
+29-05-2019 10:44:38 INFO [asnconverter]: nodeName = meytvvmocc01
+29-05-2019 10:44:38 INFO [asnconverter]: serviceContextID = du-service
+29-05-2019 10:44:38 INFO [asnconverter]: chargingContextID = Ericsson_OCS_V1_0.0.0.10.32251@3gpp.org
+29-05-2019 10:44:38 INFO [asnconverter]: serviceSessionID = 3:-:1
+29-05-2019 10:44:38 INFO [asnconverter]: recordIdentificationNumber = 1CEB
+29-05-2019 10:44:38 INFO [asnconverter]: partialSequenceNumber = 0
+29-05-2019 10:44:38 INFO [asnconverter]: lastPartialOutput = TRUE
+29-05-2019 10:44:38 INFO [asnconverter]: subscriptionIDType = endUserE164
+29-05-2019 10:44:38 INFO [asnconverter]: subscriptionIDValue = 971520006119
+29-05-2019 10:44:38 INFO [asnconverter]: sessionId = ggsn.du.ae;3768035574;212;1492
+29-05-2019 10:44:38 INFO [asnconverter]: ccRequestNumber = 1
+29-05-2019 10:44:38 INFO [asnconverter]: originRealm = 64752E6165
+29-05-2019 10:44:38 INFO [asnconverter]: originHost = 6767736E2E64752E6165
+29-05-2019 10:44:38 INFO [asnconverter]: serviceIdentifier = 3
+29-05-2019 10:44:38 INFO [asnconverter]: tariffChangeUsage = before
+29-05-2019 10:44:38 INFO [asnconverter]: amount = 0
+29-05-2019 10:44:38 INFO [asnconverter]: decimals = 6
+29-05-2019 10:44:38 INFO [asnconverter]: currency = 784
+29-05-2019 10:44:38 INFO [asnconverter]: eventTime = 32303139303532383136333433322B30343030
+29-05-2019 10:44:38 INFO [asnconverter]: triggerTime = 915082612365304000
+29-05-2019 10:44:38 INFO [asnconverter]: serviceScenario = mobileOriginating
+29-05-2019 10:44:38 INFO [asnconverter]: roamingPosition = insideHPLMN
+29-05-2019 10:44:38 INFO [asnconverter]: servedAccount = 81795102001691
+29-05-2019 10:44:38 INFO [asnconverter]: serviceClassID = 1002
+29-05-2019 10:44:38 INFO [asnconverter]: accountGroupID = 0
+29-05-2019 10:44:38 INFO [asnconverter]: accountValueBefore = 0 6 784
+29-05-2019 10:44:38 INFO [asnconverter]: amount = 0
+29-05-2019 10:44:38 INFO [asnconverter]: decimals = 6
+29-05-2019 10:44:38 INFO [asnconverter]: currency = 784
+29-05-2019 10:44:38 INFO [asnconverter]: accountValueAfter = 0 6 784
+29-05-2019 10:44:38 INFO [asnconverter]: amount = 0
+29-05-2019 10:44:38 INFO [asnconverter]: decimals = 6
+29-05-2019 10:44:38 INFO [asnconverter]: currency = 784
+29-05-2019 10:44:38 INFO [asnconverter]: subscriptionIDValue = 971520006119
+29-05-2019 10:44:38 INFO [asnconverter]: triggerTime = 915082612365304000
+29-05-2019 10:44:38 INFO [asnconverter]: nodeName = meytvvmocc01
+29-05-2019 10:44:38 INFO [asnconverter]: serviceContextID = du-service
+29-05-2019 10:44:38 INFO [asnconverter]: chargingContextID = Ericsson_OCS_V1_0.0.0.10.32251@3gpp.org
+29-05-2019 10:44:38 INFO [asnconverter]: serviceSessionID = 3:-:1
+29-05-2019 10:44:38 INFO [asnconverter]: recordIdentificationNumber = 1CEB
+29-05-2019 10:44:38 INFO [asnconverter]: partialSequenceNumber = 0
+29-05-2019 10:44:38 INFO [asnconverter]: lastPartialOutput = TRUE
+29-05-2019 10:44:38 INFO [asnconverter]: subscriptionIDType = endUserE164
+29-05-2019 10:44:38 INFO [asnconverter]: subscriptionIDValue = 971520006119
+29-05-2019 10:44:38 INFO [asnconverter]: sessionId = ggsn.du.ae;3768035574;212;1492
+29-05-2019 10:44:38 INFO [asnconverter]: ccRequestNumber = 1
+29-05-2019 10:44:38 INFO [asnconverter]: originRealm = 64752E6165
+29-05-2019 10:44:38 INFO [asnconverter]: originHost = 6767736E2E64752E6165
+29-05-2019 10:44:38 INFO [asnconverter]: serviceIdentifier = 3
+29-05-2019 10:44:38 INFO [asnconverter]: tariffChangeUsage = before
+29-05-2019 10:44:38 INFO [asnconverter]: amount = 0
+29-05-2019 10:44:38 INFO [asnconverter]: decimals = 6
+29-05-2019 10:44:38 INFO [asnconverter]: currency = 784
+29-05-2019 10:44:38 INFO [asnconverter]: eventTime = 32303139303532383136333433322B30343030
+29-05-2019 10:44:38 INFO [asnconverter]: triggerTime = 915082612365304000
+29-05-2019 10:44:38 INFO [asnconverter]: serviceScenario = mobileOriginating
+29-05-2019 10:44:38 INFO [asnconverter]: roamingPosition = insideHPLMN
+29-05-2019 10:44:38 INFO [asnconverter]: servedAccount = 81795102001691
+29-05-2019 10:44:38 INFO [asnconverter]: serviceClassID = 1002
+29-05-2019 10:44:38 INFO [asnconverter]: accountGroupID = 0
+29-05-2019 10:44:38 INFO [asnconverter]: accountValueBefore = 0 6 784
+29-05-2019 10:44:38 INFO [asnconverter]: amount = 0
+29-05-2019 10:44:38 INFO [asnconverter]: decimals = 6
+29-05-2019 10:44:38 INFO [asnconverter]: currency = 784
+29-05-2019 10:44:38 INFO [asnconverter]: accountValueAfter = 0 6 784
+29-05-2019 10:44:38 INFO [asnconverter]: amount = 0
+29-05-2019 10:44:38 INFO [asnconverter]: decimals = 6
+29-05-2019 10:44:38 INFO [asnconverter]: currency = 784
+29-05-2019 10:44:38 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+29-05-2019 10:44:38 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:38 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:38 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File EDRfile.csv $$$$$$$$$$$$$$$$$$$$$$$$$
+29-05-2019 10:44:38 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:38 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:38 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+29-05-2019 10:44:38 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:38 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:38 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File EDRfile190528-153.csv $$$$$$$$$$$$$$$$$$$$$$$$$
+29-05-2019 10:44:38 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:38 INFO [asnconverter]: ****************************************************************************************
+29-05-2019 10:44:39 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

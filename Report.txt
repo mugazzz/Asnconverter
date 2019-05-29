@@ -2162,3 +2162,933 @@ exit
 logout
 
 Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 14:04:57 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-145.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-145.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 14:23:01 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-145.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-145.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-145.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-145.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 14:30:33 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-1434.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-1434.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190528-1434* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190528-1434* |tac |head  -1 > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-1434* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190528-1434* |tac|head -1 > /ho me/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-1434* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190528-1434* |tac|head -1 > /ho me/tasuser/Auto/occfile_21.txt
+gzip: *190528-1434*.gz: No such file or directory
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 14:34:42 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-14.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-14.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username have been noted for auditing purposes.         #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190528-14* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archiv
+e]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190528-14* |tac |head -1  > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-14* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190528-14* |tac|head -1 > /home /tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-14* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190528-14* |tac|head -1 > /home /tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 14:47:20 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile19052815.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile19052815.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 15:02:55 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-15.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-15.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+Last login: Tue May 28 14:49:44 2019 from 10.160.130.18
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username have been noted for auditing purposes.         #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190528-15* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ 
+cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190528-15* |tac |head -1  > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-15* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190528-15* |tac|head -1 > /home /tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+Last login: Tue May 28 14:50:48 2019 from 10.160.130.18
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username has been noted for auditing purposes.          #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-15* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /ho
+me/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190528-15* |tac|head -1 > /home /tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 15:06:56 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-152.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-152.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username have been noted for auditing purposes.         #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190528-152* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archi
+ve]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190528-152* |tac |head - 1 > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-152* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190528-152* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-152* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190528-152* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-153.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-153.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+################################################################################
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190528-153* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190528-153* |tac |head - 1 > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+Last login: Tue May 28 15:32:58 2019 from 10.160.130.18
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username has been noted for auditing purposes.          #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-153* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /h
+ome/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190528-153* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-153* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190528-153* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 15:37:16 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-154.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-154.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190528-154* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190528-154* |tac |head - 1 > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+# Your IP, Login Time, Username has been noted for auditing purposes.          #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-154* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190528-154* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-154* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190528-154* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-161.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-161.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190528-161* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190528-161* |tac |head - 1 > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-161* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190528-161* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+Last login: Tue May 28 15:51:51 2019 from 10.160.130.18
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username has been noted for auditing purposes.          #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-161* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /h
+ome/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190528-161* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 16:11:45 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile190528-163.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile190528-163.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username have been noted for auditing purposes.         #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190528-163* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archi
+ve]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190528-163* |tac |head - 1 > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-163* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190528-163* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190528-163* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190528-163* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Tue May 28 16:37:27 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+# Your IP, Login Time, Username have been noted for auditing purposes.         #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190529-104* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190529-104* |tac |head - 1 > /home/tasuser/sdpfile.txt
+grep: *20190529-104*: No such file or direct
+ory
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190529-104* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190529-104* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190529-104* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190529-104* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+gzip: *190529-104*.gz: No such file or directory
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
