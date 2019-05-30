@@ -80,7 +80,7 @@ public class asnconverter {
 	public static String Environment = "";
 	public static String curr_log_file_path = System.getProperty("user.dir") + "\\Report.txt";
 	public static String MSISDN = "971520001714";
-	public static String Input = "CCN";
+	public static String Input = "";
 	public static String Test_Scenario = "OPT-in";
 	public static String cdrfiles = System.getProperty("user.dir") + "\\CDR";
 	private static String gzfilepath = cdrfiles+"\\OCCzip\\";
@@ -94,8 +94,8 @@ public class asnconverter {
 	public static void main(String args[]) {
 		try {
 			Calendar cal1 = Calendar.getInstance();
-			long currdate = cal1.getTimeInMillis() / 1000;
-			long unixtstamp = 1549238400;
+			//long currdate = cal1.getTimeInMillis() / 1000;
+			//long unixtstamp = 1549238400;
 			now= timeoffour();
 			dateccn=Present_dateccn();
 			// System.out.println(unixtstamp);
@@ -106,7 +106,7 @@ public class asnconverter {
 
 			////////////////////////////////////////////////////////////////////////
 				//System.out.println(cdrfiles);
-				file_deletion(cdrfiles);
+				//file_deletion(cdrfiles);
 				Curr_user_directory_path = System.getProperty("user.dir");
 				File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
 				File localFileb = new File(Curr_user_directory_path + "\\" + "BackupCDR");
@@ -528,7 +528,7 @@ public class asnconverter {
 				}
 				// ************** AIR Unix Interactions
 				//Curr_user_directory_path = System.getProperty("user.dir");
-				if (Input.contains("AIR")) {
+				if (Input.contains("AIR") || Input.contains("ALL")) {
 					System.out.println("Waiting for Air system to connect");		
 					Thread.sleep(60000);
 					
@@ -1093,12 +1093,12 @@ public class asnconverter {
 
 		String datetoday;
 		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMdd-HH:mm");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMdd-HH:");
 		LocalDateTime now = LocalDateTime.now();
 		datetoday = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
-		String finaldate=datetoday.substring(0, datetoday.length()-1);	
+		//String finaldate=datetoday.substring(0, datetoday.length()-1);	
 	
-		return finaldate;
+		return datetoday;
 	}	
 	public static String Present_dateccn() {
 

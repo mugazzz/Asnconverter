@@ -23,11 +23,11 @@ public class Main {
 		try {
 			
 			Random rand = new Random(); 
-			String Filepath ="D:\\DU Automation\\ASNConverter\\CDR\\CIS\\meydvvmcis03_EDR_CISOnline20.csv";
+			String Filepath ="D:\\DU Automation\\ASNConverter\\CDR\\CIS\\EDRfile.csv";
 			String MSISDN ="971520001714";
-			String ClearData="Delete from public.EDR_CIS_DataSamp;";
+			String ClearData="Delete from public.edr_cis_1;";
 			//tableCreation(sql);
-			String loadCSV= "COPY public.EDR_CIS_DataSamp  (Transaction_Time  ,Client_Transaction_Id  ,Transaction_Id  ,IP_Address ," + 
+			String loadCSV= "COPY public.edr_cis_1  (Transaction_Time  ,Client_Transaction_Id  ,Transaction_Id  ,IP_Address ," + 
 					"Event_Type  ,A_Party_Msisdn  ,B_Party_Msisdn  ,input  ,Result_Code  ,Result_Description ," + 
 					"Service_Class  ,Requested_Product_ID  ,Product_Name  ,Product_Type  ,Product_Cost  ,Applied_product_cost," + 
 					"Product_Validity  ,Access_Channel  ,Access_Code  ,Charge_Indicator  ,Vat_Fee  ,Language_Id  ," + 
@@ -47,14 +47,14 @@ public class Main {
 			ExecuteQuery(loadCSV);
 			int num = rand.nextInt(1000);
 			String Validation_Query ="CREATE VIEW public.CIS_EDR_Validation_"+num+" AS Select Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID," + 
-					"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_datasamp where A_Party_Msisdn='" +MSISDN +"'";
+					"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_1 where A_Party_Msisdn='" +MSISDN +"'";
 			ExecuteQuery(Validation_Query);
 			String getValidationData ="Select Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID," + 
-					"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_datasamp where A_Party_Msisdn='" +MSISDN +"'";
+					"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_1 where A_Party_Msisdn='" +MSISDN +"'";
 		 ValidationQuery(getValidationData);
 		 
 		 // To export the required data to csv file
-		 String Export_Data ="COPY (select * from cis_edr_validation) TO 'D:\\Du Automation Project\\EDR_Validation_db2.csv' DELIMITER '|' CSV HEADER" ;
+		 String Export_Data ="COPY (select * from CIS_EDR_Validation_"+num+") TO 'D:\\DU Automation\\ASNConverter\\CDR\\CIS\\EDRfiledb.csv' DELIMITER '|' CSV HEADER" ;
 		 ExecuteQuery(Export_Data);
 		 
 		 
@@ -116,10 +116,10 @@ public class Main {
 	private static Connection getCon() throws SQLException, ClassNotFoundException {
 		  Connection c = null;
 		   Statement stmt = null;
-		   String dbURL = "jdbc:postgresql://localhost:5432/dU";
+		   String dbURL = "jdbc:postgresql://localhost:5432/DU";
 		      Properties parameters = new Properties();
 		      parameters.put("user", "postgres");
-		      parameters.put("password", "postgres");
+		      parameters.put("password", "Maveric");
 		      Connection conn = DriverManager.getConnection(dbURL, parameters);
 		      
 		      conn.setAutoCommit(false);
@@ -134,10 +134,10 @@ public class Main {
 		   
 	       Statement stmt = null;
 		
-		      String dbURL = "jdbc:postgresql://localhost:5432/dU";
+		      String dbURL = "jdbc:postgresql://localhost:5432/DU";
 		      Properties parameters = new Properties();
 		      parameters.put("user", "postgres");
-		      parameters.put("password", "postgres");
+		      parameters.put("password", "maveric");
 		      Connection conn = DriverManager.getConnection(dbURL, parameters);
 		      
 		      conn.setAutoCommit(false);
@@ -153,10 +153,10 @@ public class Main {
 	}   
 	
 	public static void ValidationQuery(String Validatin_Query) throws SQLException {
-		 String dbURL = "jdbc:postgresql://localhost:5432/dU";
+		 String dbURL = "jdbc:postgresql://localhost:5432/DU";
 	      Properties parameters = new Properties();
 	      parameters.put("user", "postgres");
-	      parameters.put("password", "postgres");
+	      parameters.put("password", "maveric");
 	     
 	     
      Connection conn = DriverManager.getConnection(dbURL, parameters);
