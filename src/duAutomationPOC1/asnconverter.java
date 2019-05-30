@@ -60,8 +60,7 @@ public class asnconverter {
 	private static ChannelSftp channel_sftp;
 	private static String gzfile;
 	private static String berfile;
-	private static String gzfilepath = "D:\\DU Automation\\ASNConverter\\CDR\\OCCzip\\";
-	private static String finalpath = "D:\\DU Automation\\ASNConverter\\CDR\\OCC-data\\";
+	
 	private static String SDP_Unix_username = "";
 	private static String SDP_Unix_password = "";
 	private static String SDP_unix_hostname = "";
@@ -80,11 +79,15 @@ public class asnconverter {
 	public static String global_Final_CDR_path = "";
 	public static String Environment = "";
 	public static String curr_log_file_path = System.getProperty("user.dir") + "\\Report.txt";
-	public static String MSISDN = "971520002069";
-	public static String Input = "ALL";
+	public static String MSISDN = "971520001714";
+	public static String Input = "CCN";
 	public static String Test_Scenario = "OPT-in";
 	public static String cdrfiles = System.getProperty("user.dir") + "\\CDR";
+	private static String gzfilepath = cdrfiles+"\\OCCzip\\";
+	private static String finalpath = cdrfiles+"\\OCC\\";
 	public static String date="" ;
+	public static String dateccn="";
+	public static String now="";
 	///////////////////////////////////////////////
 
 	@SuppressWarnings("deprecation")
@@ -93,6 +96,8 @@ public class asnconverter {
 			Calendar cal1 = Calendar.getInstance();
 			long currdate = cal1.getTimeInMillis() / 1000;
 			long unixtstamp = 1549238400;
+			now= timeoffour();
+			dateccn=Present_dateccn();
 			// System.out.println(unixtstamp);
 			// System.out.println(currdate);
 			// if(currdate < unixtstamp)
@@ -104,6 +109,7 @@ public class asnconverter {
 				file_deletion(cdrfiles);
 				Curr_user_directory_path = System.getProperty("user.dir");
 				File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
+				File localFileb = new File(Curr_user_directory_path + "\\" + "BackupCDR");
 				date = Present_date();
 				// ---------------------------------------------------------------------------------------
 				// ************** CIS Unix Interactions
@@ -145,6 +151,7 @@ public class asnconverter {
 								System.out.println(entry.getFilename());
 								channel_sftp.get("EDRfile.csv", localFile + "\\" + "CIS" + "\\" + entry.getFilename());
 								Thread.sleep(5000);
+								channel_sftp.get("EDRfile.csv", localFileb + "\\" + "CIS" + "\\" + MSISDN+date+now+entry.getFilename());
 								//System.out.println(localFile + "\\" + "CISraw" + "\\" + entry.getFilename());
 								System.out.println("EDR file transfered to "+ localFile + "\\" + "CIS" + "\\" );
 							}
@@ -215,6 +222,7 @@ public class asnconverter {
 							if (entry1.getFilename().contains(cdrfile)) {
 								channel_sftp.get(cdrfile, localFile + "\\" + "SDP" + "\\");
 								Thread.sleep(10000);
+								channel_sftp.get(cdrfile, localFileb + "\\" + "SDP" + "\\");
 								System.out.println("SDP file transfered to " + localFile + "\\" + "SDP" + "\\");
 							} else {
 							}
@@ -287,6 +295,7 @@ public class asnconverter {
 							if (entry2.getFilename().contains(occfile)) {
 								channel_sftp.get(occfile, localFile + "\\" + "OCCzip" + "\\");
 								Thread.sleep(10000);
+								channel_sftp.get(occfile, localFileb + "\\" + "OCCzip" + "\\");
 								System.out.println("SDP file transfered to " + localFile + "\\" + "OCCzip" + "\\");
 							} else {
 							}
@@ -352,6 +361,7 @@ public class asnconverter {
 							if (entry2.getFilename().contentEquals(occfile1)) {
 								channel_sftp.get(occfile1, localFile + "\\" + "OCCzip" + "\\");
 								Thread.sleep(5000);
+								channel_sftp.get(occfile1, localFileb + "\\" + "OCCzip" + "\\");
 								System.out.println("SDP file transfered to " + localFile + "\\" + "OCCzip" + "\\");
 							} else {
 							}
@@ -368,6 +378,153 @@ public class asnconverter {
 					file_extraction(gzfilepath,finalpath);
 					
 					
+				}
+				// Connecting to CCN to get CDR file
+				if (Input.contains("CCN") || Input.contains("ALL")) {
+					System.out.println("Waiting for CCN system to connect");		
+					Thread.sleep(90000);
+					// ************** CCN Unix Interactions storage 0
+					//Curr_user_directory_path = System.getProperty("user.dir");
+					String CCN_unix_hostname = "10.95.213.132";
+					String CCN_Unix_username = "tasuser";
+					String CCN_Unix_password = "CCNtasuser@123";
+					//String now= timeoffour();
+					//String date = Present_date();
+					System.out.println(now);
+					System.out.println(date);
+					List<String> CCN_commands = new ArrayList<String>();
+					CCN_commands.add("cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/");
+					CCN_commands.add("grep -l "+MSISDN+" *"+dateccn+now+"* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_0file.txt");
+					executeCommands(CCN_commands, CCN_unix_hostname, CCN_Unix_username, CCN_Unix_password);
+					close();
+					//grep -l 971520001714 *20190529* |xargs ls -l|grep 13:0[0-9]|tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCNfile.txt
+					//grep -l 971520001714 *20190530063*|tac|head -1
+
+					try {
+
+						JSch jsch = new JSch();
+						Session session = jsch.getSession(CCN_Unix_username, CCN_unix_hostname, 22);
+						session.setPassword(CCN_Unix_password);
+						session.setConfig("StrictHostKeyChecking", "no");
+						session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+						session.connect();
+						channel_sftp = null;
+						channel_sftp = (ChannelSftp) session.openChannel("sftp");
+						channel_sftp.connect();
+						channel_sftp.cd("/cluster/home/system-oam/tasuser/Auto");
+
+					//	File localFile = new File(Curr_user_directory_path + "\\");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
+						System.out.println(list);
+						for (ChannelSftp.LsEntry entry : list) {
+							if (entry.getFilename().contains("CCN_0file.txt")) {
+								channel_sftp.get(entry.getFilename(), localFile + "\\" + "CCN_0file.txt");
+								Thread.sleep(5000);
+							}
+						}
+						// Code to get CCN file latest name
+						String CCN0file = filename(localFile + "\\" + "CCN_0file.txt");
+						System.out.println(CCN0file);
+
+						// Code to get file to local system
+						channel_sftp.cd("/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/");
+						// channel_sftp.pwd();
+						//File localFile1 = new File(Curr_user_directory_path + "\\" + "InputCdrFile");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls(".");
+						Thread.sleep(5000);
+
+						for (ChannelSftp.LsEntry entry1 : list1) {
+							
+							if (entry1.getFilename().contains(CCN0file)) {
+								channel_sftp.get(CCN0file, localFile + "\\" + "CCN" + "\\");
+								
+								Thread.sleep(10000);
+								channel_sftp.get(CCN0file, localFileb + "\\" + "CCN" + "\\");
+								System.out.println("SDP file transfered to " + localFile + "\\" + "CCN" + "\\");
+							} 
+							
+						}
+
+						channel_sftp.disconnect();
+						session.disconnect();
+
+					} catch (Exception e) {
+						e.printStackTrace();
+
+					}
+					//
+					
+						//System.out.println("Waiting for CCN system to connect");		
+						Thread.sleep(30000);
+						// ************** CCN Unix Interactions
+						//Curr_user_directory_path = System.getProperty("user.dir");
+						//String CCN_unix_hostname = "10.95.213.132";
+						//String CCN_Unix_username = "tasuser";
+						//String CCN_Unix_password = "CCNtasuser@123";
+						
+						List<String> CCN1_commands = new ArrayList<String>();
+						CCN1_commands.add("cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/");
+						CCN1_commands.add("grep -l "+MSISDN+" *"+dateccn+now+"* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_1file.txt");
+						executeCommands(CCN1_commands, CCN_unix_hostname, CCN_Unix_username, CCN_Unix_password);
+						close();
+						//grep -l 971520001714 *20190529* |xargs ls -l|grep 13:0[0-9]|tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCNfile.txt
+
+						try {
+
+							JSch jsch = new JSch();
+							Session session = jsch.getSession(CCN_Unix_username, CCN_unix_hostname, 22);
+							session.setPassword(CCN_Unix_password);
+							session.setConfig("StrictHostKeyChecking", "no");
+							session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+							session.connect();
+							channel_sftp = null;
+							channel_sftp = (ChannelSftp) session.openChannel("sftp");
+							channel_sftp.connect();
+							channel_sftp.cd("/cluster/home/system-oam/tasuser/Auto");
+
+						//	File localFile = new File(Curr_user_directory_path + "\\");
+							@SuppressWarnings("unchecked")
+							Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
+							System.out.println(list);
+							for (ChannelSftp.LsEntry entry : list) {
+								if (entry.getFilename().contains("CCN_1file.txt")) {
+									channel_sftp.get(entry.getFilename(), localFile + "\\" + "CCN_1file.txt");
+									Thread.sleep(5000);
+								}
+							}
+							// Code to get AIR file latest name
+							String CCN1file = filename(localFile + "\\" + "CCN_1file.txt");
+							System.out.println(CCN1file);
+
+							// Code to get file to local system
+							channel_sftp.cd("/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/");
+							// channel_sftp.pwd();
+							//File localFile1 = new File(Curr_user_directory_path + "\\" + "InputCdrFile");
+							@SuppressWarnings("unchecked")
+							Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls(".");
+							Thread.sleep(5000);
+
+							for (ChannelSftp.LsEntry entry1 : list1) {
+								
+								if (entry1.getFilename().contains(CCN1file)) {
+									channel_sftp.get(CCN1file, localFile + "\\" + "CCN" + "\\");
+									
+									Thread.sleep(10000);
+									channel_sftp.get(CCN1file, localFileb + "\\" + "CCN" + "\\");
+									System.out.println("SDP file transfered to " + localFile + "\\" + "CCN" + "\\");
+								} 
+								
+							}
+
+							channel_sftp.disconnect();
+							session.disconnect();
+
+						} catch (Exception e) {
+							e.printStackTrace();
+
+						}
 				}
 				// ************** AIR Unix Interactions
 				//Curr_user_directory_path = System.getProperty("user.dir");
@@ -426,6 +583,7 @@ public class asnconverter {
 								channel_sftp.get(Airfile, localFile + "\\" + "AIR" + "\\");
 								
 								Thread.sleep(10000);
+								channel_sftp.get(Airfile, localFileb + "\\" + "AIR" + "\\");
 								System.out.println("SDP file transfered to " + localFile + "\\" + "AIR" + "\\");
 							} 
 							
@@ -486,9 +644,9 @@ public class asnconverter {
 							} else if (filetype.equalsIgnoreCase("SDP")) {
 								schemaname = "SDPOUTPUTCDRCS416A.asn1";
 
-							} else if (filetype.equalsIgnoreCase("OCC-data")) {
+							} else if (filetype.equalsIgnoreCase("OCC")) {
 								schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
-							} else if (filetype.equalsIgnoreCase("CCN_voice")) {
+							} else if (filetype.equalsIgnoreCase("CCN")) {
 								schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
 							}
 							else {
@@ -577,7 +735,7 @@ public class asnconverter {
 							}
 							else {
 							ExtentTest test1 = extent.createTest("CISFILE_"+MSISDN+"_Output");
-							test1.pass("<a href='file:///D:/DU Automation/ASNConverter/CDR/CIS/EDRfile.csv'>Response</a>");
+							test1.pass("<a href='file:///D:/DU Automation/ASNConverter/CDR/CIS/EDRfile.csv'>Click her for EDR</a>");
 							}
 							extent.flush();
 							endTestCase(refid);
@@ -942,6 +1100,31 @@ public class asnconverter {
 	
 		return finaldate;
 	}	
+	public static String Present_dateccn() {
+
+		String datetodayccn;
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
+		LocalDateTime now = LocalDateTime.now();
+		datetodayccn = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
+		//String finaldateocc=datetoday.substring(0, datetoday.length()-1);	
+	
+		return datetodayccn;
+	}
+	public static String timeoffour() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.HOUR_OF_DAY, -4);
+		java.util.Date date = calendar.getTime();
+		//System.out.println(date);
+		String date1=date.toString();
+		//System.out.println(date1);
+		String finaldate=date1.substring(11,date1.length()-13).replace(":", "");
+		//System.out.println(finaldate);
+		
+		
+		return finaldate;
+		
+	}
 	
 	//Function to extract files 
 	public static void file_extraction(String gzfilepath, String finalpath) {

@@ -3092,3 +3092,408 @@ gzip: *190529-104*.gz: No such file or directory
 logout
 
 Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Wed May 29 10:40:38 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+# Your IP, Login Time, Username have been noted for auditing purposes.         #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520002069 *20190529-132* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520002069 *20190529-132* |tac |head - 1 > /home/tasuser/sdpfile.txt
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@m
+eytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+Last login: Wed May 29 13:19:30 2019 from 10.44.74.17
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username has been noted for auditing purposes.          #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190529-132* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /hom
+e/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190529-132* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190529-132* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190529-132* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.213.132 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.213.132 !!!
+#!/bin/bash
+
+cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/
+
+grep -l 971520002069 *20190530074* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_0file.txt
+
+exit
+
+tasuser@SC-1:~> #!/bin/bash
+tasuser@SC-1:~> 
+tasuser@SC-1:~> cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> grep - l 971520002069 *20190530074* |tac|head -1 > /cluster/home/system-oam/tasuser/Aut o/CCN_0file.txt
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.213.132 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.213.132 !!!
+#!/bin/bash
+
+cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/
+
+grep -l 971520002069 *20190530074* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_1file.txt
+
+exit
+
+tasuser@SC-1:~> #!/bin/bash
+tasuser@SC-1:~> 
+tasuser@SC-1:~> cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> grep - l 971520002069 *20190530074* |tac|head -1 > /cluster/home/system-oam/tasuser/Aut o/CCN_1file.txt
+grep: *20190530074*: No such file or directory
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.213.132 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.213.132 !!!
+#!/bin/bash
+
+cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/
+
+grep -l 971520002069 *20190530074* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_0file.txt
+
+exit
+
+tasuser@SC-1:~> #!/bin/bash
+tasuser@SC-1:~> 
+tasuser@SC-1:~> cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> grep - l 971520002069 *20190530074* |tac|head -1 > /cluster/home/system-oam/tasuser/Aut o/CCN_0file.txt
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.213.132 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.213.132 !!!
+#!/bin/bash
+
+cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/
+
+grep -l 971520002069 *20190530074* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_1file.txt
+
+exit
+
+tasuser@SC-1:~> #!/bin/bash
+tasuser@SC-1:~> 
+tasuser@SC-1:~> cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> grep - l 971520002069 *20190530074* |tac|head -1 > /cluster/home/system-oam/tasuser/Aut o/CCN_1file.txt
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190530-115* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190530-115* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190530-115* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190530-115* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190530-115* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190530-115* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190530-115* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520002069 *190530-115* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190530-115* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520002069 *190530-115* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+################################################################################
+# Warning! You have entered into a secured area!                               #
+# Your IP, Login Time, Username has been noted for auditing purposes.          #
+# This service is restricted to authorized users only.                         #
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520002069 *190530-115* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmo
+cc02 ~]$ zgrep -l 971520002069 *190530-115* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520001714 *190530-115* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520001714 *190530-115* |tac|head -1 > /hom e/tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520001714 *190530-115* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520001714 *190530-115* |tac|head -1 > /hom e/tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.213.132 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.213.132 !!!
+#!/bin/bash
+
+cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/
+
+grep -l 971520001714 *20190530080* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_0file.txt
+
+exit
+
+tasuser@SC-1:~> #!/bin/bash
+tasuser@SC-1:~> 
+tasuser@SC-1:~> cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> grep - l 971520001714 *20190530080* |tac|head -1 > /cluster/home/system-oam/tasuser/Aut o/CCN_0file.txt
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive> exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.213.132 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.213.132 !!!
+#!/bin/bash
+
+cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/
+
+grep -l 971520001714 *20190530080* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_1file.txt
+
+exit
+
+tasuser@SC-1:~> #!/bin/bash
+tasuser@SC-1:~> 
+tasuser@SC-1:~> cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> grep - l 971520001714 *20190530080* |tac|head -1 > /cluster/home/system-oam/tasuser/Aut o/CCN_1file.txt
+grep: *20190530080*: No such file or directory
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> 
+tasuser@SC-1:/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive> exit
+logout
+
+Disconnected channel and session
