@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -18,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.zip.GZIPInputStream;
@@ -88,6 +94,10 @@ public class asnconverter {
 	public static String date="" ;
 	public static String dateccn="";
 	public static String now="";
+	
+	public  static String Cis_Filepath =cdrfiles+"\\CIS\\EDRfile.csv";
+	public static String Cis_viewpath= "";
+	//public  static String MSISDN ="971520001714";
 	///////////////////////////////////////////////
 
 	@SuppressWarnings("deprecation")
@@ -105,7 +115,6 @@ public class asnconverter {
 				
 
 			////////////////////////////////////////////////////////////////////////
-				//System.out.println(cdrfiles);
 				//file_deletion(cdrfiles);
 				Curr_user_directory_path = System.getProperty("user.dir");
 				File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
@@ -143,7 +152,6 @@ public class asnconverter {
 						System.out.println(channel_sftp.pwd());
 
 					//	File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
-						//System.out.println(localFile);
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.csv");
 						for (ChannelSftp.LsEntry entry : list) {
@@ -212,8 +220,7 @@ public class asnconverter {
 
 						// Code to get file to local system
 						channel_sftp.cd("/var/opt/fds/CDR/archive/");
-						// channel_sftp.pwd();
-					//	File localFile1 = new File(Curr_user_directory_path + "\\" + "CDR");
+						
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.ASN");
 						Thread.sleep(5000);
@@ -270,7 +277,7 @@ public class asnconverter {
 						channel_sftp.connect();
 						channel_sftp.cd("/home/tasuser/Auto");
 
-					//	File localFile = new File(Curr_user_directory_path + "\\");
+					
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
 						for (ChannelSftp.LsEntry entry : list) {
@@ -285,8 +292,6 @@ public class asnconverter {
 
 						// Code to get file to local system
 						channel_sftp.cd("/home/tasuser");
-						// channel_sftp.pwd();
-						//File localFile1 = new File(Curr_user_directory_path + "\\" + "CDR");
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.gz");
 						Thread.sleep(5000);
@@ -336,7 +341,6 @@ public class asnconverter {
 						channel_sftp.connect();
 						channel_sftp.cd("/home/tasuser/Auto");
 
-					//	File localFile = new File(Curr_user_directory_path + "\\");
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
 						for (ChannelSftp.LsEntry entry : list) {
@@ -351,8 +355,7 @@ public class asnconverter {
 
 						// Code to get file to local system
 						channel_sftp.cd("/home/tasuser");
-						// channel_sftp.pwd();
-						//File localFile1 = new File(Curr_user_directory_path + "\\" + "CDR");
+						
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.gz");
 						Thread.sleep(5000);
@@ -375,10 +378,10 @@ public class asnconverter {
 
 					}
 					// Extract OCC.gz file to parsing ber file
-					file_extraction(gzfilepath,finalpath);
-					
-					
+					file_extraction(gzfilepath,finalpath);		
 				}
+				
+				
 				// Connecting to CCN to get CDR file
 				if (Input.contains("CCN") || Input.contains("ALL")) {
 					System.out.println("Waiting for CCN system to connect");		
@@ -442,7 +445,7 @@ public class asnconverter {
 								
 								Thread.sleep(10000);
 								channel_sftp.get(CCN0file, localFileb + "\\" + "CCN" + "\\");
-								System.out.println("SDP file transfered to " + localFile + "\\" + "CCN" + "\\");
+								System.out.println("CCN file transfered to " + localFile + "\\" + "CCN" + "\\");
 							} 
 							
 						}
@@ -513,7 +516,7 @@ public class asnconverter {
 									
 									Thread.sleep(10000);
 									channel_sftp.get(CCN1file, localFileb + "\\" + "CCN" + "\\");
-									System.out.println("SDP file transfered to " + localFile + "\\" + "CCN" + "\\");
+									System.out.println("CCN file transfered to " + localFile + "\\" + "CCN" + "\\");
 								} 
 								
 							}
@@ -526,8 +529,9 @@ public class asnconverter {
 
 						}
 				}
+			
 				// ************** AIR Unix Interactions
-				//Curr_user_directory_path = System.getProperty("user.dir");
+				
 				if (Input.contains("AIR") || Input.contains("ALL")) {
 					System.out.println("Waiting for Air system to connect");		
 					Thread.sleep(60000);
@@ -555,7 +559,6 @@ public class asnconverter {
 						channel_sftp.connect();
 						channel_sftp.cd("/home/tasuser/Auto");
 
-					//	File localFile = new File(Curr_user_directory_path + "\\");
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
 						
@@ -565,14 +568,14 @@ public class asnconverter {
 								Thread.sleep(5000);
 							}
 						}
+					
 						// Code to get AIR file latest name
 						String Airfile = filename(localFile + "\\" + "Airfile.txt");
 						System.out.println(Airfile);
 
 						// Code to get file to local system
 						channel_sftp.cd("/var/opt/air/datarecords/backup_CDR/");
-						// channel_sftp.pwd();
-						//File localFile1 = new File(Curr_user_directory_path + "\\" + "CDR");
+						
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.AIR");
 						Thread.sleep(5000);
@@ -622,7 +625,8 @@ public class asnconverter {
 					if (directoryListing != null) {
 						for (File child : directoryListing) {
 							filename = child.getAbsoluteFile().getName();
-
+							if(!filetype.equalsIgnoreCase("CIS")) {
+														
 							startTestCase("Parsing File " + filename);
 							String schemaname = "";
 							File TCFold = new File(trfold + "/" + filetype);
@@ -648,6 +652,7 @@ public class asnconverter {
 								schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
 							} else if (filetype.equalsIgnoreCase("CCN")) {
 								schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
+													
 							}
 							else {
 								schemaname = "ccn55a.asn1 -pdu DetailOutputRecord";
@@ -711,6 +716,7 @@ public class asnconverter {
 												String param1 = rs.getField(rs.getFieldNames().get(Iterator).toString())
 														.toString();
 												String retval = parsexml(param1, file);
+																								
 												String[] parmi = rs.getFieldNames().get(Iterator).toString()
 														.split("Parameter");
 												String findx = parmi[1];
@@ -728,14 +734,36 @@ public class asnconverter {
 								}
 
 							}
-							if(!filetype.contentEquals("CIS")) {
+							
 							ExtentTest test = extent.createTest(filetype+"_"+MSISDN + "_Output");
 							test.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank' href = '" + filetype + "/"
 									+ filename + "/output.xml'>Click to View the CDR</a></b><br>" + tbl + "</table>");
 							}
+							
 							else {
+								startTestCase("Parsing File " + filename);
+								//String schemaname = "";
+								File TCFold = new File(trfold + "/" + filetype);
+								if ((!TCFold.exists()))
+									TCFold.mkdir();
+								File TCFold1 = new File(trfold + "/" + filetype + "/" + filename);
+								if ((!TCFold1.exists()))
+									TCFold1.mkdir();
+								File filecsv = new File(trfold + "/" + filetype + "/" + filename + "/Output.csv");
+								Cis_viewpath=filecsv.toString();
+								System.out.println(Cis_viewpath);
+								if (filecsv.exists()) {
+									filecsv.delete();
+								}
+								filecsv.createNewFile();
+																
+								String tbl=CSVparse(Cis_Filepath,Cis_viewpath);
+								 
+								
 							ExtentTest test1 = extent.createTest("CISFILE_"+MSISDN+"_Output");
-							test1.pass("<a href='file:///D:/DU Automation/ASNConverter/CDR/CIS/EDRfile.csv'>Click her for EDR</a>");
+							test1.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank' href = '" + filetype + "/"
+									+ filename + "/Output.csv'>Click to View the EDR</a></b><br>" + tbl + "</table>");
+							//+ filetype + "/" + "Output.csv"
 							}
 							extent.flush();
 							endTestCase(refid);
@@ -1147,8 +1175,7 @@ public class asnconverter {
 
 				//System.out.println("Extracted ber file is " + berfile);
 
-				FileTransfer gZip = new FileTransfer();
-				gZip.gunzipIt(gzfile, berfile);
+				gunzipIt(gzfile, berfile);
 				
 			} else if (listOfFiles[i].isDirectory()) {
 				System.out.println("Directory " + listOfFiles[i].getName());
@@ -1160,7 +1187,7 @@ public class asnconverter {
 	}
 
 	//Function to Unzip files
-	public void gunzipIt(String INPUT_GZIP_FILE1, String OUTPUT_FILE2) {
+	public static void gunzipIt(String INPUT_GZIP_FILE1, String OUTPUT_FILE2) {
 
 		byte[] buffer = new byte[1024];
 		try {
@@ -1222,6 +1249,145 @@ public class asnconverter {
 			}
 		}
 	}
+	public static String CSVparse(String Filepath, String viewpath) {
+		String csvtb = null;
+		try {
+			
+			Random rand = new Random(); 
+			//Filepath ="D:\\DU Automation\\ASNConverter\\CDR\\CIS\\EDRfile.csv";
+			// MSISDN ="971520001714";
+			String ClearData="Delete from public.EDR_CIS_DataSamp;";
+			//tableCreation(sql);
+			String loadCSV= "COPY public.EDR_CIS_DataSamp  (Transaction_Time  ,Client_Transaction_Id  ,Transaction_Id  ,IP_Address ," + 
+					"Event_Type  ,A_Party_Msisdn  ,B_Party_Msisdn  ,input  ,Result_Code  ,Result_Description ," + 
+					"Service_Class  ,Requested_Product_ID  ,Product_Name  ,Product_Type  ,Product_Cost  ,Applied_product_cost," + 
+					"Product_Validity  ,Access_Channel  ,Access_Code  ,Charge_Indicator  ,Vat_Fee  ,Language_Id  ," + 
+					"Iname  ,Circle_Code  ,Pay_Source  ,Send_sms  ,Skip_charging  ,Bill_Cycle_ID  ," + 
+					"User_ID  ,Origin_Host  ,Faf_Indicator  ,Faf_MSISDN  ,Offer_ID  ,New_Imei  ,Old_Imei  ," + 
+					"Dealer_ID  ,Transfer_Remark  ,DrCr  ,Subscription_Date  ,Expiry_Date  ,Last_Renewal_Date ," + 
+					"Grace_Expiry_Date  ,Status  ,Subscription_Mode  ,Network_Status  ,Last_Status  ,Status_Change_time," + 
+					"Command_Count  ,Charging_Session_Id  ,Notification_Message  ,Commission_Fee  ,Transfer_Fee ,GL_Code," + 
+					"State  ,Subscriber_Type  ,OpParam1  ,OpParam2  ,OpParam3  ,OpParam4  ,OpParam5  ,OpParam6 ," + 
+					"OpParam7  ,OpParam8  ,OpParam9  ,OpParam10  ,OpParam11  ,OpParam12  ,TDF_Event_Class  ," + 
+					"TDF_Event_Name  ,TDF_Voucher_Type  ,TDF_Periodic_Charge  ,TDF_Usage  ,External_Data1  ,External_Data2  ," + 
+					"External_Data3  ,External_Data4  ,Callback,ParentProductSPInfo) FROM '"+Filepath+"' DELIMITER '|' CSV HEADER";
+			
+			
+			//FileOperation();
+			ExecuteQuery(ClearData);
+			ExecuteQuery(loadCSV);
+			int num = rand.nextInt(10000000);
+			String Validation_Query ="CREATE VIEW public.CIS_EDR_Validation_"+num+" AS Select Transaction_Time,Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID," + 
+					"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_datasamp where A_Party_Msisdn='" +MSISDN +"'";
+			ExecuteQuery(Validation_Query);
+			String getValidationData ="Select Transaction_Time,Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID," + 
+					"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_datasamp where A_Party_Msisdn='" +MSISDN +"'";
+		 csvtb=ValidationQuery(getValidationData);
+		 
+		 // To export the required data to csv file
+		 String Export_Data ="COPY (select * from public.CIS_EDR_Validation_"+num+") TO '"+viewpath+"' DELIMITER '|' CSV HEADER" ;
+		 ExecuteQuery(Export_Data);
+		 return csvtb;
+				 
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		return csvtb;
+		
+	
+	}
+
+	
+	public static void ExecuteQuery(String sql) throws SQLException, ClassNotFoundException  {
+		   
+		  // Connection conn = null;
+		   
+	       Statement stmt = null;
+		
+		      String dbURL = "jdbc:postgresql://localhost:5432/DU";
+		      Properties parameters = new Properties();
+		      parameters.put("user", "postgres");
+		      parameters.put("password", "maveric");
+		      java.sql.Connection con = DriverManager.getConnection(dbURL, parameters);
+		      
+		     // conn.setAutoCommit(false);
+		   //   System.out.println("Opened database successfully");
+		      
+		 System.out.println("Opened database successfully");
+
+        stmt = con.createStatement();
+        stmt.executeUpdate(sql);
+		 stmt.close();
+		 con.close();
+	       System.out.println("Table created successfully");  
+	}   
+	
+	public static String ValidationQuery(String Validatin_Query) throws SQLException {
+		 String dbURL = "jdbc:postgresql://localhost:5432/DU";
+	      Properties parameters = new Properties();
+	      parameters.put("user", "postgres");
+	      parameters.put("password", "maveric");
+	     
+	     
+     java.sql.Connection con = DriverManager.getConnection(dbURL, parameters);
+            Statement st = con.createStatement();
+    		ResultSet rs = st.executeQuery(Validatin_Query);
+    	   		 
+    		 System.out.println("Query Executed");
+    		// display actor information
+            String csvtbl= displayActor(rs);
+
+            st.close();
+   		 con.close();
+   		 return csvtbl;
+    
+}
+	public static String displayActor(ResultSet rs) throws SQLException {
+		 String tbl = "<table>"
+		 		+ "<tr>"
+		 		+ "<th>Transaction_Time</th>"
+		 		+ "<th>A_Party_Msisdn</th>"
+		 		+ "<th>Product_Name</th>"
+		 		+ "<th>Event_Type</th>"
+		 		+ "<th>Access_Channel</th>"
+		 		+ "<th>Result_Description</th>"
+		 		+ "<th>Result_Code</th>"
+		 		+ "<th>Offer_ID</th>"
+		 		+ "<th>Service_Class</th>"
+		 		+ "<th>input</th>"
+		 		+ "<th>Requested_Product_ID</th>"
+		 		+ "<th>Expiry_Date</th>"
+		 		+ "<th>Subscription_Mode</th>"
+		 		+ "<th width = 150px>Product_Validity</th>"
+		 		+ "<th>Vat_Fee</th>"
+		 		+ "<th>Iname</th>"
+		 		+ "<th>Network_Status</th>"
+		 				 		
+		 		+ "</tr>";
+        while (rs.next()) {
+        	tbl = tbl + "<tr><td style= 'min-width: 162px'>" +(rs.getString("Transaction_Time") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("A_Party_Msisdn") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Product_Name") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Event_Type") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Access_Channel") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Result_Description") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Result_Code") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Offer_ID") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Service_Class") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("input") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Requested_Product_ID") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Expiry_Date") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Subscription_Mode") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Product_Validity") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Vat_Fee") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                    + rs.getString("Iname") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
+                  	+ rs.getString("Network_Status"))+ "</td></tr style= 'min-width: 162px'>";
+ 
+        }
+        return tbl;
+    }
+
 
 	// End
 

@@ -3967,3 +3967,91 @@ exit
 logout
 
 Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520001714 *190602-17* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520001714 *190602-17* |tac|head -1 > /home /tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520001714 *190602-17* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520001714 *190602-17* |tac|head -1 > /home /tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.22 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.22 !!!
+
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520001714 *190602-17* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt
+
+exit
+
+[tasuser@meytvvmocc01 ~]$ #!/bin/bash
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ cd /home/tasuser
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ zgrep -l 971520001714 *190602-17* |tac|head -1 > /home /tasuser/Auto/occfile_22.txt
+[tasuser@meytvvmocc01 ~]$ 
+[tasuser@meytvvmocc01 ~]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.21 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.21 !!!
+# All activities on this system are logged. Unauthorized access will be fully  #
+# investigated and action would be taken appropriately.                        #
+#                                                                              #
+# LOG OFF IMMEDIATELY IF YOU ARE NOT AN AUTHORIZED USER                        #
+################################################################################
+#!/bin/bash
+
+cd /home/tasuser
+
+zgrep -l 971520001714 *190602-17* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt
+
+exit
+
+[tasuser@meydvvmocc02 ~]$ #!/bin/bash
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ cd /home/tasuser
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ zgrep -l 971520001714 *190602-17* |tac|head -1 > /home /tasuser/Auto/occfile_21.txt
+[tasuser@meydvvmocc02 ~]$ 
+[tasuser@meydvvmocc02 ~]$ exit
+logout
+
+Disconnected channel and session
