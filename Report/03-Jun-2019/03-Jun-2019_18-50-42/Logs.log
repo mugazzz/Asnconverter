@@ -1,0 +1,73 @@
+03-06-2019 18:50:42 INFO [asnconverter]: Starting execution at +:03-Jun-2019 18:50:42
+03-06-2019 18:50:42 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:42 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:42 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-4166-20190602151420-5 $$$$$$$$$$$$$$$$$$$$$$$$$
+03-06-2019 18:50:42 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:42 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:43 INFO [asnconverter]: subscriptionIDValue = 971520000678
+03-06-2019 18:50:43 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+03-06-2019 18:50:43 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:43 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:43 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDPOUTPUTCDR_4001_meytvvmsdp01_TRF_0735_20190602-191402.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+03-06-2019 18:50:43 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:43 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:43 INFO [asnconverter]: accountNumber = 971520002069
+03-06-2019 18:50:43 INFO [asnconverter]: adjustmentRecordType = provisioningUaDa
+03-06-2019 18:50:43 INFO [asnconverter]: sdpID = meytvvmsdp01
+03-06-2019 18:50:43 INFO [asnconverter]: cdrID = 1517902712724967834
+03-06-2019 18:50:43 INFO [asnconverter]: accountNumber = 971520002069
+03-06-2019 18:50:43 INFO [asnconverter]: subscriberNumber = 971520002069
+03-06-2019 18:50:43 INFO [asnconverter]: adjustmentTimeStamp = 20190602191402+0400
+03-06-2019 18:50:43 INFO [asnconverter]: serviceClassId = 1051
+03-06-2019 18:50:43 INFO [asnconverter]: currencyType = 0
+03-06-2019 18:50:43 INFO [asnconverter]: originNodeType = SDP
+03-06-2019 18:50:44 INFO [asnconverter]: originNodeId = meytvvmsdp01
+03-06-2019 18:50:44 INFO [asnconverter]: accountFlagsBefore = 00000000
+03-06-2019 18:50:44 INFO [asnconverter]: accountFlagsAfter = 10000000
+03-06-2019 18:50:44 INFO [asnconverter]: activationDate = 20190602
+03-06-2019 18:50:44 INFO [asnconverter]: offerID = 4541
+03-06-2019 18:50:44 INFO [asnconverter]: action = modify
+03-06-2019 18:50:44 INFO [asnconverter]: offerType = timer
+03-06-2019 18:50:44 INFO [asnconverter]: offerDisabledAfter = FALSE
+03-06-2019 18:50:44 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+03-06-2019 18:50:44 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:44 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:44 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meydvvmocc02-190528-1634-02448.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+03-06-2019 18:50:44 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:44 INFO [asnconverter]: ****************************************************************************************
+03-06-2019 18:50:44 INFO [asnconverter]: subscriptionIDValue = 971520006119
+03-06-2019 18:50:44 INFO [asnconverter]: triggerTime = 915082612365304000
+03-06-2019 18:50:44 INFO [asnconverter]: nodeName = meytvvmocc01
+03-06-2019 18:50:44 INFO [asnconverter]: serviceContextID = du-service
+03-06-2019 18:50:44 INFO [asnconverter]: chargingContextID = Ericsson_OCS_V1_0.0.0.10.32251@3gpp.org
+03-06-2019 18:50:44 INFO [asnconverter]: serviceSessionID = 3:-:1
+03-06-2019 18:50:44 INFO [asnconverter]: recordIdentificationNumber = 1CEB
+03-06-2019 18:50:44 INFO [asnconverter]: partialSequenceNumber = 0
+03-06-2019 18:50:44 INFO [asnconverter]: lastPartialOutput = TRUE
+03-06-2019 18:50:44 INFO [asnconverter]: subscriptionIDType = endUserE164
+03-06-2019 18:50:44 INFO [asnconverter]: subscriptionIDValue = 971520006119
+03-06-2019 18:50:44 INFO [asnconverter]: sessionId = ggsn.du.ae;3768035574;212;1492
+03-06-2019 18:50:44 INFO [asnconverter]: ccRequestNumber = 1
+03-06-2019 18:50:44 INFO [asnconverter]: originRealm = 64752E6165
+03-06-2019 18:50:44 INFO [asnconverter]: originHost = 6767736E2E64752E6165
+03-06-2019 18:50:44 INFO [asnconverter]: serviceIdentifier = 3
+03-06-2019 18:50:44 INFO [asnconverter]: tariffChangeUsage = before
+03-06-2019 18:50:44 INFO [asnconverter]: amount = 0
+03-06-2019 18:50:44 INFO [asnconverter]: decimals = 6
+03-06-2019 18:50:44 INFO [asnconverter]: currency = 784
+03-06-2019 18:50:44 INFO [asnconverter]: eventTime = 32303139303532383136333433322B30343030
+03-06-2019 18:50:44 INFO [asnconverter]: triggerTime = 915082612365304000
+03-06-2019 18:50:44 INFO [asnconverter]: serviceScenario = mobileOriginating
+03-06-2019 18:50:44 INFO [asnconverter]: roamingPosition = insideHPLMN
+03-06-2019 18:50:44 INFO [asnconverter]: servedAccount = 81795102001691
+03-06-2019 18:50:44 INFO [asnconverter]: serviceClassID = 1002
+03-06-2019 18:50:44 INFO [asnconverter]: accountGroupID = 0
+03-06-2019 18:50:44 INFO [asnconverter]: accountValueBefore = 0 6 784
+03-06-2019 18:50:44 INFO [asnconverter]: amount = 0
+03-06-2019 18:50:44 INFO [asnconverter]: decimals = 6
+03-06-2019 18:50:44 INFO [asnconverter]: currency = 784
+03-06-2019 18:50:44 INFO [asnconverter]: accountValueAfter = 0 6 784
+03-06-2019 18:50:44 INFO [asnconverter]: amount = 0
+03-06-2019 18:50:44 INFO [asnconverter]: decimals = 6
+03-06-2019 18:50:44 INFO [asnconverter]: currency = 784
+03-06-2019 18:50:44 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

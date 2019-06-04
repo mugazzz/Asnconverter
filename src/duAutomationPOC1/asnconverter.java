@@ -20,22 +20,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
-import java.util.Scanner;
+//import java.util.Scanner;
 import java.util.Vector;
 import java.util.zip.GZIPInputStream;
 
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+//import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.parser.Parser;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -47,6 +47,11 @@ import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.ChannelShell;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
+
+//import org.jsoup.Jsoup;
+//import org.jsoup.nodes.Document;
+//import org.jsoup.parser.Parser;
+import org.w3c.dom.*;
 
 
 
@@ -70,8 +75,8 @@ public class asnconverter {
 	private static String SDP_Unix_username = "";
 	private static String SDP_Unix_password = "";
 	private static String SDP_unix_hostname = "";
-	private static String CIS_Unix_username = "";
-	private static String CIS_Unix_password = "";
+	private static String CIS_Unix_username = "VenuReddyGaddam";
+	private static String CIS_Unix_password = "VenuReddyGaddam";
 	private static String CIS_unix_hostname = "";
 	private static String OCC_Unix_username = "";
 	private static String OCC_Unix_password = "";
@@ -97,20 +102,18 @@ public class asnconverter {
 	
 	public  static String Cis_Filepath =cdrfiles+"\\CIS\\EDRfile.csv";
 	public static String Cis_viewpath= "";
+	public static String nodetag;
+	public static String idtag;
 	//public  static String MSISDN ="971520001714";
 	///////////////////////////////////////////////
 
 	@SuppressWarnings("deprecation")
 	public static void main(String args[]) {
 		try {
-			Calendar cal1 = Calendar.getInstance();
-			//long currdate = cal1.getTimeInMillis() / 1000;
-			//long unixtstamp = 1549238400;
+			
 			now= timeoffour();
 			dateccn=Present_dateccn();
-			// System.out.println(unixtstamp);
-			// System.out.println(currdate);
-			// if(currdate < unixtstamp)
+			
 			{
 				
 
@@ -393,8 +396,8 @@ public class asnconverter {
 					String CCN_Unix_password = "CCNtasuser@123";
 					//String now= timeoffour();
 					//String date = Present_date();
-					System.out.println(now);
-					System.out.println(date);
+					//System.out.println(now);
+					//System.out.println(date);
 					List<String> CCN_commands = new ArrayList<String>();
 					CCN_commands.add("cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/");
 					CCN_commands.add("grep -l "+MSISDN+" *"+dateccn+now+"* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_0file.txt");
@@ -706,29 +709,23 @@ public class asnconverter {
 								System.out.println(s);
 							}
 							String tbl = "<table><tr><th>Parameter</th><th>Value</th></tr>";
-							String filenameq = "";
+							//String filenameq = "";
 							for (int Iterator = 1; Iterator < rs.getFieldNames().size(); Iterator++) {
 								if (rs.getFieldNames().get(Iterator).toString().contains("Parameter")) {
-									if (rs.getField(rs.getFieldNames().get(Iterator)) != "")
-										if (rs.getFieldNames().get(Iterator + 1).toString().contains("value")) {
-											if (rs.getField(rs.getFieldNames().get(Iterator + 1)).contains("YES")) {
+									if (rs.getField(rs.getFieldNames().get(Iterator)) != "") {
+										//if (rs.getFieldNames().get(Iterator + 1).toString().contains("value")) {
+											//if (rs.getField(rs.getFieldNames().get(Iterator + 1)).contains("YES")) {
 
 												String param1 = rs.getField(rs.getFieldNames().get(Iterator).toString())
 														.toString();
-												String retval = parsexml(param1, file);
-																								
-												String[] parmi = rs.getFieldNames().get(Iterator).toString()
-														.split("Parameter");
-												String findx = parmi[1];
-												if (param1.equals("subscriptionIDValue[0]")|| param1.equals("accountNumber"))
-													
-												{
-													filenameq = retval;
-												}
+												//String retval = parsexml(param1, file);
+												String filepath=file.toString();
+												String retval = parsedata(filetype,filepath ,param1,MSISDN);												
+												
 												tbl = tbl + "<tr><td>" + param1 + "</td><td>" + retval + "</td></tr>";
 												// conn.executeUpdate("Update TestData set Value"+findx+"='"+retval+"'
 												// where Refrence_ID ='"+refid+"'");
-											}
+											//}
 										}
 
 								}
@@ -758,6 +755,7 @@ public class asnconverter {
 								filecsv.createNewFile();
 																
 								String tbl=CSVparse(Cis_Filepath,Cis_viewpath);
+								
 								 
 								
 							ExtentTest test1 = extent.createTest("CISFILE_"+MSISDN+"_Output");
@@ -779,39 +777,41 @@ public class asnconverter {
 		System.exit(0);
 	}
 
-	public static String parsexml(String param1, File file)
-			throws ParserConfigurationException, SAXException, IOException, IndexOutOfBoundsException {
-		String[] parmsplt = param1.split("\\[");
-		String param = parmsplt[0];
-		int inde = 0;
-		if (parmsplt.length == 1) {
-			inde = 0;
-		} else {
-			String[] paramsplit2 = parmsplt[1].split("\\]");
-			inde = Integer.parseInt(paramsplit2[0]);
-		}
-
-		File ipfile = file;
-		String fstr = "";
-		StringBuilder fileContents = new StringBuilder((int) ipfile.length());
-
-		try (Scanner scanner = new Scanner(ipfile)) {
-			while (scanner.hasNextLine()) {
-				fileContents.append(scanner.nextLine() + System.lineSeparator());
-			}
-			fstr = fileContents.toString();
-		}
-
-		Document doc = Jsoup.parse(fstr, "", Parser.xmlParser());
-		// System.out.println(param +" = "+ doc.select(param).get(0).text());
-		if (doc.select(param).size() != 0) {
-			info(param + " = " + doc.select(param).get(inde).text());
-			return doc.select(param).get(inde).text();
-		} else {
-			return "";
-		}
-
-	}
+//	public static String parsexml(String param1, File file)
+//			throws ParserConfigurationException, SAXException, IOException, IndexOutOfBoundsException {
+//		String[] parmsplt = param1.split("\\[");
+//		
+//		String param = parmsplt[0];
+//		int inde = 0;
+//		if (parmsplt.length == 1) {
+//			inde = 0;
+//		} else {
+//			String[] paramsplit2 = parmsplt[1].split("\\]");
+//			
+//			inde = Integer.parseInt(paramsplit2[0]);
+//		}
+//
+//		File ipfile = file;
+//		String fstr = "";
+//		StringBuilder fileContents = new StringBuilder((int) ipfile.length());
+//
+//		try (Scanner scanner = new Scanner(ipfile)) {
+//			while (scanner.hasNextLine()) {
+//				fileContents.append(scanner.nextLine() + System.lineSeparator());
+//			}
+//			fstr = fileContents.toString();
+//		}
+//
+//		Document doc = Jsoup.parse(fstr, "", Parser.xmlParser());
+//		// System.out.println(param +" = "+ doc.select(param).get(0).text());
+//		if (doc.select(param).size() != 0) {
+//			info(param + " = " + doc.select(param).get(inde).text());
+//			return doc.select(param).get(inde).text();
+//		} else {
+//			return "";
+//		}
+//
+//	}
 
 	public static void createtimestampfold() {
 		DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
@@ -1121,12 +1121,12 @@ public class asnconverter {
 
 		String datetoday;
 		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMdd-HH:");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMdd-HH:mm");
 		LocalDateTime now = LocalDateTime.now();
 		datetoday = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
-		//String finaldate=datetoday.substring(0, datetoday.length()-1);	
+		String finaldate=datetoday.substring(0, datetoday.length()-1);	
 	
-		return datetoday;
+		return finaldate;
 	}	
 	public static String Present_dateccn() {
 
@@ -1383,10 +1383,78 @@ public class asnconverter {
                     + rs.getString("Vat_Fee") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
                     + rs.getString("Iname") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
                   	+ rs.getString("Network_Status"))+ "</td></tr style= 'min-width: 162px'>";
+        	
  
         }
         return tbl;
     }
+	public static String parsedata(String filetype,String filepath ,String param1,String MSISDN) {
+		String value="" ;
+	try {
+		
+		if(filetype.equalsIgnoreCase("OCC")||filetype.equalsIgnoreCase("CCN")) {
+			nodetag="onlineCreditControlRecord";
+			idtag="subscriptionIDValue";
+		}else {
+			nodetag="refillRecordV2";
+			idtag="subscriberNumber";
+		}
+
+		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+		Document docc = docBuilder.parse(filepath);
+		docc.getDocumentElement().normalize();
+		
+		NodeList data = docc.getElementsByTagName(nodetag);
+	
+		int totaldata = data.getLength();
+		
+		for (int temp = 0; temp < totaldata; temp++) {
+            Node nNode = data.item(temp);
+		
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+                String[] parmsplt = param1.split("\\[");
+        		String param = parmsplt[0];
+        		int inde = 0;
+        		if (parmsplt.length == 1) {
+        			inde = 0;
+        		} else {
+        			String[] paramsplit2 = parmsplt[1].split("\\]");
+        			inde = Integer.parseInt(paramsplit2[0]);
+        		}
+        		
+
+                String sub=eElement.getElementsByTagName(idtag).item(0).getTextContent();
+                if (sub.contentEquals(MSISDN)){
+                value=(eElement.getElementsByTagName(param).item(inde).getTextContent());
+                info(param + " = " +value);
+                }
+                
+                 
+                
+            }
+            
+		}
+
+		
+
+	} catch (SAXParseException err) {
+		System.out.println("** Parsing error" + ", line " + err.getLineNumber() + ", uri " + err.getSystemId());
+		System.out.println(" " + err.getMessage());
+
+	} catch (SAXException e) {
+		Exception x = e.getException();
+		((x == null) ? e : x).printStackTrace();
+
+	} catch (Throwable t) {
+		t.printStackTrace();
+	}
+	
+	return value;
+
+}
+
 
 
 	// End
