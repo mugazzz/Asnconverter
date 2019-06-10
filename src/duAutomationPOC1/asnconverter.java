@@ -91,7 +91,7 @@ public class asnconverter {
 	public static String Environment = "";
 	public static String curr_log_file_path = System.getProperty("user.dir") + "\\Report.txt";
 	public static String MSISDN = "971520001714";
-	public static String Input = "";
+	public static String Input = "CIS";
 	public static String Test_Scenario = "OPT-in";
 	public static String cdrfiles = System.getProperty("user.dir") + "\\CDR";
 	private static String gzfilepath = cdrfiles+"\\OCCzip\\";
@@ -1294,8 +1294,7 @@ public class asnconverter {
 			
 		}
 		return csvtb;
-		
-	
+
 	}
 
 	

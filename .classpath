@@ -2,16 +2,16 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/apache-logging-log4j.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/commons-io-2.6/commons-io-2.6.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/extentreports-3.1.5.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/fillo-1.18.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/freemarker-2.3.23.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/jsch-0.1.55.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/jsoup-1.11.3.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/log4j-1.2.17-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/mongo-java-driver-3.9.1.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/postgresql-9.2-1002.jdbc4.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/sqlite-jdbc-3.25.2.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/log4j-1.2.17-javadoc.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/apache-logging-log4j.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/extentreports-3.1.5.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/fillo-1.18.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/freemarker-2.3.23.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/jsch-0.1.55.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/jsoup-1.11.3.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/mongo-java-driver-3.9.1.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/postgresql-9.2-1002.jdbc4.jar"/>
+	<classpathentry kind="lib" path="E:/Eclipse/eclipse/workspace/parallel_ussd/JARS1/sqlite-jdbc-3.25.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -4738,3 +4738,65 @@ grep: *190604-181*: No such file or directory
 logout
 
 Disconnected channel and session
+Connecting SSH to 10.95.214.6 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.6 !!!
+#!/bin/bash
+
+cd /var/opt/fds/CDR/archive/
+
+grep -l 971520001714 *20190605-111* |tac |head -1 > /home/tasuser/sdpfile.txt
+
+exit
+
+[tasuser@meytvvmsdp01 ~]$ #!/bin/bash
+[tasuser@meytvvmsdp01 ~]$ 
+[tasuser@meytvvmsdp01 ~]$ cd /var/opt/fds/CDR/archive/
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ grep -l 971520001714 *20190605-111* |tac |head - 1 > /home/tasuser/sdpfile.txt
+grep: *20190605-111*: No such file or directory
+[tasuser@meytvvmsdp01 archive]$ 
+[tasuser@meytvvmsdp01 archive]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+Last login: Thu Jun  6 10:32:25 2019 from 10.160.130.18
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
+Connecting SSH to 10.95.214.72 - Please wait for few seconds... 
+Successfully Connected to the Host 10.95.214.72 !!!
+#!/bin/bash
+
+cd /data/fdp/logs/defaultCircle
+
+sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/VenuReddyGaddam/EDRfile.csv
+
+exit
+
+[VenuReddyGaddam@meydvvmcis03 ~]$ #!/bin/bash
+[VenuReddyGaddam@meydvvmcis03 ~]$ 
+[VenuReddyGaddam@meydvvmcis03 ~]$ cd /data/fdp/logs/defaultCircle
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ sudo more meydvvmcis03_EDR_CISOnli ne1.csv > /home/VenuReddyGaddam/EDRfile.csv
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ 
+[VenuReddyGaddam@meydvvmcis03 defaultCircle]$ exit
+logout
+
+Disconnected channel and session
