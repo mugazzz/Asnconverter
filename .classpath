@@ -13,5 +13,8 @@
 	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/mongo-java-driver-3.9.1.jar"/>
 	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/postgresql-9.2-1002.jdbc4.jar"/>
 	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/sqlite-jdbc-3.25.2.jar"/>
+	<classpathentry kind="lib" path="D:/Auto/JARS/mysql-database-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/Downloads/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/Downloads/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -53,8 +53,6 @@ import com.jcraft.jsch.Session;
 //import org.jsoup.parser.Parser;
 import org.w3c.dom.*;
 
-
-
 public class asnconverter {
 	public static final String Result_FLD = System.getProperty("user.dir") + "\\Report";
 	static File resfold = null;
@@ -63,7 +61,7 @@ public class asnconverter {
 	public static DateFormat For = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
 	public static Calendar cal = Calendar.getInstance();
 	public static String ExecutionStarttime = For.format(cal.getTime()).toString();
-	
+
 	///////////////////////////////////////////
 	public static String Curr_user_directory_path;
 	private static Session session;
@@ -71,7 +69,7 @@ public class asnconverter {
 	private static ChannelSftp channel_sftp;
 	private static String gzfile;
 	private static String berfile;
-	
+
 	private static String SDP_Unix_username = "";
 	private static String SDP_Unix_password = "";
 	private static String SDP_unix_hostname = "";
@@ -91,107 +89,185 @@ public class asnconverter {
 	public static String Environment = "";
 	public static String curr_log_file_path = System.getProperty("user.dir") + "\\Report.txt";
 	public static String MSISDN = "971520001714";
-	public static String Input = "";
+	public static String Input = "CIS";
 	public static String Test_Scenario = "OPT-in";
 	public static String cdrfiles = System.getProperty("user.dir") + "\\CDR";
-	private static String gzfilepath = cdrfiles+"\\OCCzip\\";
-	private static String finalpath = cdrfiles+"\\OCC\\";
-	public static String date="" ;
-	public static String dateccn="";
-	public static String now="";
-	
-	public  static String Cis_Filepath =cdrfiles+"\\CIS\\EDRfile.csv";
-	public static String Cis_viewpath= "";
+	private static String gzfilepath = cdrfiles + "\\OCCzip\\";
+	private static String finalpath = cdrfiles + "\\OCC\\";
+	public static String date = "";
+	public static String dateccn = "";
+	public static String datecis;
+	public static String now = "";
+
+	public static String Cis_Filepath = cdrfiles + "\\CIS\\meydvvmcis03_EDR_CISOnline1.csv";
+	public static String Cis_viewpath = "";
 	public static String nodetag;
 	public static String idtag;
-	//public  static String MSISDN ="971520001714";
+	public static String cisnode = "";
+	// public static String MSISDN ="971520001714";
 	///////////////////////////////////////////////
 
 	@SuppressWarnings("deprecation")
 	public static void main(String args[]) {
 		try {
-			
-			now= timeoffour();
-			dateccn=Present_dateccn();
-			
-			{
-				
+			date = Present_date();
+			now = timeoffour();
+			dateccn = Present_dateccn();
+			datecis = Present_datecis();
 
-			////////////////////////////////////////////////////////////////////////
-				//file_deletion(cdrfiles);
+			{
+
+				////////////////////////////////////////////////////////////////////////
+				// file_deletion(cdrfiles);
 				Curr_user_directory_path = System.getProperty("user.dir");
 				File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
 				File localFileb = new File(Curr_user_directory_path + "\\" + "BackupCDR");
-				date = Present_date();
+
 				// ---------------------------------------------------------------------------------------
 				// ************** CIS Unix Interactions
 				if (Input.contains("CIS") || Input.contains("ALL")) {
-					System.out.println("Waiting for CIS System to Connect");
-					Thread.sleep(20000);
-					
-					//Curr_user_directory_path = System.getProperty("user.dir");
-					CIS_unix_hostname = "10.95.214.72";
-					CIS_Unix_username = "VenuReddyGaddam";
-					CIS_Unix_password = "VenuReddyGaddam";
-					// String date= Present_date();
-					List<String> CIS_commands = new ArrayList<String>();
-					CIS_commands.add("cd /data/fdp/logs/defaultCircle");
-					CIS_commands.add("sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/"+CIS_Unix_username+"/EDRfile.csv");
-					executeCommands(CIS_commands, CIS_unix_hostname, CIS_Unix_username, CIS_Unix_password);
-					close();
 
-					try {
+					if (cisnode.contains("CIS")) {
+						System.out.println("Waiting for CIS System to Connect");
+						Thread.sleep(20000);
+						String path = null;
+						path = "/data/fdp/logs/defaultCircle";
+						// Curr_user_directory_path = System.getProperty("user.dir");
+						CIS_unix_hostname = "10.95.214.72";
+						CIS_Unix_username = "VenuReddyGaddam";
+						CIS_Unix_password = "VenuReddyGaddam";
+						// String date= Present_date();
+						List<String> CIS_commands = new ArrayList<String>();
+						CIS_commands.add("cd " + path);
+						CIS_commands.add("sudo more meydvvmcis03_EDR_CISOnline1.csv > /home/" + CIS_Unix_username
+								+ "/meydvvmcis03_EDR_CISOnline1.csv");
+						executeCommands(CIS_commands, CIS_unix_hostname, CIS_Unix_username, CIS_Unix_password);
+						close();
 
-						JSch jsch = new JSch();
-						Session session = jsch.getSession(CIS_Unix_username, CIS_unix_hostname, 22);
-						session.setPassword(CIS_Unix_password);
-						session.setConfig("StrictHostKeyChecking", "no");
-						session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
-						session.connect();
-						channel_sftp = null;
-						channel_sftp = (ChannelSftp) session.openChannel("sftp");
-						channel_sftp.connect();
-						channel_sftp.cd("/home/"+CIS_Unix_username+"/");
-						System.out.println(channel_sftp.pwd());
+						try {
 
-					//	File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
-						@SuppressWarnings("unchecked")
-						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.csv");
-						for (ChannelSftp.LsEntry entry : list) {
-							if (entry.getFilename().contains("EDRfile.csv")) {
-								System.out.println(entry.getFilename());
-								channel_sftp.get("EDRfile.csv", localFile + "\\" + "CIS" + "\\" + entry.getFilename());
-								Thread.sleep(5000);
-								channel_sftp.get("EDRfile.csv", localFileb + "\\" + "CIS" + "\\" + MSISDN+date+now+entry.getFilename());
-								//System.out.println(localFile + "\\" + "CISraw" + "\\" + entry.getFilename());
-								System.out.println("EDR file transfered to "+ localFile + "\\" + "CIS" + "\\" );
+							JSch jsch = new JSch();
+							Session session = jsch.getSession(CIS_Unix_username, CIS_unix_hostname, 22);
+							session.setPassword(CIS_Unix_password);
+							session.setConfig("StrictHostKeyChecking", "no");
+							session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+							session.connect();
+							channel_sftp = null;
+							channel_sftp = (ChannelSftp) session.openChannel("sftp");
+							channel_sftp.connect();
+							channel_sftp.cd("/home/" + CIS_Unix_username + "/");
+							System.out.println(channel_sftp.pwd());
+
+							// File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
+							@SuppressWarnings("unchecked")
+							Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.csv");
+							for (ChannelSftp.LsEntry entry : list) {
+								if (entry.getFilename().contains("meydvvmcis03_EDR_CISOnline1.csv")) {
+									System.out.println(entry.getFilename());
+									channel_sftp.get("meydvvmcis03_EDR_CISOnline1.csv",
+											localFile + "\\" + "CIS" + "\\" + entry.getFilename());
+									Thread.sleep(5000);
+									channel_sftp.get("meydvvmcis03_EDR_CISOnline1.csv", localFileb + "\\" + "CIS" + "\\"
+											+ MSISDN + date + now + entry.getFilename());
+									// System.out.println(localFile + "\\" + "CISraw" + "\\" + entry.getFilename());
+									System.out.println("EDR file transfered to " + localFile + "\\" + "CIS" + "\\");
+								}
 							}
+
+							channel_sftp.disconnect();
+							session.disconnect();
+
+						} catch (Exception e) {
+							e.printStackTrace();
+
 						}
+					} else {
+						System.out.println("Waiting for CIS System to Connect");
+						Thread.sleep(0000);
+						String path = null;
+						path = "/data/edr_enrichment/sftpcompleted";
+						// Curr_user_directory_path = System.getProperty("user.dir");
+						CIS_unix_hostname = "10.95.214.9";
+						CIS_Unix_username = "atos";
+						CIS_Unix_password = "ericsson";
+						// String date= Present_date();
+						List<String> CIS_commands = new ArrayList<String>();
+						CIS_commands.add("cd " + path);
+						CIS_commands.add("grep -l " + MSISDN + " *" + datecis + "*|tail -1 > /home/" + CIS_Unix_username
+								+ "/EDRfile.txt");
+						executeCommands(CIS_commands, CIS_unix_hostname, CIS_Unix_username, CIS_Unix_password);
+						close();
 
-						channel_sftp.disconnect();
-						session.disconnect();
+						try {
 
-					} catch (Exception e) {
-						e.printStackTrace();
+							JSch jsch = new JSch();
+							Session session = jsch.getSession(CIS_Unix_username, CIS_unix_hostname, 22);
+							session.setPassword(CIS_Unix_password);
+							session.setConfig("StrictHostKeyChecking", "no");
+							session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+							session.connect();
+							channel_sftp = null;
+							channel_sftp = (ChannelSftp) session.openChannel("sftp");
+							channel_sftp.connect();
+							channel_sftp.cd("/home/" + CIS_Unix_username);
+
+							// File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
+							@SuppressWarnings("unchecked")
+							Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
+							for (ChannelSftp.LsEntry entry : list) {
+								if (entry.getFilename().contains("EDRfile.txt")) {
+									channel_sftp.get(entry.getFilename(), localFile + "\\" + "EDRfile.txt");
+									Thread.sleep(5000);
+								}
+							}
+							// Code to get EDR file latest name
+							String edrfile = filename(localFile + "\\" + "EDRfile.txt");
+							System.out.println(edrfile);
+
+							// Code to get file to local system
+							channel_sftp.cd(path);
+
+							@SuppressWarnings("unchecked")
+							Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.csv");
+							Thread.sleep(5000);
+
+							for (ChannelSftp.LsEntry entry1 : list1) {
+								if (entry1.getFilename().contains(edrfile)) {
+									channel_sftp.get(edrfile,
+											localFile + "\\" + "CIS" + "\\" + "meydvvmcis03_EDR_CISOnline1.csv");
+									Thread.sleep(10000);
+									channel_sftp.get(edrfile, localFileb + "\\" + "CIS" + "\\");
+									System.out.println("SDP file transfered to " + localFile + "\\" + "CIS" + "\\");
+								} else {
+								}
+							}
+
+							channel_sftp.disconnect();
+							session.disconnect();
+
+						} catch (Exception e) {
+							e.printStackTrace();
+
+						}
 
 					}
 				}
-				
+
 				// ---------------------------------------------------------------------------------------
 				// ************** SDP Unix Interactions
 				if (Input.contains("SDP") || Input.contains("ALL")) {
 					System.out.println("waiting for SDP connectivty ");
 					Thread.sleep(150000);
 
-				
 					Curr_user_directory_path = System.getProperty("user.dir");
 					SDP_unix_hostname = "10.95.214.6";
 					SDP_Unix_username = "tasuser";
 					SDP_Unix_password = "Ericssondu@123";
-					//String date = Present_date();
+					// String date = Present_date();
 					List<String> SDP_commands = new ArrayList<String>();
 					SDP_commands.add("cd /var/opt/fds/CDR/archive/");
-					SDP_commands.add("grep -l "+MSISDN+" *20"+date+"* |tac |head -1 > /home/tasuser/sdpfile.txt");
+					SDP_commands
+							.add("grep -l " + MSISDN + " *20" + date + "* |tac |head -1 > /home/tasuser/sdpfile.txt");
 					executeCommands(SDP_commands, SDP_unix_hostname, SDP_Unix_username, SDP_Unix_password);
 					close();
 
@@ -208,7 +284,7 @@ public class asnconverter {
 						channel_sftp.connect();
 						channel_sftp.cd("/home/tasuser");
 
-					//	File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
+						// File localFile = new File(Curr_user_directory_path + "\\" + "CDR");
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
 						for (ChannelSftp.LsEntry entry : list) {
@@ -223,7 +299,7 @@ public class asnconverter {
 
 						// Code to get file to local system
 						channel_sftp.cd("/var/opt/fds/CDR/archive/");
-						
+
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.ASN");
 						Thread.sleep(5000);
@@ -247,23 +323,23 @@ public class asnconverter {
 					}
 
 				}
-				
+
 				// ---------------------------------------------------------------------------------------
 				// ************** OCC Unix Interactions port 22
-				if ((Input.contains("OCC") || Input.contains("ALL")) && (Test_Scenario.equalsIgnoreCase("Opt-in") || Test_Scenario.equalsIgnoreCase("Recharge")) ) {
+				if ((Input.contains("OCC") || Input.contains("ALL"))
+						&& (Test_Scenario.equalsIgnoreCase("Opt-in") || Test_Scenario.equalsIgnoreCase("Recharge"))) {
 					System.out.println("Waiting for OCC system to connect");
 					Thread.sleep(30000);
 
-					
-					//Curr_user_directory_path = System.getProperty("user.dir");
+					// Curr_user_directory_path = System.getProperty("user.dir");
 					OCC_unix_hostname = "10.95.214.22";
 					OCC_Unix_username = "tasuser";
 					OCC_Unix_password = "Ericssondu@123";
-					//String date = Present_date();
+					// String date = Present_date();
 					List<String> OCC_commands = new ArrayList<String>();
 					OCC_commands.add("cd /home/tasuser");
 					OCC_commands.add(
-							"zgrep -l "+MSISDN+" *"+date+"* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt");
+							"zgrep -l " + MSISDN + " *" + date + "* |tac|head -1 > /home/tasuser/Auto/occfile_22.txt");
 					executeCommands(OCC_commands, OCC_unix_hostname, OCC_Unix_username, OCC_Unix_password);
 					close();
 
@@ -280,7 +356,6 @@ public class asnconverter {
 						channel_sftp.connect();
 						channel_sftp.cd("/home/tasuser/Auto");
 
-					
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
 						for (ChannelSftp.LsEntry entry : list) {
@@ -319,7 +394,7 @@ public class asnconverter {
 
 					// ---------------------------------------------------------------------------------------
 					// ************** OCC Unix Interactions port 21
-					//Curr_user_directory_path = System.getProperty("user.dir");
+					// Curr_user_directory_path = System.getProperty("user.dir");
 					OCC_unix_hostname1 = "10.95.214.21";
 					OCC_Unix_username1 = "tasuser";
 					OCC_Unix_password1 = "Ericssondu@123";
@@ -327,7 +402,7 @@ public class asnconverter {
 					List<String> OCC1_commands = new ArrayList<String>();
 					OCC1_commands.add("cd /home/tasuser");
 					OCC1_commands.add(
-							"zgrep -l "+MSISDN+" *"+date+"* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt");
+							"zgrep -l " + MSISDN + " *" + date + "* |tac|head -1 > /home/tasuser/Auto/occfile_21.txt");
 					executeCommands(OCC1_commands, OCC_unix_hostname1, OCC_Unix_username1, OCC_Unix_password1);
 					close();
 
@@ -358,7 +433,7 @@ public class asnconverter {
 
 						// Code to get file to local system
 						channel_sftp.cd("/home/tasuser");
-						
+
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.gz");
 						Thread.sleep(5000);
@@ -381,30 +456,31 @@ public class asnconverter {
 
 					}
 					// Extract OCC.gz file to parsing ber file
-					file_extraction(gzfilepath,finalpath);		
+					file_extraction(gzfilepath, finalpath);
 				}
-				
-				
+
 				// Connecting to CCN to get CDR file
 				if (Input.contains("CCN") || Input.contains("ALL")) {
-					System.out.println("Waiting for CCN system to connect");		
+					System.out.println("Waiting for CCN system to connect");
 					Thread.sleep(90000);
 					// ************** CCN Unix Interactions storage 0
-					//Curr_user_directory_path = System.getProperty("user.dir");
+					// Curr_user_directory_path = System.getProperty("user.dir");
 					String CCN_unix_hostname = "10.95.213.132";
 					String CCN_Unix_username = "tasuser";
 					String CCN_Unix_password = "CCNtasuser@123";
-					//String now= timeoffour();
-					//String date = Present_date();
-					//System.out.println(now);
-					//System.out.println(date);
+					// String now= timeoffour();
+					// String date = Present_date();
+					// System.out.println(now);
+					// System.out.println(date);
 					List<String> CCN_commands = new ArrayList<String>();
 					CCN_commands.add("cd /cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/");
-					CCN_commands.add("grep -l "+MSISDN+" *"+dateccn+now+"* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_0file.txt");
+					CCN_commands.add("grep -l " + MSISDN + " *" + dateccn + now
+							+ "* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_0file.txt");
 					executeCommands(CCN_commands, CCN_unix_hostname, CCN_Unix_username, CCN_Unix_password);
 					close();
-					//grep -l 971520001714 *20190529* |xargs ls -l|grep 13:0[0-9]|tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCNfile.txt
-					//grep -l 971520001714 *20190530063*|tac|head -1
+					// grep -l 971520001714 *20190529* |xargs ls -l|grep 13:0[0-9]|tac|head -1 >
+					// /cluster/home/system-oam/tasuser/Auto/CCNfile.txt
+					// grep -l 971520001714 *20190530063*|tac|head -1
 
 					try {
 
@@ -419,7 +495,7 @@ public class asnconverter {
 						channel_sftp.connect();
 						channel_sftp.cd("/cluster/home/system-oam/tasuser/Auto");
 
-					//	File localFile = new File(Curr_user_directory_path + "\\");
+						// File localFile = new File(Curr_user_directory_path + "\\");
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
 						System.out.println(list);
@@ -436,21 +512,21 @@ public class asnconverter {
 						// Code to get file to local system
 						channel_sftp.cd("/cluster/storage/no-backup/ccn/CcnStorage0/CCNCDR44/archive/");
 						// channel_sftp.pwd();
-						//File localFile1 = new File(Curr_user_directory_path + "\\" + "InputCdrFile");
+						// File localFile1 = new File(Curr_user_directory_path + "\\" + "InputCdrFile");
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls(".");
 						Thread.sleep(5000);
 
 						for (ChannelSftp.LsEntry entry1 : list1) {
-							
+
 							if (entry1.getFilename().contains(CCN0file)) {
 								channel_sftp.get(CCN0file, localFile + "\\" + "CCN" + "\\");
-								
+
 								Thread.sleep(10000);
 								channel_sftp.get(CCN0file, localFileb + "\\" + "CCN" + "\\");
 								System.out.println("CCN file transfered to " + localFile + "\\" + "CCN" + "\\");
-							} 
-							
+							}
+
 						}
 
 						channel_sftp.disconnect();
@@ -461,91 +537,94 @@ public class asnconverter {
 
 					}
 					//
-					
-						//System.out.println("Waiting for CCN system to connect");		
-						Thread.sleep(30000);
-						// ************** CCN Unix Interactions
-						//Curr_user_directory_path = System.getProperty("user.dir");
-						//String CCN_unix_hostname = "10.95.213.132";
-						//String CCN_Unix_username = "tasuser";
-						//String CCN_Unix_password = "CCNtasuser@123";
-						
-						List<String> CCN1_commands = new ArrayList<String>();
-						CCN1_commands.add("cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/");
-						CCN1_commands.add("grep -l "+MSISDN+" *"+dateccn+now+"* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_1file.txt");
-						executeCommands(CCN1_commands, CCN_unix_hostname, CCN_Unix_username, CCN_Unix_password);
-						close();
-						//grep -l 971520001714 *20190529* |xargs ls -l|grep 13:0[0-9]|tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCNfile.txt
 
-						try {
+					// System.out.println("Waiting for CCN system to connect");
+					Thread.sleep(30000);
+					// ************** CCN Unix Interactions
+					// Curr_user_directory_path = System.getProperty("user.dir");
+					// String CCN_unix_hostname = "10.95.213.132";
+					// String CCN_Unix_username = "tasuser";
+					// String CCN_Unix_password = "CCNtasuser@123";
 
-							JSch jsch = new JSch();
-							Session session = jsch.getSession(CCN_Unix_username, CCN_unix_hostname, 22);
-							session.setPassword(CCN_Unix_password);
-							session.setConfig("StrictHostKeyChecking", "no");
-							session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
-							session.connect();
-							channel_sftp = null;
-							channel_sftp = (ChannelSftp) session.openChannel("sftp");
-							channel_sftp.connect();
-							channel_sftp.cd("/cluster/home/system-oam/tasuser/Auto");
+					List<String> CCN1_commands = new ArrayList<String>();
+					CCN1_commands.add("cd /cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/");
+					CCN1_commands.add("grep -l " + MSISDN + " *" + dateccn + now
+							+ "* |tac|head -1 > /cluster/home/system-oam/tasuser/Auto/CCN_1file.txt");
+					executeCommands(CCN1_commands, CCN_unix_hostname, CCN_Unix_username, CCN_Unix_password);
+					close();
+					// grep -l 971520001714 *20190529* |xargs ls -l|grep 13:0[0-9]|tac|head -1 >
+					// /cluster/home/system-oam/tasuser/Auto/CCNfile.txt
 
-						//	File localFile = new File(Curr_user_directory_path + "\\");
-							@SuppressWarnings("unchecked")
-							Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
-							System.out.println(list);
-							for (ChannelSftp.LsEntry entry : list) {
-								if (entry.getFilename().contains("CCN_1file.txt")) {
-									channel_sftp.get(entry.getFilename(), localFile + "\\" + "CCN_1file.txt");
-									Thread.sleep(5000);
-								}
+					try {
+
+						JSch jsch = new JSch();
+						Session session = jsch.getSession(CCN_Unix_username, CCN_unix_hostname, 22);
+						session.setPassword(CCN_Unix_password);
+						session.setConfig("StrictHostKeyChecking", "no");
+						session.setConfig("PreferredAuthentications", "publickey,keyboard-interactive,password");
+						session.connect();
+						channel_sftp = null;
+						channel_sftp = (ChannelSftp) session.openChannel("sftp");
+						channel_sftp.connect();
+						channel_sftp.cd("/cluster/home/system-oam/tasuser/Auto");
+
+						// File localFile = new File(Curr_user_directory_path + "\\");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
+						System.out.println(list);
+						for (ChannelSftp.LsEntry entry : list) {
+							if (entry.getFilename().contains("CCN_1file.txt")) {
+								channel_sftp.get(entry.getFilename(), localFile + "\\" + "CCN_1file.txt");
+								Thread.sleep(5000);
 							}
-							// Code to get AIR file latest name
-							String CCN1file = filename(localFile + "\\" + "CCN_1file.txt");
-							System.out.println(CCN1file);
+						}
+						// Code to get AIR file latest name
+						String CCN1file = filename(localFile + "\\" + "CCN_1file.txt");
+						System.out.println(CCN1file);
 
-							// Code to get file to local system
-							channel_sftp.cd("/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/");
-							// channel_sftp.pwd();
-							//File localFile1 = new File(Curr_user_directory_path + "\\" + "InputCdrFile");
-							@SuppressWarnings("unchecked")
-							Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls(".");
-							Thread.sleep(5000);
+						// Code to get file to local system
+						channel_sftp.cd("/cluster/storage/no-backup/ccn/CcnStorage1/CCNCDR44/archive/");
+						// channel_sftp.pwd();
+						// File localFile1 = new File(Curr_user_directory_path + "\\" + "InputCdrFile");
+						@SuppressWarnings("unchecked")
+						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls(".");
+						Thread.sleep(5000);
 
-							for (ChannelSftp.LsEntry entry1 : list1) {
-								
-								if (entry1.getFilename().contains(CCN1file)) {
-									channel_sftp.get(CCN1file, localFile + "\\" + "CCN" + "\\");
-									
-									Thread.sleep(10000);
-									channel_sftp.get(CCN1file, localFileb + "\\" + "CCN" + "\\");
-									System.out.println("CCN file transfered to " + localFile + "\\" + "CCN" + "\\");
-								} 
-								
+						for (ChannelSftp.LsEntry entry1 : list1) {
+
+							if (entry1.getFilename().contains(CCN1file)) {
+								channel_sftp.get(CCN1file, localFile + "\\" + "CCN" + "\\");
+
+								Thread.sleep(10000);
+								channel_sftp.get(CCN1file, localFileb + "\\" + "CCN" + "\\");
+								System.out.println("CCN file transfered to " + localFile + "\\" + "CCN" + "\\");
 							}
-
-							channel_sftp.disconnect();
-							session.disconnect();
-
-						} catch (Exception e) {
-							e.printStackTrace();
 
 						}
+
+						channel_sftp.disconnect();
+						session.disconnect();
+
+					} catch (Exception e) {
+						e.printStackTrace();
+
+					}
 				}
-			
+
 				// ************** AIR Unix Interactions
-				
+
 				if (Input.contains("AIR") || Input.contains("ALL")) {
-					System.out.println("Waiting for Air system to connect");		
+					System.out.println("Waiting for Air system to connect");
 					Thread.sleep(60000);
-					
+
 					AIR_unix_hostname = "10.95.214.166";
 					AIR_Unix_username = "tasuser";
 					AIR_Unix_password = "Ericssondu@123";
-					//String date = Present_date();
+					// String date = Present_date();
 					List<String> AIR_commands = new ArrayList<String>();
 					AIR_commands.add("cd /var/opt/air/datarecords/backup_CDR/");
-					AIR_commands.add("grep -l " + MSISDN + " *" + date + "* |tac |head -1 > /home/tasuser/Auto/Airfile.txt");
+					AIR_commands.add(
+							"grep -l " + MSISDN + " *" + date + "* |tac |head -1 > /home/tasuser/Auto/Airfile.txt");
 					executeCommands(AIR_commands, AIR_unix_hostname, AIR_Unix_username, AIR_Unix_password);
 					close();
 
@@ -564,35 +643,35 @@ public class asnconverter {
 
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list = channel_sftp.ls("*.txt");
-						
+
 						for (ChannelSftp.LsEntry entry : list) {
 							if (entry.getFilename().contains("Airfile.txt")) {
 								channel_sftp.get(entry.getFilename(), localFile + "\\" + "Airfile.txt");
 								Thread.sleep(5000);
 							}
 						}
-					
+
 						// Code to get AIR file latest name
 						String Airfile = filename(localFile + "\\" + "Airfile.txt");
 						System.out.println(Airfile);
 
 						// Code to get file to local system
 						channel_sftp.cd("/var/opt/air/datarecords/backup_CDR/");
-						
+
 						@SuppressWarnings("unchecked")
 						Vector<ChannelSftp.LsEntry> list1 = channel_sftp.ls("*.AIR");
 						Thread.sleep(5000);
 
 						for (ChannelSftp.LsEntry entry1 : list1) {
-							
+
 							if (entry1.getFilename().contains(Airfile)) {
 								channel_sftp.get(Airfile, localFile + "\\" + "AIR" + "\\");
-								
+
 								Thread.sleep(10000);
 								channel_sftp.get(Airfile, localFileb + "\\" + "AIR" + "\\");
 								System.out.println("SDP file transfered to " + localFile + "\\" + "AIR" + "\\");
-							} 
-							
+							}
+
 						}
 
 						channel_sftp.disconnect();
@@ -603,7 +682,6 @@ public class asnconverter {
 
 					}
 				}
-				
 
 				/////////////////////////////////////////////////////////////////////////////
 
@@ -628,118 +706,121 @@ public class asnconverter {
 					if (directoryListing != null) {
 						for (File child : directoryListing) {
 							filename = child.getAbsoluteFile().getName();
-							if(!filetype.equalsIgnoreCase("CIS")) {
-														
-							startTestCase("Parsing File " + filename);
-							String schemaname = "";
-							File TCFold = new File(trfold + "/" + filetype);
-							if ((!TCFold.exists()))
-								TCFold.mkdir();
-							File TCFold1 = new File(trfold + "/" + filetype + "/" + filename);
-							if ((!TCFold1.exists()))
-								TCFold1.mkdir();
-							File file = new File(trfold + "/" + filetype + "/" + filename + "/output.xml");
-							// System.out.println(trfold+"/"+ refid + "/output.xml");
-							if (file.exists()) {
-								file.delete();
-							}
-							file.createNewFile();
-							Runtime rt = Runtime.getRuntime();
-							// System.out.println(System.getProperty("user.dir"));
-							if (filetype.equalsIgnoreCase("AIR")) {
-								schemaname = "AIROUTPUTCDR411A.asn1 -pdu DetailOutputRecord";
-							} else if (filetype.equalsIgnoreCase("SDP")) {
-								schemaname = "SDPOUTPUTCDRCS416A.asn1";
+							if (!filetype.equalsIgnoreCase("CIS")) {
 
-							} else if (filetype.equalsIgnoreCase("OCC")) {
-								schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
-							} else if (filetype.equalsIgnoreCase("CCN")) {
-								schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
-													
-							}
-							else {
-								schemaname = "ccn55a.asn1 -pdu DetailOutputRecord";
-							}
-							String commands = "asn2xml CDR/" + filetype + "/" + filename + " -schema Schema/"
-									+ schemaname;
-							Process proc = rt.exec(commands);
-							BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-							BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-							// read the output from the command
-							// System.out.println("Here is the standard output of the command:\n");
-							String s = null;
-							// File file = new File("test.xml");
-							String start = "no";
-							String replaceq = "no";
-							String replaceo = "no";
-							while ((s = stdInput.readLine()) != null) {
-								// System.out.println(s);
-								if (s.equals("<?xml version=\"1.0\"?>")) {
-									start = "yes";
+								startTestCase("Parsing File " + filename);
+								String schemaname = "";
+								File TCFold = new File(trfold + "/" + filetype);
+								if ((!TCFold.exists()))
+									TCFold.mkdir();
+								File TCFold1 = new File(trfold + "/" + filetype + "/" + filename);
+								if ((!TCFold1.exists()))
+									TCFold1.mkdir();
+								File file = new File(trfold + "/" + filetype + "/" + filename + "/output.xml");
+								// System.out.println(trfold+"/"+ refid + "/output.xml");
+								if (file.exists()) {
+									file.delete();
 								}
-								if (start.equals("yes")) {
-									if (!s.equals("Decoded Successfully")) {
-										if (s.contains("<selectionTreeQualifiers>")) {
-											replaceq = "yes";
-										} else if (s.contains("</selectionTreeQualifiers>")) {
-											replaceq = "no";
-										}
-										if (s.contains("<usedOffers>")) {
-											replaceo = "yes";
-										} else if (s.contains("</usedOffers>")) {
-											replaceo = "no";
-										}
-										if (replaceq.equals("yes")) {
-											s = s.replace("<>", "<Qualifier>");
-											s = s.replace("</>", "</Qualifier>");
-										}
-										if (replaceo.equals("yes")) {
-											s = s.replace("<>", "<OfferID>");
-											s = s.replace("</>", "</OfferID>");
-										}
+								file.createNewFile();
+								Runtime rt = Runtime.getRuntime();
+								// System.out.println(System.getProperty("user.dir"));
+								if (filetype.equalsIgnoreCase("AIR")) {
+									schemaname = "AIROUTPUTCDR411A.asn1 -pdu DetailOutputRecord";
+								} else if (filetype.equalsIgnoreCase("SDP")) {
+									schemaname = "SDPOUTPUTCDRCS416A.asn1";
 
-										FileUtils.writeStringToFile(file, s + "\n", true);
+								} else if (filetype.equalsIgnoreCase("OCC")) {
+									schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
+								} else if (filetype.equalsIgnoreCase("CCN")) {
+									schemaname = "ccn55a_latest_1.asn1 -pdu DetailOutputRecord";
+
+								} else {
+									schemaname = "ccn55a.asn1 -pdu DetailOutputRecord";
+								}
+								String commands = "asn2xml CDR/" + filetype + "/" + filename + " -schema Schema/"
+										+ schemaname;
+								Process proc = rt.exec(commands);
+								BufferedReader stdInput = new BufferedReader(
+										new InputStreamReader(proc.getInputStream()));
+								BufferedReader stdError = new BufferedReader(
+										new InputStreamReader(proc.getErrorStream()));
+								// read the output from the command
+								// System.out.println("Here is the standard output of the command:\n");
+								String s = null;
+								// File file = new File("test.xml");
+								String start = "no";
+								String replaceq = "no";
+								String replaceo = "no";
+								while ((s = stdInput.readLine()) != null) {
+									// System.out.println(s);
+									if (s.equals("<?xml version=\"1.0\"?>")) {
+										start = "yes";
+									}
+									if (start.equals("yes")) {
+										if (!s.equals("Decoded Successfully")) {
+											if (s.contains("<selectionTreeQualifiers>")) {
+												replaceq = "yes";
+											} else if (s.contains("</selectionTreeQualifiers>")) {
+												replaceq = "no";
+											}
+											if (s.contains("<usedOffers>")) {
+												replaceo = "yes";
+											} else if (s.contains("</usedOffers>")) {
+												replaceo = "no";
+											}
+											if (replaceq.equals("yes")) {
+												s = s.replace("<>", "<Qualifier>");
+												s = s.replace("</>", "</Qualifier>");
+											}
+											if (replaceo.equals("yes")) {
+												s = s.replace("<>", "<OfferID>");
+												s = s.replace("</>", "</OfferID>");
+											}
+
+											FileUtils.writeStringToFile(file, s + "\n", true);
+										}
 									}
 								}
-							}
 
-							// read any errors from the attempted command
-							System.out.println("Here is the standard error of the command (if any):\n");
-							while ((s = stdError.readLine()) != null) {
-								System.out.println(s);
-							}
-							String tbl = "<table><tr><th>Parameter</th><th>Value</th></tr>";
-							//String filenameq = "";
-							for (int Iterator = 1; Iterator < rs.getFieldNames().size(); Iterator++) {
-								if (rs.getFieldNames().get(Iterator).toString().contains("Parameter")) {
-									if (rs.getField(rs.getFieldNames().get(Iterator)) != "") {
-										//if (rs.getFieldNames().get(Iterator + 1).toString().contains("value")) {
-											//if (rs.getField(rs.getFieldNames().get(Iterator + 1)).contains("YES")) {
+								// read any errors from the attempted command
+								System.out.println("Here is the standard error of the command (if any):\n");
+								while ((s = stdError.readLine()) != null) {
+									System.out.println(s);
+								}
+								String tbl = "<table><tr><th>Parameter</th><th>Value</th></tr>";
+								// String filenameq = "";
+								for (int Iterator = 1; Iterator < rs.getFieldNames().size(); Iterator++) {
+									if (rs.getFieldNames().get(Iterator).toString().contains("Parameter")) {
+										if (rs.getField(rs.getFieldNames().get(Iterator)) != "") {
+											// if (rs.getFieldNames().get(Iterator + 1).toString().contains("value")) {
+											// if (rs.getField(rs.getFieldNames().get(Iterator + 1)).contains("YES")) {
 
-												String param1 = rs.getField(rs.getFieldNames().get(Iterator).toString())
-														.toString();
-												//String retval = parsexml(param1, file);
-												String filepath=file.toString();
-												String retval = parsedata(filetype,filepath ,param1,MSISDN);												
-												
-												tbl = tbl + "<tr><td>" + param1 + "</td><td>" + retval + "</td></tr>";
-												// conn.executeUpdate("Update TestData set Value"+findx+"='"+retval+"'
-												// where Refrence_ID ='"+refid+"'");
-											//}
+											String param1 = rs.getField(rs.getFieldNames().get(Iterator).toString())
+													.toString();
+											// String retval = parsexml(param1, file);
+											String filepath = file.toString();
+											String retval = parsedata(filetype, filepath, param1, MSISDN);
+
+											tbl = tbl + "<tr><td>" + param1 + "</td><td>" + retval + "</td></tr>";
+											// conn.executeUpdate("Update TestData set Value"+findx+"='"+retval+"'
+											// where Refrence_ID ='"+refid+"'");
+											// }
 										}
+
+									}
 
 								}
 
+								ExtentTest test = extent.createTest(filetype + "_" + MSISDN + "_Output");
+								
+								test.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank' href = '" + filetype
+										+ "/" + filename + "/output.xml'>Click to View the CDR</a></b><br>" + tbl
+										+ "</table>");
 							}
-							
-							ExtentTest test = extent.createTest(filetype+"_"+MSISDN + "_Output");
-							test.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank' href = '" + filetype + "/"
-									+ filename + "/output.xml'>Click to View the CDR</a></b><br>" + tbl + "</table>");
-							}
-							
+
 							else {
 								startTestCase("Parsing File " + filename);
-								//String schemaname = "";
+								// String schemaname = "";
 								File TCFold = new File(trfold + "/" + filetype);
 								if ((!TCFold.exists()))
 									TCFold.mkdir();
@@ -747,28 +828,29 @@ public class asnconverter {
 								if ((!TCFold1.exists()))
 									TCFold1.mkdir();
 								File filecsv = new File(trfold + "/" + filetype + "/" + filename + "/Output.csv");
-								Cis_viewpath=filecsv.toString();
+								Cis_viewpath = filecsv.toString();
 								System.out.println(Cis_viewpath);
 								if (filecsv.exists()) {
 									filecsv.delete();
 								}
 								filecsv.createNewFile();
-																
-								String tbl=CSVparse(Cis_Filepath,Cis_viewpath);
-								
-								 
-								
-							ExtentTest test1 = extent.createTest("CISFILE_"+MSISDN+"_Output");
-							test1.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank' href = '" + filetype + "/"
-									+ filename + "/Output.csv'>Click to View the EDR</a></b><br>" + tbl + "</table>");
-							//+ filetype + "/" + "Output.csv"
+
+								String tbl = CSVparse(Cis_Filepath, Cis_viewpath);
+
+								ExtentTest test1 = extent.createTest("CISFILE_" + MSISDN + "_Output");
+								test1.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank' href = '" + filetype
+										+ "/" + filename + "/Output.csv'>Click to View the EDR</a></b><br>" + tbl
+										+ "</table>");
+								// + filetype + "/" + "Output.csv"
 							}
 							extent.flush();
 							endTestCase(refid);
+
 						}
 					}
 
 				}
+				copydir(cdrfiles, trfold + "\\CDRrawfiles");
 			}
 
 		} catch (Exception e) {
@@ -891,7 +973,7 @@ public class asnconverter {
 		Log.debug(message);
 
 	}
-	
+
 	///////////////////////////////////////////
 
 	private static Session connect(String hostname, String username, String password) {
@@ -908,14 +990,16 @@ public class asnconverter {
 			session.setPassword(password);
 
 			System.out.println("Connecting SSH to " + hostname + " - Please wait for few seconds... ");
-			write_in_exiting_file_without_loosing_old_data("Connecting SSH to " +
-			hostname + " - Please wait for few seconds... ",curr_log_file_path);
+			write_in_exiting_file_without_loosing_old_data(
+					"Connecting SSH to " + hostname + " - Please wait for few seconds... ", curr_log_file_path);
 			session.connect();
 			System.out.println("Successfully Connected to the Host " + hostname + "  !!!");
-			write_in_exiting_file_without_loosing_old_data("Successfully Connected to the Host " + hostname + " !!!",curr_log_file_path);
+			write_in_exiting_file_without_loosing_old_data("Successfully Connected to the Host " + hostname + " !!!",
+					curr_log_file_path);
 		} catch (Exception e) {
 			System.out.println("An error occurred while connecting to " + hostname + ": " + e);
-			write_in_exiting_file_without_loosing_old_data("An error occurred while connecting to "+hostname+": "+e,curr_log_file_path);
+			write_in_exiting_file_without_loosing_old_data(
+					"An error occurred while connecting to " + hostname + ": " + e, curr_log_file_path);
 		}
 
 		return session;
@@ -939,7 +1023,7 @@ public class asnconverter {
 
 			} catch (Exception e) {
 				System.out.println("Error while opening channel: " + e);
-				write_in_exiting_file_without_loosing_old_data("Error while opening channel:"+ e,curr_log_file_path);
+				write_in_exiting_file_without_loosing_old_data("Error while opening channel:" + e, curr_log_file_path);
 			}
 		}
 		return channel;
@@ -971,7 +1055,7 @@ public class asnconverter {
 
 			out.println("#!/bin/bash");
 			for (String command : commands) {
-					
+
 				out.println(command);
 			}
 			out.println("exit");
@@ -1002,7 +1086,7 @@ public class asnconverter {
 					line = new String(buffer, 0, i);
 					System.out.println(line);
 					write_in_exiting_file_without_loosing_old_data(line, curr_log_file_path);
-					
+
 					global_Final_CDR_path = global_Final_CDR_path + line + "\n";
 				}
 
@@ -1028,7 +1112,7 @@ public class asnconverter {
 
 	// ***** Function to close the Channel and Session
 	public static void close() throws InterruptedException {
-		
+
 		channel.disconnect();
 		session.disconnect();
 		Thread.sleep(2000);
@@ -1099,8 +1183,8 @@ public class asnconverter {
 		System.out.println("Final Rndm_Number:-  " + Rndm_Number);
 		return Rndm_Number;
 	}
-	
-	//Function to read a file for cdr name
+
+	// Function to read a file for cdr name
 	public static String filename(String filepath) throws IOException {
 		InputStream is = new FileInputStream(filepath);
 		BufferedReader buf = new BufferedReader(new InputStreamReader(is));
@@ -1116,45 +1200,62 @@ public class asnconverter {
 		return fileAsString;
 
 	}
-	//Function to create a date format in linux command
+
+	// Function to create a date format in linux command for cdr files
 	public static String Present_date() {
 
 		String datetoday;
-		
+
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMdd-HH:mm");
 		LocalDateTime now = LocalDateTime.now();
 		datetoday = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
-		String finaldate=datetoday.substring(0, datetoday.length()-1);	
-	
+		String finaldate = datetoday.substring(0, datetoday.length() - 1);
+
 		return finaldate;
-	}	
+	}
+
+	// Method for CCN date for latest file
 	public static String Present_dateccn() {
 
 		String datetodayccn;
-		
+
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
 		LocalDateTime now = LocalDateTime.now();
 		datetodayccn = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
-		//String finaldateocc=datetoday.substring(0, datetoday.length()-1);	
-	
+		// String finaldateocc=datetoday.substring(0, datetoday.length()-1);
+
 		return datetodayccn;
 	}
+
+	// method for cis date to latest file
+	public static String Present_datecis() {
+
+		String datetoday;
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd_.");
+		LocalDateTime now = LocalDateTime.now();
+		datetoday = (dtf.format(now).toString().replaceAll("/", "")).replaceAll(" ", "").replaceAll(":", "");
+		String finaldate = datetoday.substring(0, datetoday.length() - 1);
+
+		return finaldate;
+	}
+
+	// Method to get time back 4 hours
 	public static String timeoffour() {
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.HOUR_OF_DAY, -4);
 		java.util.Date date = calendar.getTime();
-		//System.out.println(date);
-		String date1=date.toString();
-		//System.out.println(date1);
-		String finaldate=date1.substring(11,date1.length()-13).replace(":", "");
-		//System.out.println(finaldate);
-		
-		
+		// System.out.println(date);
+		String date1 = date.toString();
+		// System.out.println(date1);
+		String finaldate = date1.substring(11, date1.length() - 13).replace(":", "");
+		// System.out.println(finaldate);
+
 		return finaldate;
-		
+
 	}
-	
-	//Function to extract files 
+
+	// Function to extract files
 	public static void file_extraction(String gzfilepath, String finalpath) {
 		File folder = new File(gzfilepath);
 		File[] listOfFiles = folder.listFiles();
@@ -1162,21 +1263,20 @@ public class asnconverter {
 		for (int i = 0; i < listOfFiles.length; i++) {
 
 			if (listOfFiles[i].isFile()) {
-				//System.out.println("File " + listOfFiles[i].getName());
+				// System.out.println("File " + listOfFiles[i].getName());
 
 				gzfile = gzfilepath + listOfFiles[i].getName();
-				
 
-				//System.out.println("Zip file of OCC is " + gzfile);
+				// System.out.println("Zip file of OCC is " + gzfile);
 
 				String bername = listOfFiles[i].getName();
 				String bername1 = (bername.substring(0, bername.length() - 3));
 				berfile = finalpath + bername1;
 
-				//System.out.println("Extracted ber file is " + berfile);
+				// System.out.println("Extracted ber file is " + berfile);
 
 				gunzipIt(gzfile, berfile);
-				
+
 			} else if (listOfFiles[i].isDirectory()) {
 				System.out.println("Directory " + listOfFiles[i].getName());
 
@@ -1186,7 +1286,7 @@ public class asnconverter {
 
 	}
 
-	//Function to Unzip files
+	// Function to Unzip files
 	public static void gunzipIt(String INPUT_GZIP_FILE1, String OUTPUT_FILE2) {
 
 		byte[] buffer = new byte[1024];
@@ -1206,8 +1306,8 @@ public class asnconverter {
 			ex.printStackTrace();
 		}
 	}
-	
-	//Function to delete files
+
+	// Function to delete files
 	public static void file_deletion(String gzfilepath) {
 		File folder = new File(gzfilepath);
 		File[] listOfFiles = folder.listFiles();
@@ -1215,250 +1315,241 @@ public class asnconverter {
 		for (int i = 0; i < listOfFiles.length; i++) {
 
 			if (listOfFiles[i].isFile()) {
-				//System.out.println("File " + listOfFiles[i].getName());
-				
+				// System.out.println("File " + listOfFiles[i].getName());
 
-		 
 			} else if (listOfFiles[i].isDirectory()) {
-				//System.out.println("Directory " + listOfFiles[i].getName());
-				String pathofDir= listOfFiles[i].getPath();
-				//System.out.println(pathofDir);
-				 File folderin =new File(pathofDir);
-				 File[] list = folderin.listFiles();
-				 for (int j = 0; j < list.length; j++) {
+				// System.out.println("Directory " + listOfFiles[i].getName());
+				String pathofDir = listOfFiles[i].getPath();
+				// System.out.println(pathofDir);
+				File folderin = new File(pathofDir);
+				File[] list = folderin.listFiles();
+				for (int j = 0; j < list.length; j++) {
 
-						if (list[j].isFile()) {
-							//System.out.println("File " + list[j].getName());
-							
-						
-								File currentFile = new File(list[j].getPath());
-								currentFile.delete();
-								//System.out.println("Existing file deleted");
-							
+					if (list[j].isFile()) {
+						// System.out.println("File " + list[j].getName());
 
-					 
-						} else if (listOfFiles[j].isDirectory()) {
-							//System.out.println("Directory " + listOfFiles[j].getName());
+						File currentFile = new File(list[j].getPath());
+						currentFile.delete();
+						// System.out.println("Existing file deleted");
 
-			}else {
-				//System.out.println("No Files or Folder's Found");
-				
-			}
+					} else if (listOfFiles[j].isDirectory()) {
+						// System.out.println("Directory " + listOfFiles[j].getName());
 
-				 }
+					} else {
+						// System.out.println("No Files or Folder's Found");
+
+					}
+
+				}
 			}
 		}
 	}
+
 	public static String CSVparse(String Filepath, String viewpath) {
 		String csvtb = null;
 		try {
-			
-			Random rand = new Random(); 
-			//Filepath ="D:\\DU Automation\\ASNConverter\\CDR\\CIS\\EDRfile.csv";
+
+			Random rand = new Random();
+			// Filepath ="D:\\DU Automation\\ASNConverter\\CDR\\CIS\\EDRfile.csv";
 			// MSISDN ="971520001714";
-			String ClearData="Delete from public.EDR_CIS_DataSamp;";
-			//tableCreation(sql);
-			String loadCSV= "COPY public.EDR_CIS_DataSamp  (Transaction_Time  ,Client_Transaction_Id  ,Transaction_Id  ,IP_Address ," + 
-					"Event_Type  ,A_Party_Msisdn  ,B_Party_Msisdn  ,input  ,Result_Code  ,Result_Description ," + 
-					"Service_Class  ,Requested_Product_ID  ,Product_Name  ,Product_Type  ,Product_Cost  ,Applied_product_cost," + 
-					"Product_Validity  ,Access_Channel  ,Access_Code  ,Charge_Indicator  ,Vat_Fee  ,Language_Id  ," + 
-					"Iname  ,Circle_Code  ,Pay_Source  ,Send_sms  ,Skip_charging  ,Bill_Cycle_ID  ," + 
-					"User_ID  ,Origin_Host  ,Faf_Indicator  ,Faf_MSISDN  ,Offer_ID  ,New_Imei  ,Old_Imei  ," + 
-					"Dealer_ID  ,Transfer_Remark  ,DrCr  ,Subscription_Date  ,Expiry_Date  ,Last_Renewal_Date ," + 
-					"Grace_Expiry_Date  ,Status  ,Subscription_Mode  ,Network_Status  ,Last_Status  ,Status_Change_time," + 
-					"Command_Count  ,Charging_Session_Id  ,Notification_Message  ,Commission_Fee  ,Transfer_Fee ,GL_Code," + 
-					"State  ,Subscriber_Type  ,OpParam1  ,OpParam2  ,OpParam3  ,OpParam4  ,OpParam5  ,OpParam6 ," + 
-					"OpParam7  ,OpParam8  ,OpParam9  ,OpParam10  ,OpParam11  ,OpParam12  ,TDF_Event_Class  ," + 
-					"TDF_Event_Name  ,TDF_Voucher_Type  ,TDF_Periodic_Charge  ,TDF_Usage  ,External_Data1  ,External_Data2  ," + 
-					"External_Data3  ,External_Data4  ,Callback,ParentProductSPInfo) FROM '"+Filepath+"' DELIMITER '|' CSV HEADER";
-			
-			
-			//FileOperation();
+			String ClearData = "Delete from public.EDR_CIS_DataSamp;";
+			// tableCreation(sql);
+			String loadCSV = "COPY public.EDR_CIS_DataSamp  (Transaction_Time  ,Client_Transaction_Id  ,Transaction_Id  ,IP_Address ,"
+					+ "Event_Type  ,A_Party_Msisdn  ,B_Party_Msisdn  ,input  ,Result_Code  ,Result_Description ,"
+					+ "Service_Class  ,Requested_Product_ID  ,Product_Name  ,Product_Type  ,Product_Cost  ,Applied_product_cost,"
+					+ "Product_Validity  ,Access_Channel  ,Access_Code  ,Charge_Indicator  ,Vat_Fee  ,Language_Id  ,"
+					+ "Iname  ,Circle_Code  ,Pay_Source  ,Send_sms  ,Skip_charging  ,Bill_Cycle_ID  ,"
+					+ "User_ID  ,Origin_Host  ,Faf_Indicator  ,Faf_MSISDN  ,Offer_ID  ,New_Imei  ,Old_Imei  ,"
+					+ "Dealer_ID  ,Transfer_Remark  ,DrCr  ,Subscription_Date  ,Expiry_Date  ,Last_Renewal_Date ,"
+					+ "Grace_Expiry_Date  ,Status  ,Subscription_Mode  ,Network_Status  ,Last_Status  ,Status_Change_time,"
+					+ "Command_Count  ,Charging_Session_Id  ,Notification_Message  ,Commission_Fee  ,Transfer_Fee ,GL_Code,"
+					+ "State  ,Subscriber_Type  ,OpParam1  ,OpParam2  ,OpParam3  ,OpParam4  ,OpParam5  ,OpParam6 ,"
+					+ "OpParam7  ,OpParam8  ,OpParam9  ,OpParam10  ,OpParam11  ,OpParam12  ,TDF_Event_Class  ,"
+					+ "TDF_Event_Name  ,TDF_Voucher_Type  ,TDF_Periodic_Charge  ,TDF_Usage  ,External_Data1  ,External_Data2  ,"
+					+ "External_Data3  ,External_Data4  ,Callback,ParentProductSPInfo) FROM '" + Filepath
+					+ "' DELIMITER '|' CSV HEADER";
+
+			// FileOperation();
 			ExecuteQuery(ClearData);
 			ExecuteQuery(loadCSV);
 			int num = rand.nextInt(10000000);
-			String Validation_Query ="CREATE VIEW public.CIS_EDR_Validation_"+num+" AS Select Transaction_Time,Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID," + 
-					"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_datasamp where A_Party_Msisdn='" +MSISDN +"'";
+			String Validation_Query = "CREATE VIEW public.CIS_EDR_Validation_" + num
+					+ " AS Select Transaction_Time,Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID,"
+					+ "Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_datasamp where A_Party_Msisdn='"
+					+ MSISDN + "'";
 			ExecuteQuery(Validation_Query);
-			String getValidationData ="Select Transaction_Time,Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID," + 
-					"Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_datasamp where A_Party_Msisdn='" +MSISDN +"'";
-		 csvtb=ValidationQuery(getValidationData);
-		 
-		 // To export the required data to csv file
-		 String Export_Data ="COPY (select * from public.CIS_EDR_Validation_"+num+") TO '"+viewpath+"' DELIMITER '|' CSV HEADER" ;
-		 ExecuteQuery(Export_Data);
-		 return csvtb;
-				 
+			String getValidationData = "Select Transaction_Time,Product_Name, Event_Type,Access_Channel,Result_Description,Result_Code,Offer_ID,Service_Class,input,Requested_Product_ID,"
+					+ "Expiry_Date,Subscription_Mode,A_Party_Msisdn, Product_Validity, Vat_Fee, Iname,Network_Status FROM public.edr_cis_datasamp where A_Party_Msisdn='"
+					+ MSISDN + "'";
+			csvtb = ValidationQuery(getValidationData);
+
+			// To export the required data to csv file
+			String Export_Data = "COPY (select * from public.CIS_EDR_Validation_" + num + ") TO '" + viewpath
+					+ "' DELIMITER '|' CSV HEADER";
+			ExecuteQuery(Export_Data);
+			return csvtb;
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		}
 		return csvtb;
-		
-	
+
 	}
 
-	
-	public static void ExecuteQuery(String sql) throws SQLException, ClassNotFoundException  {
-		   
-		  // Connection conn = null;
-		   
-	       Statement stmt = null;
-		
-		      String dbURL = "jdbc:postgresql://localhost:5432/DU";
-		      Properties parameters = new Properties();
-		      parameters.put("user", "postgres");
-		      parameters.put("password", "maveric");
-		      java.sql.Connection con = DriverManager.getConnection(dbURL, parameters);
-		      
-		     // conn.setAutoCommit(false);
-		   //   System.out.println("Opened database successfully");
-		      
-		 System.out.println("Opened database successfully");
+	public static void ExecuteQuery(String sql) throws SQLException, ClassNotFoundException {
 
-        stmt = con.createStatement();
-        stmt.executeUpdate(sql);
-		 stmt.close();
-		 con.close();
-	       System.out.println("Table created successfully");  
-	}   
-	
+		// Connection conn = null;
+
+		Statement stmt = null;
+
+		String dbURL = "jdbc:postgresql://localhost:5432/DU";
+		Properties parameters = new Properties();
+		parameters.put("user", "postgres");
+		parameters.put("password", "maveric");
+		java.sql.Connection con = DriverManager.getConnection(dbURL, parameters);
+
+		// conn.setAutoCommit(false);
+		// System.out.println("Opened database successfully");
+
+		System.out.println("Opened database successfully");
+
+		stmt = con.createStatement();
+		stmt.executeUpdate(sql);
+		stmt.close();
+		con.close();
+		System.out.println("Table created successfully");
+	}
+
 	public static String ValidationQuery(String Validatin_Query) throws SQLException {
-		 String dbURL = "jdbc:postgresql://localhost:5432/DU";
-	      Properties parameters = new Properties();
-	      parameters.put("user", "postgres");
-	      parameters.put("password", "maveric");
-	     
-	     
-     java.sql.Connection con = DriverManager.getConnection(dbURL, parameters);
-            Statement st = con.createStatement();
-    		ResultSet rs = st.executeQuery(Validatin_Query);
-    	   		 
-    		 System.out.println("Query Executed");
-    		// display actor information
-            String csvtbl= displayActor(rs);
+		String dbURL = "jdbc:postgresql://localhost:5432/DU";
+		Properties parameters = new Properties();
+		parameters.put("user", "postgres");
+		parameters.put("password", "maveric");
 
-            st.close();
-   		 con.close();
-   		 return csvtbl;
-    
-}
-	public static String displayActor(ResultSet rs) throws SQLException {
-		 String tbl = "<table>"
-		 		+ "<tr>"
-		 		+ "<th>Transaction_Time</th>"
-		 		+ "<th>A_Party_Msisdn</th>"
-		 		+ "<th>Product_Name</th>"
-		 		+ "<th>Event_Type</th>"
-		 		+ "<th>Access_Channel</th>"
-		 		+ "<th>Result_Description</th>"
-		 		+ "<th>Result_Code</th>"
-		 		+ "<th>Offer_ID</th>"
-		 		+ "<th>Service_Class</th>"
-		 		+ "<th>input</th>"
-		 		+ "<th>Requested_Product_ID</th>"
-		 		+ "<th>Expiry_Date</th>"
-		 		+ "<th>Subscription_Mode</th>"
-		 		+ "<th width = 150px>Product_Validity</th>"
-		 		+ "<th>Vat_Fee</th>"
-		 		+ "<th>Iname</th>"
-		 		+ "<th>Network_Status</th>"
-		 				 		
-		 		+ "</tr>";
-        while (rs.next()) {
-        	tbl = tbl + "<tr><td style= 'min-width: 162px'>" +(rs.getString("Transaction_Time") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("A_Party_Msisdn") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Product_Name") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Event_Type") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Access_Channel") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Result_Description") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Result_Code") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Offer_ID") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Service_Class") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("input") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Requested_Product_ID") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Expiry_Date") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Subscription_Mode") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Product_Validity") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Vat_Fee") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                    + rs.getString("Iname") + "\t" +"</td>"+"<td style= 'min-width: 162px'>"
-                  	+ rs.getString("Network_Status"))+ "</td></tr style= 'min-width: 162px'>";
-        	
- 
-        }
-        return tbl;
-    }
-	public static String parsedata(String filetype,String filepath ,String param1,String MSISDN) {
-		String value="" ;
-	try {
-		
-		if(filetype.equalsIgnoreCase("OCC")||filetype.equalsIgnoreCase("CCN")) {
-			nodetag="onlineCreditControlRecord";
-			idtag="subscriptionIDValue";
-		}else {
-			nodetag="refillRecordV2";
-			idtag="subscriberNumber";
-		}
+		java.sql.Connection con = DriverManager.getConnection(dbURL, parameters);
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(Validatin_Query);
 
-		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-		Document docc = docBuilder.parse(filepath);
-		docc.getDocumentElement().normalize();
-		
-		NodeList data = docc.getElementsByTagName(nodetag);
-	
-		int totaldata = data.getLength();
-		
-		for (int temp = 0; temp < totaldata; temp++) {
-            Node nNode = data.item(temp);
-		
-            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element eElement = (Element) nNode;
-                String[] parmsplt = param1.split("\\[");
-        		String param = parmsplt[0];
-        		int inde = 0;
-        		if (parmsplt.length == 1) {
-        			inde = 0;
-        		} else {
-        			String[] paramsplit2 = parmsplt[1].split("\\]");
-        			inde = Integer.parseInt(paramsplit2[0]);
-        		}
-        		
+		System.out.println("Query Executed");
+		// display actor information
+		String csvtbl = displayActor(rs);
 
-                String sub=eElement.getElementsByTagName(idtag).item(0).getTextContent();
-                if (sub.contentEquals(MSISDN)){
-                value=(eElement.getElementsByTagName(param).item(inde).getTextContent());
-                info(param + " = " +value);
-                }
-                
-                 
-                
-            }
-            
-		}
+		st.close();
+		con.close();
+		return csvtbl;
 
-		
-
-	} catch (SAXParseException err) {
-		System.out.println("** Parsing error" + ", line " + err.getLineNumber() + ", uri " + err.getSystemId());
-		System.out.println(" " + err.getMessage());
-
-	} catch (SAXException e) {
-		Exception x = e.getException();
-		((x == null) ? e : x).printStackTrace();
-
-	} catch (Throwable t) {
-		t.printStackTrace();
 	}
-	
-	return value;
 
-}
+	public static String displayActor(ResultSet rs) throws SQLException {
+		String tbl = "<table>" + "<tr>" + "<th>Transaction_Time</th>" + "<th>A_Party_Msisdn</th>"
+				+ "<th>Product_Name</th>" + "<th>Event_Type</th>" + "<th>Access_Channel</th>"
+				+ "<th>Result_Description</th>" + "<th>Result_Code</th>" + "<th>Offer_ID</th>"
+				+ "<th>Service_Class</th>" + "<th>input</th>" + "<th>Requested_Product_ID</th>" + "<th>Expiry_Date</th>"
+				+ "<th>Subscription_Mode</th>" + "<th width = 150px>Product_Validity</th>" + "<th>Vat_Fee</th>"
+				+ "<th>Iname</th>" + "<th>Network_Status</th>"
 
+				+ "</tr>";
+		while (rs.next()) {
+			tbl = tbl + "<tr><td style= 'min-width: 162px'>"
+					+ (rs.getString("Transaction_Time") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("A_Party_Msisdn") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Product_Name") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Event_Type") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Access_Channel") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Result_Description") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Result_Code") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Offer_ID") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Service_Class") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("input") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Requested_Product_ID") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Expiry_Date") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Subscription_Mode") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Product_Validity") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Vat_Fee") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Iname") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
+							+ rs.getString("Network_Status"))
+					+ "</td></tr style= 'min-width: 162px'>";
 
+		}
+		return tbl;
+	}
 
+	public static String parsedata(String filetype, String filepath, String param1, String MSISDN) {
+		String value = "";
+		try {
+
+			if (filetype.equalsIgnoreCase("OCC") || filetype.equalsIgnoreCase("CCN")) {
+				nodetag = "onlineCreditControlRecord";
+				idtag = "subscriptionIDValue";
+			} else {
+				nodetag = "refillRecordV2";
+				idtag = "subscriberNumber";
+			}
+
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+			Document docc = docBuilder.parse(filepath);
+			docc.getDocumentElement().normalize();
+
+			NodeList data = docc.getElementsByTagName(nodetag);
+
+			int totaldata = data.getLength();
+
+			for (int temp = 0; temp < totaldata; temp++) {
+				Node nNode = data.item(temp);
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					String[] parmsplt = param1.split("\\[");
+					String param = parmsplt[0];
+					int inde = 0;
+					if (parmsplt.length == 1) {
+						inde = 0;
+					} else {
+						String[] paramsplit2 = parmsplt[1].split("\\]");
+						inde = Integer.parseInt(paramsplit2[0]);
+					}
+
+					String sub = eElement.getElementsByTagName(idtag).item(0).getTextContent();
+					if (sub.contentEquals(MSISDN)) {
+						value = (eElement.getElementsByTagName(param).item(inde).getTextContent());
+						info(param + " = " + value);
+					}
+
+				}
+
+			}
+
+		} catch (SAXParseException err) {
+			System.out.println("** Parsing error" + ", line " + err.getLineNumber() + ", uri " + err.getSystemId());
+			System.out.println(" " + err.getMessage());
+
+		} catch (SAXException e) {
+			Exception x = e.getException();
+			((x == null) ? e : x).printStackTrace();
+
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
+
+		return value;
+
+	}
+
+	public static void copydir(String Source, String Destination) {
+
+		File srcDir = new File(Source);
+
+		File destDir = new File(Destination);
+
+		try {
+			FileUtils.copyDirectory(srcDir, destDir);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	// End
-
 
 	////////////////////////////////////////////////////////
 

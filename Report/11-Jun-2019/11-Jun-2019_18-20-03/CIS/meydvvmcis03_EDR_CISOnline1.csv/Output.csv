@@ -1,0 +1,2 @@
+transaction_time|product_name|event_type|access_channel|result_description|result_code|offer_id|service_class|input|requested_product_id|expiry_date|subscription_mode|a_party_msisdn|product_validity|vat_fee|iname|network_status
+11/06/2019 16:20:00:221|IDDDailyBundle|AUTOEXP_NORMAL|WEB|SUCCESS|0||1001|DACT_IDDDailyBundle|1652|11/06/2019 16:20:00:000|Adhoc|971520001714|1 Days|5|RS|

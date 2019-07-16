@@ -10,10 +10,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 public class Xmlparse {
- public static String file="D:\\DU Automation\\ASNConverter\\Report\\04-Jun-2019\\04-Jun-2019_12-39-06\\AIR\\AIROUTPUTCDR_4011_3572_20190414-225920.AIR\\output.xml";
-	public static String param1="accountNumber";
-	public static String msisdn="971520000174";
-	public static String filetype="AIR";
+ public static String file="D:\\DU Automation\\ASNConverter\\Report\\02-Jun-2019\\02-Jun-2019_19-15-52\\OCC\\CHARGINGCDR-meydvvmocc02-190602-1913-03084.ber\\Output.xml";
+	public static String param1="subscriptionIDValue[0]";
+	public static String msisdn="971520002069";
+	public static String filetype="OCC";
 	public static String nodetag;
 	public static String idtag;
 	
@@ -32,8 +32,11 @@ public class Xmlparse {
 			if(filetype.equalsIgnoreCase("OCC")||filetype.equalsIgnoreCase("CCN")) {
 				nodetag="onlineCreditControlRecord";
 				idtag="subscriptionIDValue";
-			}else {
+			}else if(filetype.equalsIgnoreCase("AIR")) {
 				nodetag="refillRecordV2";
+				idtag="subscriberNumber";
+			}else {
+				nodetag="periodicAccountMgmt";
 				idtag="subscriberNumber";
 			}
 
@@ -68,7 +71,7 @@ public class Xmlparse {
 	               
 	                }
 	                
-	                 
+	              System.out.println(param1+" == "+value);   
 	                
 	            }
 	            
