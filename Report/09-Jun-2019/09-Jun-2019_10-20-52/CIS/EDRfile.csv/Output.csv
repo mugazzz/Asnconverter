@@ -1,7 +1,0 @@
-transaction_time|product_name|event_type|access_channel|result_description|result_code|offer_id|service_class|input|requested_product_id|expiry_date|subscription_mode|a_party_msisdn|product_validity|vat_fee|iname|network_status
-05/06/2019 14:35:29:977||USSDBrowsing|USSD|||||||||971520001714||||
-05/06/2019 14:35:45:538|CallHomeforLess|NACT|USSD|SUCCESS|0||1001|NACT_CallHomeforLess|820|2046-10-20 14:35:45|Adhoc|971520001714|9999 Days|0|USSD|
-05/06/2019 14:35:45:579||USSDBrowsing|USSD|||||||||971520001714||||
-05/06/2019 14:39:32:508||USSDBrowsing|USSD|||||||||971520001714||||
-05/06/2019 14:39:41:324|CallHomeforLess|DACT|USSD|SUCCESS|0||1001|DACT_CallHomeforLess|820|2046-10-20 14:39:41|Adhoc|971520001714|9999 Days|0|USSD|
-05/06/2019 14:39:41:360||USSDBrowsing|USSD|||||||||971520001714||||

@@ -1,5 +1,0 @@
-transaction_time|product_name|event_type|access_channel|result_description|result_code|offer_id|service_class|input|requested_product_id|expiry_date|subscription_mode|a_party_msisdn|product_validity|vat_fee|iname|network_status
-02/07/2019 14:11:31:802||USSDBrowsing|USSD|||||||||971520001714||||
-02/07/2019 14:11:43:528||USSDBrowsing|USSD|||||||||971520001714||||
-02/07/2019 14:11:52:611|AED2DailySlBundle120MB|RACT|USSD|SUCCESS|0||1001|RACT_AED2DailySlBundle120MB|1447||Renewal|971520001714|1 Days|5|USSD|
-02/07/2019 14:11:52:658||USSDBrowsing|USSD|||||||||971520001714||||
