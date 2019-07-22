@@ -8,25 +8,36 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class CISDB {
-	public static String table = "adhoc";
+	// public static String table = "adhoc";
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		String table = "";
 
-		String validate_adhoc = "select msisdn, product_id, status,start_date, expiry_date,product_cost,srcchannel,network_status from rs_adhoc_products where msisdn=971520001714 order by last_action_date desc";
+		System.out.println(cis_db(table));
+	}
 
-		String validate_renewal = "select msisdn,last_renewal_date,renewal_date,status,activation_date,product_id,product_description,product_type,srcchannel,product_category,product_purchase_type,language_id,network_status from renewal where msisdn=971520001714 order by last_action_date desc";
-		if (table.equalsIgnoreCase("adhoc")) {
-			System.out.println(ValidationQuery(validate_adhoc, table));
+	public static String cis_db(String table) {
+		String table_data ="";
+		String table_data1 ="";
+		try {
+			String validate_adhoc = "select msisdn, product_id, status,start_date, expiry_date,product_cost,srcchannel,network_status from rs_adhoc_products where msisdn=971520001714 order by last_action_date desc";
 
-		} else if (table.equalsIgnoreCase("renewal")) {
-			System.out.println(ValidationQuery(validate_renewal, table));
+			String validate_renewal = "select msisdn,last_renewal_date,renewal_date,status,activation_date,product_id,product_description,product_type,srcchannel,product_category,product_purchase_type,language_id,network_status from renewal where msisdn=971520001714 order by last_action_date desc";
+			if (table.equalsIgnoreCase("adhoc")) {
+				table_data=ValidationQuery(validate_adhoc, table);
+			} else if (table.equalsIgnoreCase("renewal")) {
+				table_data=ValidationQuery(validate_renewal, table);
 
-		} else {
-			System.out.println(ValidationQuery(validate_adhoc, "adhoc"));
-			System.out.println(ValidationQuery(validate_renewal, "renewal"));
+			}else {
+				table_data=ValidationQuery(validate_adhoc, "adhoc");
+				table_data1=ValidationQuery(validate_renewal, "renewal");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 
 		}
-
+		return table_data + table_data1;
 	}
 
 	public static String ValidationQuery(String Validatin_Query, String Table) throws SQLException {
@@ -44,12 +55,12 @@ public class CISDB {
 		System.out.println("Query Executed");
 		// display actor information
 		if (Table.equalsIgnoreCase("adhoc")) {
-			
-			table_data=displayActorAdhoc(rs);
+
+			table_data = displayActorAdhoc(rs);
 
 		} else if (Table.equalsIgnoreCase("renewal")) {
-			
-			table_data=displayActorRenew(rs);
+
+			table_data = displayActorRenew(rs);
 
 		} else {
 
@@ -62,7 +73,7 @@ public class CISDB {
 	}
 
 	public static String displayActorAdhoc(ResultSet rs) throws SQLException {
-		String tbl = "<table>" + "<tr>" + "<th>msisdn</th>" + "<th>product_id</th>" + "<th>status</th>"
+		String tbl = "<table>" + "<caption>Adhoc Table</caption>" + "<tr>" + "<th>msisdn</th>" + "<th>product_id</th>" + "<th>status</th>"
 				+ "<th>start_date</th>" + "<th>expiry_date</th>" + "<th>product_cost</th>" + "<th>srcchannel</th>"
 				+ "<th>network_status</th>" + "</tr>";
 		while (rs.next()) {
@@ -84,7 +95,7 @@ public class CISDB {
 	}
 
 	public static String displayActorRenew(ResultSet rs) throws SQLException {
-		String tbl = "<table>" + "<tr>" + "<th>msisdn</th>" + "<th>last_renewal_date</th>" + "<th>renewal_date</th>"
+		String tbl = "<table>" +"<caption>Renewal Table</caption>" +  "<tr>" + "<th>msisdn</th>" + "<th>last_renewal_date</th>" + "<th>renewal_date</th>"
 				+ "<th>status</th>" + "<th>activation_date</th>" + "<th>product_id</th>"
 				+ "<th>product_description</th>" + "<th>product_type</th>" + "<th>srcchannel</th>"
 				+ "<th>product_category</th>" + "<th>product_purchase_type</th>" + "<th>language_id</th>"
