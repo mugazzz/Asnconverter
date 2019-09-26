@@ -1,62 +1,157 @@
 package duAutomationPOC1;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.parser.Parser;
-import org.xml.sax.SAXException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class Xmldom {
-	static File file = new File( "C:\\Users\\venureddyg\\Documents\\My Received Files\\TC_003.xml");
-	public static String param1 = "name[0]";
-	// public static String msisdn="971520002069";
-	// public static String filetype="OCC";
-	public static String nodetag = "params";
-	// public static String idtag;
+	
+	public static String Root = System.getProperty("user.dir");
+	public static String key1 = "";
+	public static String value1 = "";
+	public static String Value = "";
+	public static String I4v = "";
+	public static String sTringv = "";
+	public static String DateTimev = "";
+	public static String file="C:\\Users\\venureddyg\\Desktop\\TC_001_response.xml";
+	
+	 public static void main(String args[]) throws Throwable {
+		 System.out.println(WebService(file));
+	  }
+	public static void WebService() throws Throwable 
+	{
+		String XMLResponse_Path = "C:\\Users\\venureddyg\\git\\parallel_ussd\\Result\\24-Jun-2019\\24-Jun-2019_16-30-49\\AddDifferentDA\\Response\\response.xml";
+		
+		System.out.println(XMLResponse_Path);
 
-	public static void main(String argv[]) throws IndexOutOfBoundsException, ParserConfigurationException, SAXException, IOException {
+		key1="name";
 
-		parsexml(param1, file);
+		value1="value";	
+		String i4 = "i4";
+		String  dateTime = "dateTime.iso8601";
+		String string3 = "string";
+			@SuppressWarnings("rawtypes")
+			
+		    //Fetch Data from Soap Response
+		    DocumentBuilderFactory dbFactory1 = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder1 = dbFactory1.newDocumentBuilder();
+			Document doc1 = dBuilder1.parse(new File(XMLResponse_Path));
+			doc1.getDocumentElement().normalize();
+			
+ 		    		 //String Output = getvalue(key1,value1,XMLResponse_Path);
+ 		    		 //String Output = getvalue(doc1, key1,value1);
+			NodeList nList = doc1.getElementsByTagName(value1);
+			NodeList nList1 = doc1.getElementsByTagName(key1);
+			NodeList I4 = doc1.getElementsByTagName(i4);
+			NodeList sTring = doc1.getElementsByTagName(string3);
+			NodeList DateTime = doc1.getElementsByTagName(dateTime);
 
-	}
-
-	public static String parsexml(String param1, File file)
-			throws ParserConfigurationException, SAXException, IOException, IndexOutOfBoundsException {
-		String[] parmsplt = param1.split("\\[");
-
-		String param = parmsplt[0];
-		int inde = 0;
-		if (parmsplt.length == 1) {
-			inde = 0;
-		} else {
-			String[] paramsplit2 = parmsplt[1].split("\\]");
-
-			inde = Integer.parseInt(paramsplit2[0]);
+	           //  System.out.println("----------------------------");
+	            	for(int k=0; k<=nList1.getLength();k++) {
+	            		String Name = nList1.item(k).getTextContent();
+	            		Value = nList.item(k).getTextContent();
+//	            		if(nList.getLength() !=0) {
+//	            			Value = nList.item(k).getTextContent();
+//	            		}
+//	            		if(I4.getLength() !=0){
+//	            			I4v = I4.item(k).getTextContent();
+//	            		}
+////	            		if(sTring.getLength() !=0){
+////	            			sTringv = sTring.item(k).getTextContent();
+////	            		}
+//	            		if(DateTime.getLength() !=0){
+//	            			DateTimev = DateTime.item(k).getTextContent();
+//	            		}
+	            	//if (Name.equals("dedicatedAccountActiveValue1")) {
+            	System.out.println("Output Value = "+":Name ="+Name+" :Value ="+Value);
+	         //   }
+	            	}
 		}
+	public static String WebService(String XMLResponse_Path) throws Exception {
 
-		File ipfile = file;
-		String fstr = "";
-		StringBuilder fileContents = new StringBuilder((int) ipfile.length());
+		String Nodetag = "member";
+		String sub = null;
+		String value = null;
+		String nametag = "name";
+		String valuetag = "value";
+		String tbl = "<table><tr><th>Parameter</th><th>Value</th></tr>";
+		String sot = null;
+		String values;
+		try {
 
-		try (Scanner scanner = new Scanner(ipfile)) {
-			while (scanner.hasNextLine()) {
-				fileContents.append(scanner.nextLine() + System.lineSeparator());
+			DocumentBuilderFactory dbFactory1 = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder1 = dbFactory1.newDocumentBuilder();
+			Document doc1 = dBuilder1.parse(new File(XMLResponse_Path));
+			doc1.getDocumentElement().normalize();
+
+			NodeList data = doc1.getElementsByTagName(Nodetag);
+
+			int totaldata = data.getLength();
+
+			for (int temp = 0; temp < totaldata; temp++) {
+
+				Node nNode = data.item(temp);
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+
+					sub = eElement.getElementsByTagName(nametag).item(0).getTextContent();
+					value = eElement.getElementsByTagName(valuetag).item(0).getTextContent();
+					NodeList valuetags = eElement.getElementsByTagName(valuetag);
+
+					int tagle = valuetags.getLength();
+
+					if (sub.equalsIgnoreCase("accountFlagsAfter") || sub.equalsIgnoreCase("accountFlagsBefore")
+							|| sub.equalsIgnoreCase("usageCounterUsageThresholdInformation")
+							|| sub.equalsIgnoreCase("usageThresholdInformation")
+							|| sub.equalsIgnoreCase("dedicatedAccountChangeInformation")
+							|| sub.equalsIgnoreCase("accountFlags") || sub.equalsIgnoreCase("offerInformationList")
+							|| sub.equalsIgnoreCase("dedicatedAccountInformation")
+							|| sub.equalsIgnoreCase("serviceOfferings") || sub.equalsIgnoreCase("offerInformation")
+							|| sub.equalsIgnoreCase("attributeInformationList")) {
+						sot = sub;
+						value = "";
+						tbl = tbl + "<tr><td>" + sub + "</td><td>" + value + "</td></tr>";
+
+					} else if (tagle != 1) {
+						for (int i = 1; i < tagle; i++) {
+							Node vNode = valuetags.item(i);
+							// System.out.println("row "+i);
+							Element eElementval = (Element) vNode;
+
+							if (sub.contains("DateTime")) {
+								values = eElementval.getElementsByTagName("dateTime.iso8601").item(0).getTextContent();
+							} else if (sub.contains("Flags")) {
+								values = eElementval.getElementsByTagName("boolean").item(0).getTextContent();
+							} else if (sub.contains("Value") || sub.contains("masterAccountNumber")
+									|| sub.contains("originTransactionID") || sub.contains("currency")) {
+								values = eElementval.getElementsByTagName("string").item(0).getTextContent();
+							} else {
+								values = eElementval.getElementsByTagName("i4").item(0).getTextContent();
+							}
+							sot = sub + "==" + values;
+							// System.out.println("hi--i4 tag " + sot);
+							tbl = tbl + "<tr><td>" + sub + "</td><td>" + values + "</td></tr>";
+
+						}
+					} else {
+						sot = sub + " == " + value;
+						tbl = tbl + "<tr><td>" + sub + "</td><td>" + value + "</td></tr>";
+					}
+				}
+				// tbl = tbl + "<tr><td>" + sot + "</td></tr>";
+
 			}
-			fstr = fileContents.toString();
-		}
+		} catch (Throwable e) {
 
-		Document doc = Jsoup.parse(fstr, "", Parser.xmlParser());
-		System.out.println(param + " = " + doc.select(param).get(0).text());
-		if (doc.select(param).size() != 0) {
-			// info(param + " = " + doc.select(param).get(inde).text());
-			return doc.select(param).get(inde).text();
-		} else {
-			return "";
+			System.setProperty("Order_Status", "FAIL");
 		}
+		return tbl;
 	}
 }
+	    	

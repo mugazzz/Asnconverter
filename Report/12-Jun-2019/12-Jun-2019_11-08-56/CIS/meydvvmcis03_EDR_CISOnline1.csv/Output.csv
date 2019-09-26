@@ -1,4 +1,0 @@
-transaction_time|product_name|event_type|access_channel|result_description|result_code|offer_id|service_class|input|requested_product_id|expiry_date|subscription_mode|a_party_msisdn|product_validity|vat_fee|iname|network_status
-12/06/2019 10:46:16:349||USSDBrowsing|USSD|||||||||971520001714||||
-12/06/2019 10:54:31:528||USSDBrowsing|USSD|||||||||971520001714||||
-12/06/2019 10:54:38:764||USSDBrowsing|USSD|||||||||971520001714||||

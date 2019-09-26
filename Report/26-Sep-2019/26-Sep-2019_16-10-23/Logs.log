@@ -1,0 +1,44 @@
+26-09-2019 16:10:52 INFO [asnconverter]: Starting execution at +:26-Sep-2019 16:10:23
+26-09-2019 16:10:53 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:53 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:53 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmccn01-CCNCDR44-01-Blk0Blk-3994-20190530074328-1 $$$$$$$$$$$$$$$$$$$$$$$$$
+26-09-2019 16:10:53 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:53 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:54 INFO [asnconverter]: subscriptionIDValue = 971520001714
+26-09-2019 16:10:54 INFO [asnconverter]: resultCode = 2001
+26-09-2019 16:10:54 INFO [asnconverter]: triggerTime = 915003113184304000
+26-09-2019 16:10:54 INFO [asnconverter]: nodeName = meydvvmccn01
+26-09-2019 16:10:54 INFO [asnconverter]: serviceContextID = Core_Context_R1A@ericsson.com
+26-09-2019 16:10:54 INFO [asnconverter]: chargingContextID = CAPv2_V.1.0@ericsson.com
+26-09-2019 16:10:54 INFO [asnconverter]: serviceSessionID = 5-1658634243-03c0dc62
+26-09-2019 16:10:54 INFO [asnconverter]: recordIdentificationNumber = 00001773
+26-09-2019 16:10:54 INFO [asnconverter]: subscriptionIDType = endUserE164
+26-09-2019 16:10:54 INFO [asnconverter]: subscriptionIDValue = 971520001714
+26-09-2019 16:10:54 INFO [asnconverter]: subscriptionIDType = endUserIMSI
+26-09-2019 16:10:54 INFO [asnconverter]: subscriptionIDValue = 424030046672675
+26-09-2019 16:10:54 INFO [asnconverter]: callReference = 401C7004046100
+26-09-2019 16:10:54 INFO [asnconverter]: mSCAddress = 91795105395021
+26-09-2019 16:10:54 INFO [asnconverter]: serviceScenario = mobileOriginating
+26-09-2019 16:10:54 INFO [asnconverter]: roamingPosition = insideHPLMN
+26-09-2019 16:10:54 INFO [asnconverter]: lastPartialOutput = TRUE
+26-09-2019 16:10:54 INFO [asnconverter]: tariffChangeUsage = before
+26-09-2019 16:10:54 INFO [asnconverter]: timeUnit = 5
+26-09-2019 16:10:55 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+26-09-2019 16:10:55 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:55 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:55 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File SDPOUTPUTCDR_4001_meytvvmsdp01_SUB_8772_20190606-143746.ASN $$$$$$$$$$$$$$$$$$$$$$$$$
+26-09-2019 16:10:55 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:55 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:56 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+26-09-2019 16:10:56 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:56 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:56 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File CHARGINGCDR-meydvvmocc02-190528-1634-02448.ber $$$$$$$$$$$$$$$$$$$$$$$$$
+26-09-2019 16:10:56 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:56 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:57 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+26-09-2019 16:10:57 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:57 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:57 INFO [asnconverter]: $$$$$$$$$$$$$$$$$$$$$ Parsing File meydvvmcis03_EDR_CISOnline1.csv $$$$$$$$$$$$$$$$$$$$$$$$$
+26-09-2019 16:10:57 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:57 INFO [asnconverter]: ****************************************************************************************
+26-09-2019 16:10:58 INFO [asnconverter]: XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX

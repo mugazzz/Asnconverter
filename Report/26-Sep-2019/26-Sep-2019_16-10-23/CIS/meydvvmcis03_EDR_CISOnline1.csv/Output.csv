@@ -1,0 +1,5 @@
+transaction_time|product_name|event_type|access_channel|result_description|result_code|offer_id|service_class|input|requested_product_id|expiry_date|subscription_mode|a_party_msisdn|product_validity|vat_fee|iname|network_status
+26/09/2019 15:17:59:519|RedirectAVBFlexi25|NACT|ussd|SUCCESS|0||1051|NACT_RedirectAVBFlexi25|1955|10/02/2047 15:17:59:000|adhoc|971520001714|9999 Days|5|USSD|
+26/09/2019 15:17:59:601||USSDBrowsing|USSD|SUCCESS|0||1051|||||971520001714||||
+26/09/2019 15:18:06:998|AllValueBundleMonthlyFlexi25|NACT|ussd|FAILURE|1||1051|NACT_AllValueBundleMonthlyFlexi25|1663|26/10/2019 15:18:06:000|adhoc|971520001714|30 Days|5|USSD|
+26/09/2019 15:18:06:998||USSDBrowsing|USSD|FAILURE|9001||1051|||||971520001714||||

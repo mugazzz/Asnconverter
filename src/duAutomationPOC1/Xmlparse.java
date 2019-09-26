@@ -10,10 +10,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 public class Xmlparse {
- public static String file="D:\\DU Automation\\ASNConverter\\Report\\02-Jun-2019\\02-Jun-2019_19-15-52\\OCC\\CHARGINGCDR-meydvvmocc02-190602-1913-03084.ber\\Output.xml";
+ public static String file="C:\\Users\\venureddyg\\Desktop\\parallel_ussd-Regression_CIS_DB-API\\Result\\19-Sep-2019\\19-Sep-2019_16-39-16\\TC-1092__API_GetOffers\\Response\\response.xml";
 	public static String param1="subscriptionIDValue[0]";
 	public static String msisdn="971520002069";
-	public static String filetype="OCC";
+	public static String filetype="";
 	public static String nodetag;
 	public static String idtag;
 	

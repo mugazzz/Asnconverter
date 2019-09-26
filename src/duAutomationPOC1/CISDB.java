@@ -4,10 +4,12 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Properties;
 
@@ -17,6 +19,9 @@ import org.apache.log4j.xml.DOMConfigurator;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.codoid.products.exception.FilloException;
+import com.codoid.products.fillo.Fillo;
+import com.codoid.products.fillo.Recordset;
 
 public class CISDB {
 	public static final String Result_FLD = System.getProperty("user.dir") + "\\Report";
@@ -26,12 +31,13 @@ public class CISDB {
 	public static DateFormat For = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
 	public static Calendar cal = Calendar.getInstance();
 	public static String ExecutionStarttime = For.format(cal.getTime()).toString();
-	public static String Curr_user_directory_path;
+	public static String Curr_user_directory_path = System.getProperty("user.dir");
 	public static String curr_log_file_path = System.getProperty("user.dir") + "\\Report.txt";
 	public static String MSISDN = "971520001714";
 
+	static String Data = Curr_user_directory_path + "\\TestData.xlsx";
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, FilloException {
 		Curr_user_directory_path = System.getProperty("user.dir");
 		createtimestampfold();
 		System.setProperty("logfilename", trfold + "\\Logs");
@@ -40,36 +46,39 @@ public class CISDB {
 		ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(trfold + "\\Master.html");
 		extent.attachReporter(htmlReporter);
 		info("Starting execution at +:" + ExecutionStarttime);
+
 		startTestCase("Connecting CIS_DB ");
 		String table = "";
-		String tbl =null;
+		String tbl = null;
 
-		tbl=cis_db(table);
-		
+		tbl = cis_db(table);
+
+		System.out.println(tbl);
+
 		ExtentTest test = extent.createTest("CIS_DB_" + MSISDN + "_Output");
-		
-		
-		test.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank'></a></b><br>" + tbl
-				+ "</table>");
+
+		test.pass("&nbsp<b><a style = 'color:hotpink' target = '_blank'></a></b><br>" + tbl + "</table>");
 		extent.flush();
 		endTestCase("Disconnected From CIS_DB");
 	}
 
 	public static String cis_db(String table) {
-		String table_data ="";
-		String table_data1 ="";
+		String table_data = "";
+		String table_data1 = "";
 		try {
-			String validate_adhoc = "select msisdn, product_id, status,start_date, expiry_date,product_cost,srcchannel,network_status from rs_adhoc_products where msisdn="+MSISDN+" order by last_action_date desc limit 2";
+			String validate_adhoc = "select msisdn, product_id, status,start_date, expiry_date,product_cost,srcchannel,network_status from rs_adhoc_products where msisdn="
+					+ MSISDN + " order by last_action_date desc limit 1";
 
-			String validate_renewal = "select msisdn,last_renewal_date,renewal_date,status,activation_date,product_id,product_description,product_type,srcchannel,product_category,product_purchase_type,language_id,network_status from renewal where msisdn="+MSISDN+" order by last_action_date desc limit 2";
+			String validate_renewal = "select msisdn,last_renewal_date,renewal_date,status,activation_date,product_id,product_description,product_type,srcchannel,product_category,product_purchase_type,language_id,network_status from renewal where msisdn="
+					+ MSISDN + " order by last_action_date desc limit 1";
 			if (table.equalsIgnoreCase("adhoc")) {
-				table_data=ValidationQuery(validate_adhoc, table);
+				table_data = ValidationQuery(validate_adhoc, table);
 			} else if (table.equalsIgnoreCase("renewal")) {
-				table_data=ValidationQuery(validate_renewal, table);
+				table_data = ValidationQuery(validate_renewal, table);
 
-			}else {
-				table_data=ValidationQuery(validate_adhoc, "adhoc");
-				table_data1=ValidationQuery(validate_renewal, "renewal");
+			} else {
+				table_data = ValidationQuery(validate_adhoc, "adhoc");
+				table_data1 = ValidationQuery(validate_renewal, "renewal");
 			}
 
 		} catch (Exception e) {
@@ -79,8 +88,10 @@ public class CISDB {
 		return table_data + table_data1;
 	}
 
-	public static String ValidationQuery(String Validatin_Query, String Table) throws SQLException {
+	public static String ValidationQuery(String Validatin_Query, String Table) throws SQLException, FilloException {
 		String table_data = null;
+		Recordset rs1 = null;
+		int Iterator = 0;
 		String dbURL = "jdbc:postgresql://10.95.214.136:5444/scs";
 		Properties parameters = new Properties();
 		parameters.put("user", "mugazmaveric1");
@@ -90,6 +101,43 @@ public class CISDB {
 		System.out.println("Opened database successfully");
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(Validatin_Query);
+
+		Fillo fillo = new Fillo();
+		com.codoid.products.fillo.Connection conn1 = fillo.getConnection(Data);
+		if (Table.equalsIgnoreCase("adhoc")) {
+
+			rs1 = conn1.executeQuery("Select * from DB_adhoc where \"Execution \" = 'Yes'");
+
+		} else if (Table.equalsIgnoreCase("renewal")) {
+
+			rs1 = conn1.executeQuery("Select * from DB_renewal where \"Execution \" = 'Yes'");
+		}
+
+		try {
+			while (rs1.next()) {
+				while (rs.next()) {
+					for (Iterator = 1; Iterator < rs1.getFieldNames().size(); Iterator++) {
+						String dbvalue = rs.getObject(Iterator).toString();
+						String param = rs1.getField(rs1.getFieldNames().get(Iterator));
+						System.out.println(rs.getObject(Iterator) + "==" + param);
+
+						if (dbvalue.contains(param)) {
+							System.out.println("data matched :" + rs1.getFieldNames().get(Iterator).toString());
+
+						} else {
+							System.out.println(
+									"Data Failed to match at :" + rs1.getFieldNames().get(Iterator).toString());
+						}
+
+					}
+
+				}
+			}
+		} catch (Exception e) {
+
+			System.out.println(e);
+			System.out.println("at field :" + rs1.getFieldNames().get(Iterator).toString());
+		}
 
 		System.out.println("Query Executed");
 		// display actor information
@@ -107,15 +155,16 @@ public class CISDB {
 
 		st.close();
 		conn.close();
+		rs1.close();
 		return table_data;
 
 	}
 
 	public static String displayActorAdhoc(ResultSet rs) throws SQLException {
-		String tbl ="<style>table, th, td {border: 1px solid black;border-collapse: collapse;}th, td ,caption{padding:5px;text-align:left;}</style>"
-	+"<table>" + "<caption>Adhoc Table</caption>" + "<tr>" + "<th>msisdn</th>" + "<th>product_id</th>" + "<th>status</th>"
-				+ "<th>start_date</th>" + "<th>expiry_date</th>" + "<th>product_cost</th>" + "<th>srcchannel</th>"
-				+ "<th>network_status</th>" + "</tr>";
+		String tbl = "<style>table, th, td {border: 1px solid black;border-collapse: collapse;}th, td ,caption{padding:5px;text-align:left;}</style>"
+				+ "<table>" + "<caption>Adhoc Table</caption>" + "<tr>" + "<th>msisdn</th>" + "<th>product_id</th>"
+				+ "<th>status</th>" + "<th>start_date</th>" + "<th>expiry_date</th>" + "<th>product_cost</th>"
+				+ "<th>srcchannel</th>" + "<th>network_status</th>" + "</tr>";
 		while (rs.next()) {
 			tbl = tbl + "<tr><td style= 'min-width: 162px'>"
 					+ (rs.getString("msisdn") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
@@ -129,18 +178,18 @@ public class CISDB {
 					+ "</td></tr style= 'min-width: 162px'>";
 
 		}
-		// System.out.println(tbl);
+		System.out.println(tbl);
 		return tbl;
 
 	}
 
 	public static String displayActorRenew(ResultSet rs) throws SQLException {
-		String tbl = "<style>table, th, td {border: 1px solid black;border-collapse: collapse;}th, td ,caption{padding:5px;text-align:left;}</style>"+
-	"<table>" +"<caption>Renewal Table</caption>" +  "<tr>" + "<th>msisdn</th>" + "<th>last_renewal_date</th>" + "<th>renewal_date</th>"
-				+ "<th>status</th>" + "<th>activation_date</th>" + "<th>product_id</th>"
-				+ "<th>product_description</th>" + "<th>product_type</th>" + "<th>srcchannel</th>"
-				+ "<th>product_category</th>" + "<th>product_purchase_type</th>" + "<th>language_id</th>"
-				+ "<th>network_status</th>" + "</tr>";
+		String tbl = "<style>table, th, td {border: 1px solid black;border-collapse: collapse;}th, td ,caption{padding:5px;text-align:left;}</style>"
+				+ "<table>" + "<caption>Renewal Table</caption>" + "<tr>" + "<th>msisdn</th>"
+				+ "<th>last_renewal_date</th>" + "<th>renewal_date</th>" + "<th>status</th>"
+				+ "<th>activation_date</th>" + "<th>product_id</th>" + "<th>product_description</th>"
+				+ "<th>product_type</th>" + "<th>srcchannel</th>" + "<th>product_category</th>"
+				+ "<th>product_purchase_type</th>" + "<th>language_id</th>" + "<th>network_status</th>" + "</tr>";
 		while (rs.next()) {
 			tbl = tbl + "<tr><td style= 'min-width: 162px'>"
 					+ (rs.getString("msisdn") + "\t" + "</td>" + "<td style= 'min-width: 162px'>"
@@ -163,6 +212,7 @@ public class CISDB {
 		return tbl;
 
 	}
+
 	public static void createtimestampfold() {
 		DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
 		Calendar cal = Calendar.getInstance();
@@ -182,6 +232,23 @@ public class CISDB {
 			e.getMessage();
 		}
 	}
+
+	public boolean compareResultSets(Recordset resultSet1, ResultSet resultSet2) throws SQLException, FilloException {
+		while (resultSet1.next()) {
+
+			resultSet2.next();
+
+			ResultSetMetaData resultSetMetaData = resultSet2.getMetaData();
+			int count = resultSetMetaData.getColumnCount();
+			for (int i = 1; i <= count; i++) {
+				if (!resultSet1.getField(0).equals(resultSet2.getObject(i))) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	private static Logger Log = Logger.getLogger(asnconverter.class.getName());//
 
 	// This is to print log for the beginning of the test case, as we usually run so
@@ -205,7 +272,8 @@ public class CISDB {
 
 	public static void endTestCase(String sTestCaseName) {
 
-		Log.info("XXXXXXXXXXXXXXXXXXXXXXX             " +sTestCaseName+ "-E---N---D-" + "             XXXXXXXXXXXXXXXXXXXXXX");
+		Log.info("XXXXXXXXXXXXXXXXXXXXXXX             " + sTestCaseName + "-E---N---D-"
+				+ "             XXXXXXXXXXXXXXXXXXXXXX");
 
 	}
 
@@ -240,6 +308,5 @@ public class CISDB {
 		Log.debug(message);
 
 	}
-
 
 }

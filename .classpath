@@ -2,19 +2,19 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/apache-logging-log4j.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/commons-io-2.6/commons-io-2.6.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/extentreports-3.1.5.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/fillo-1.18.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/freemarker-2.3.23.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/jsch-0.1.55.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/jsoup-1.11.3.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/log4j-1.2.17-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/mongo-java-driver-3.9.1.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/postgresql-9.2-1002.jdbc4.jar"/>
-	<classpathentry kind="lib" path="D:/DU Automation/ASNConverter/JARS/sqlite-jdbc-3.25.2.jar"/>
 	<classpathentry kind="lib" path="D:/Auto/JARS/mysql-database-1.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/venureddyg/Downloads/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="lib" path="C:/Users/venureddyg/Downloads/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/apache-logging-log4j.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/commons-io-2.6/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/extentreports-3.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/fillo-1.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/freemarker-2.3.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/jsch-0.1.55.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/jsoup-1.11.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/log4j-1.2.17-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/mongo-java-driver-3.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/postgresql-9.2-1002.jdbc4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/venureddyg/git/Asnconverter/JARS/sqlite-jdbc-3.25.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
